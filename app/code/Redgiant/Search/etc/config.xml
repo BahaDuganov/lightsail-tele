@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <rgsearch>
+            <general>
+                <enabled>1</enabled>
+                <max_query_results>10</max_query_results>
+                <max_letter_numbers>97</max_letter_numbers>
+                <display>price,image,description</display>
+                <reindex_search>manual</reindex_search>
+                <category>
+                    <enable>1</enable>
+                    <max_depth>2</max_depth>
+                </category>
+            </general>
+        </rgsearch>
+    </default>
+</config>

@@ -1,0 +1,1202 @@
+<root>
+   <blocks>
+      <cms_item>
+         <title>Goodwin - Custom Block for Top Links 1</title>
+         <identifier>goodwin_custom_block_for_top_links_1</identifier>
+         <content><![CDATA[<div class="custom-text"><span>FREE</span> STANDARD DELIVERY ON ORDERS OVER $ 150</div>
+<div class="custom-text"><i class="icon icon-mobile"></i><b>8 800 265 89 56</b></div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Notice Block 1</title>
+         <identifier>goodwin_notice_block_1</identifier>
+         <content><![CDATA[<div class="bgcolor" style="background:url({{media url="wysiwyg/goodwin/promo-topline-bg.png"}});">
+	<div class="promo-topline" data-expires="1" style="display: none;">
+		<div class="container">
+			<div class="typewrite promo-topline-item" data-type="[ &quot;GET 10% OFF YOUR FIRST ORDER WITH CODE GOODWIN&quot;, &quot;FREE GROUND SHIPPING OVER $250&quot; ]" data-period="2000"></div>
+		</div><a href="#" class="promo-topline-close js-promo-topline-close"><i class="icon-cross"></i></a>
+	</div>
+</div>
+<script>
+require([
+    'type-writer'
+], function (typewriter) {
+    typewriter.init();
+});
+</script>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Top 1</title>
+         <identifier>goodwin_footer_top_1</identifier>
+         <content><![CDATA[<div class="holder theme-bgcolor mt-0">
+	<div class="container">
+		<div class="row shop-features-style3">
+			<div class="col-md"><a href="#" class="shop-feature light-color">
+					<div class="shop-feature-icon"><i class="icon-box3"></i></div>
+					<div class="shop-feature-text">
+						<div class="text1">Free worlwide delivery</div>
+						<div class="text2">Lorem ipsum dolor sit amet</div>
+					</div>
+				</a></div>
+			<div class="col-md"><a href="#" class="shop-feature light-color">
+					<div class="shop-feature-icon"><i class="icon-arrow-left-circle"></i></div>
+					<div class="shop-feature-text">
+						<div class="text1">100% money back guarantee</div>
+						<div class="text2">Lorem ipsum dolor sit amet</div>
+					</div>
+				</a></div>
+			<div class="col-md"><a href="#" class="shop-feature light-color">
+					<div class="shop-feature-icon"><i class="icon-call"></i></div>
+					<div class="shop-feature-text">
+						<div class="text1">24/7 customer support</div>
+						<div class="text2">Lorem ipsum dolor sit amet</div>
+					</div>
+				</a></div>
+		</div>
+	</div>
+</div>
+<div class="holder bgcolor py-3 py-md-5 mt-0" style="background-color: #f3f4f6;">
+	<div class="container">
+		<div class="subscribe-form subscribe-form--style1">
+			{{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe.phtml"}}
+		</div>
+	</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Middle 1</title>
+         <identifier>goodwin_footer_middle_1</identifier>
+         <content><![CDATA[<div class="row" style="padding-top: 40px;padding-bottom: 40px;">
+	<div class="col-md-4 col-lg">
+		<div class="footer-block collapsed-mobile">
+			<div class="title">
+				<h4>Categories</h4>
+				<div class="toggle-arrow"></div>
+			</div>
+			<div class="collapsed-content">
+				<ul>
+					<li><a href="#">Women's Fashion</a></li>
+					<li><a href="#">Mens's Accessories</a></li>
+					<li><a href="#">Electronics</a></li>
+					<li><a href="#">All Brands</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-lg">
+		<div class="footer-block collapsed-mobile">
+			<div class="title">
+				<h4>Customer Service</h4>
+				<div class="toggle-arrow"></div>
+			</div>
+			<div class="collapsed-content">
+				<ul>
+					<li><a href="#">Terms of Use</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">F.A.Q.</a></li>
+					<li><a href="#">Contact Info</a></li>
+					<li><a href="#">Create Account</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-lg">
+		<div class="footer-block collapsed-mobile">
+			<div class="title">
+				<h4>My Account</h4>
+				<div class="toggle-arrow"></div>
+			</div>
+			<div class="collapsed-content">
+				<ul>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">View Cart</a></li>
+					<li><a href="#">My Wishlist</a></li>
+					<li><a href="#">Order Status</a></li>
+					<li><a href="#">Track My Order</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-lg">
+		<div class="footer-block collapsed-mobile">
+			<div class="title">
+				<h4>Information</h4>
+				<div class="toggle-arrow"></div>
+			</div>
+			<div class="collapsed-content">
+				<ul>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Our Portfolio</a></li>
+					<li><a href="#">How to buy</a></li>
+					<li><a href="#">Arrival Sales</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 col-lg-3">
+		<div class="footer-block collapsed-mobile">
+			<div class="title">
+				<h4>contact us</h4>
+				<div class="toggle-arrow"></div>
+			</div>
+			<div class="collapsed-content">
+				<ul class="contact-list">
+					<li><span><span class="h6-style">Call Us:</span><span>1 (800) 233-2742</span></span></li>
+					<li><span><span class="h6-style">Hours:</span><span>Mon-fri 9am-8pm<br>sat 9am-6pm</span></span></li>
+					<li><span><span class="h6-style">E-mail:</span><span><a href="mailto:rgtheme@hotmail.com">rgtheme@hotmail.com</a></span></span></li>
+					<li><span><span class="h6-style">Address:</span><span>Goodwin store 140 new str., suite 21 brooklyn, NY</span></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Bottom 1</title>
+         <identifier>goodwin_footer_bottom_1</identifier>
+         <content><![CDATA[<div class="container">
+	<div class="row lined py-4 py-md-5">
+		<div class="col-md-2 hidden-mobile"><a href="#"><img src="{{media url="wysiwyg/goodwin/footer/logo-footer-dark.png"}}" alt="" /></a></div>
+		<div class="col-md-6 col-lg-5 footer-copyright">
+			<p class="footer-copyright-text"><span>© Copyright</span> 2019 <a href="#">GoodwinStore</a>. <span>All rights reserved.</span></p>
+			<p class="footer-copyright-links"><a href="">Terms &amp; conditions</a> <a href="">Privacy policy</a></p>
+		</div>
+		<div class="col-md-auto">
+			<div class="payment-icons"><img src="{{media url="wysiwyg/goodwin/footer/payment-card-visa.png"}}" alt="" /><img src="{{media url="wysiwyg/goodwin/footer/payment-card-mastercard.png"}}" alt="" /><img src="{{media url="wysiwyg/goodwin/footer/payment-card-discover.png"}}" alt="" /></div>
+		</div>
+		<div class="col-md-auto ml-lg-auto">
+			<ul class="social-list">
+				<li><a href="#" class="icon icon-facebook"></a></li>
+				<li><a href="#" class="icon icon-twitter"></a></li>
+				<li><a href="#" class="icon icon-google"></a></li>
+				<li><a href="#" class="icon icon-instagram"></a></li>
+				<li><a href="#" class="icon icon-youtube"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Block for Top Links 4</title>
+         <identifier>goodwin_custom_block_for_top_links_4</identifier>
+         <content><![CDATA[<ul class="social-list">
+	<li><a href="#" class="icon icon-facebook"></a></li>
+	<li><a href="#" class="icon icon-twitter"></a></li>
+	<li><a href="#" class="icon icon-google"></a></li>
+	<li><a href="#" class="icon icon-instagram"></a></li>
+	<li><a href="#" class="icon icon-youtube"></a></li>
+</ul>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Block for Header 8</title>
+         <identifier>goodwin_custom_block_for_header_8</identifier>
+         <content><![CDATA[<div class="hdr-icn-text">
+	<i class="icon icon-phone"></i>
+	<div>8 800 265 89 56<br>8 800 265 89 56</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Block for Product Page</title>
+         <identifier>goodwin_custom_block_for_productpage</identifier>
+         <content><![CDATA[<div class="shop-features-style4">
+    <a href="#" class="shop-feature">
+        <div class="shop-feature-icon"><i class="icon-box3"></i></div>
+        <div class="shop-feature-text">
+            <div class="text1">Free worlwide delivery</div>
+            <div class="text2">Lorem ipsum dolor sit amet conset</div>
+        </div>
+    </a>
+    <a href="#" class="shop-feature">
+        <div class="shop-feature-icon"><i class="icon-arrow-left-circle"></i></div>
+        <div class="shop-feature-text">
+            <div class="text1">100% money back guarantee</div>
+            <div class="text2">Lorem ipsum dolor sit amet conset</div>
+        </div>
+    </a>
+    <a href="#" class="shop-feature">
+        <div class="shop-feature-icon"><i class="icon-call"></i></div>
+        <div class="shop-feature-text">
+            <div class="text1">24/7 customer support</div>
+            <div class="text2">Lorem ipsum dolor sit amet conset</div>
+        </div>
+    </a>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Tab Block 1 For Product Page</title>
+         <identifier>goodwin_custom_tab_block_1_for_productpage</identifier>
+         <content><![CDATA[<h3 class="custom-color">Take a trivial example which of us ever undertakes</h3>
+<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure</p>
+<div class="mt-5"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://cdn.shopify.com/s/files/1/0026/0400/7539/files/final.mp4?6566677321544045795" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+    <div class="col-sm-6 mt-3 mt-sm-0">
+        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful</p>
+        <ul class="list list--marker-squared">
+            <li>Nam liberempore</li>
+            <li>Cumsoluta nobisest</li>
+            <li>Eligendptio cumque</li>
+            <li>Nam liberempore</li>
+            <li>Cumsoluta nobisest</li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Tab Block 2 For Product Page</title>
+         <identifier>goodwin_custom_tab_block_2_for_productpage</identifier>
+         <content><![CDATA[<h3>A little bit of fashion</h3>
+<div class="row vert-margin">
+    <div class="col-sm-6"><img src="{{media url=&quot;wysiwyg/goodwin/product/product-post-img-1.jpg&quot;}}" alt="" /></div>
+    <div class="col-sm-6">
+        <p>Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestueh amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising.</p>
+        <p>Consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor nsestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr.</p>
+    </div>
+</div>
+<div class="mt-3"></div>
+<h3>How to choose a dress?</h3>
+<div class="row vert-margin">
+    <div class="col-sm-6">
+        <p>Elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer.</p>
+        <ul class="list list--marker-squared">
+            <li>Consestuer adicpising elitr anno dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet consestuer adicpising elitr anno</li>
+            <li>Dolor sit amet orem ipsum dolor sit amet</li>
+            <li>Elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising</li>
+            <li>Anno dolor sit amet orem ipsum dolor sit amet consest</li>
+            <li>Sit amet lorem ipsum dolor sit amet</li>
+        </ul>
+    </div>
+    <div class="col-sm-6"><img src="{{media url=&quot;wysiwyg/goodwin/product/product-post-img-2.jpg&quot;}}" alt="" /></div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Tab Block 3 For Product Page</title>
+         <identifier>goodwin_custom_tab_block_3_for_productpage</identifier>
+         <content><![CDATA[<div class="row"><div class="col-sm-8">
+<h3>Single Size Conversion</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table--size">
+        <tbody>
+            <tr>
+                <th scope="row">US Sizes</th>
+                <td>6</td>
+                <td>6,5</td>
+                <td>7</td>
+                <td>7,5</td>
+                <td>8</td>
+                <td>8,5</td>
+                <td>9</td>
+                <td>9,5</td>
+                <td>10</td>
+                <td>10,5</td>
+            </tr>
+            <tr>
+                <th scope="row">Euro Sizes</th>
+                <td>39</td>
+                <td>39</td>
+                <td>40</td>
+                <td>40-41</td>
+                <td>41</td>
+                <td>41-42</td>
+                <td>42</td>
+                <td>42-43</td>
+                <td>43</td>
+                <td>43-44</td>
+            </tr>
+            <tr>
+                <th scope="row">UK Sizes</th>
+                <td>5,5</td>
+                <td>6</td>
+                <td>6,5</td>
+                <td>7</td>
+                <td>7,5</td>
+                <td>8</td>
+                <td>8,5</td>
+                <td>9</td>
+                <td>9,5</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <th scope="row">Inches</th>
+                <td>9.25"</td>
+                <td>9.5"</td>
+                <td>9.625"</td>
+                <td>9.75"</td>
+                <td>9.9375"</td>
+                <td>10.125"</td>
+                <td>10.25"</td>
+                <td>10.5"</td>
+                <td>10.625"</td>
+                <td>10.75"</td>
+            </tr>
+            <tr>
+                <th scope="row">CM</th>
+                <td>23,5</td>
+                <td>24,1</td>
+                <td>24,4</td>
+                <td>24,8</td>
+                <td>25,4</td>
+                <td>25,7</td>
+                <td>26</td>
+                <td>26,7</td>
+                <td>27</td>
+                <td>27,3</td>
+            </tr>
+        </tbody>
+    </table>
+</div></div></div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Tab Block 4 For Product Page</title>
+         <identifier>goodwin_custom_tab_block_4_for_productpage</identifier>
+         <content><![CDATA[<div class="row"><div class="col-sm-12">
+<h3>Single Size Conversion</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table--size">
+        <tbody>
+            <tr>
+                <th scope="row">US Sizes</th>
+                <td>6</td>
+                <td>6,5</td>
+                <td>7</td>
+                <td>7,5</td>
+                <td>8</td>
+                <td>8,5</td>
+            </tr>
+            <tr>
+                <th scope="row">Euro Sizes</th>
+                <td>39</td>
+                <td>39</td>
+                <td>40</td>
+                <td>40-41</td>
+                <td>41</td>
+                <td>41-42</td>
+            </tr>
+            <tr>
+                <th scope="row">UK Sizes</th>
+                <td>5,5</td>
+                <td>6</td>
+                <td>6,5</td>
+                <td>7</td>
+                <td>7,5</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <th scope="row">Inches</th>
+                <td>9.25"</td>
+                <td>9.5"</td>
+                <td>9.625"</td>
+                <td>9.75"</td>
+                <td>9.9375"</td>
+                <td>10.125"</td>
+            </tr>
+            <tr>
+                <th scope="row">CM</th>
+                <td>23,5</td>
+                <td>24,1</td>
+                <td>24,4</td>
+                <td>24,8</td>
+                <td>25,4</td>
+                <td>25,7</td>
+            </tr>
+        </tbody>
+    </table>
+</div></div></div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Block 2 for Product Page</title>
+         <identifier>goodwin_custom_block_2_for_productpage</identifier>
+         <content><![CDATA[<div class="shop-features-style2">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="#" class="shop-feature text-center">
+                <div class="shop-feature-icon"><i class="icon-gift2"></i></div>
+                <div class="shop-feature-text">
+                    <div class="text1">Free worlwide delivery</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" class="shop-feature text-center">
+                <div class="shop-feature-icon"><i class="icon-circle-dollar"></i></div>
+                <div class="shop-feature-text">
+                    <div class="text1">100% money back guarantee</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" class="shop-feature text-center">
+                <div class="shop-feature-icon"><i class="icon-tag"></i></div>
+                <div class="shop-feature-text">
+                    <div class="text1">24/7 customer support</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Menu Before</title>
+         <identifier>goodwin_custom_menu_before</identifier>
+         <content><![CDATA[<ul>
+	<li class="ui-menu-item level0 classic parent">
+		<div class="open-children-toggle"></div>
+		<a href="{{store url=''}}" class="level-top"><span>Layouts</span><span class="cat-label cat-label-label1">New</span></a>
+		<div class="level0 submenu">
+			<div class="row">
+				<ul class="subchildmenu has-preview">
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}fashion1"><span>Fashion 1</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-01.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}fashion2"><span>Fashion 2</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-02.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}electronics1"><span>Electronics 1</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-03.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}electronics2"><span>Electronics 2</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-04.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}furniture"><span>Furniture</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-05.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}nutrition"><span>Nutrition</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-06.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}sport"><span>Sport</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-07.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}tools"><span>Tools</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-08.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}watches"><span>Watches</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-09.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}tshirts"><span>T-Shirts</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-10.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}toys1"><span>Toys 1 (SLIDES)</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-11.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}toys2"><span>Toys 2</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-12.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}plumbing"><span>Plumbing</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-13.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+					<li class="ui-menu-item level1 coming">
+						<div class="open-children-toggle"></div>
+						<a href="{{config path="web/unsecure/base_url"}}rtl"><span>RTL</span></a>
+                                                <span class="menu-preview">
+                                                       <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/preview-layout-14.jpg&quot;}}" alt="" />
+                                                </span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</li>
+        <li class="ui-menu-item level0 classic parent">
+        <div class="open-children-toggle"></div>
+        <a href="{{store url=''}}" class="level-top"><span>Pages</span></a>
+        <div class="level0 submenu">
+            <div class="row">
+                <ul class="subchildmenu">
+                    <li class="ui-menu-item level1 parent">
+                        <div class="open-children-toggle"></div>
+                        <a href="javascript:void(0)"><span>Product Page</span></a>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/glamor-shoes.html"><span>Product page variant 1</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/stylish-jacket.html"><span>Product page variant 2</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion2/summer-sundress.html"><span>Product page variant 3</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/office-shirt.html"><span>Product page variant 4</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/disney-scarf.html"><span>Product page variant 5</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/office-bag.html"><span>Product page variant 6</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ui-menu-item level1 parent">
+                        <div class="open-children-toggle"></div>
+                        <a href="javascript:void(0)"><span>Category Page</span></a>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/collections/women.html"><span>Left Sidebar Filters</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion2/collections/women.html"><span>Right Sidebar Filters</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/collections/men.html"><span>With Category Description</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}electronics2/collections/electronics.html"><span>Without Sidebar</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/collections/clothing.html"><span>Empty Category</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ui-menu-item level1 parent">
+                        <div class="open-children-toggle"></div>
+                        <a href="javascript:void(0)"><span>Catalog Hover Style</span></a>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/collections/women.html"><span>Hover Variant 1</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion2/collections/women.html"><span>Hover Variant 2</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}nutrition/collections/nutrition.html"><span>Hover Variant 3</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}toys1/collections/toys.html"><span>Hover Variant 4</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}sport/collections/sport.html"><span>Hover Variant 5</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1"><span>Hover Variant 6 - Homepage</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}electronics2/collections/electronics.html"><span>Hover Variant 7</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ui-menu-item level1 parent">
+                        <div class="open-children-toggle"></div>
+                        <a href="javascript:void(0)"><span>Blog</span></a>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}blog"><span>Right Sidebar</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}fashion1/blog/post/goodwin-is-very-versatile"><span>Blog Post</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ui-menu-item level1 parent">
+                        <div class="open-children-toggle"></div>
+                        <a href="javascript:void(0)"><span>Gallery</span></a>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}gallery-style-1"><span>Gallery Variant 1</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <a href="{{config path="web/unsecure/base_url"}}gallery-style-2"><span>Gallery Variant 2</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ui-menu-item level1">
+                        <div class="open-children-toggle"></div>
+                        <a href="{{config path="web/unsecure/base_url"}}goodwin-about-us"><span>About Us</span></a>
+                    </li>
+                    <li class="ui-menu-item level1">
+                        <div class="open-children-toggle"></div>
+                        <a href="{{config path="web/unsecure/base_url"}}contact"><span>Contact Us</span></a>
+                    </li>
+                    <li class="ui-menu-item level1">
+                        <div class="open-children-toggle"></div>
+                        <a href="{{config path="web/unsecure/base_url"}}goodwin-no-route"><span>404 Page</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Menu</title>
+         <identifier>goodwin_custom_menu</identifier>
+         <content><![CDATA[<ul>
+    <li class="ui-menu-item level0 fullwidth parent">
+        <div class="open-children-toggle"></div>
+        <a href="{{store url=''}}" class="level-top"><span>New Arrivals</span></a>
+        <div class="level0 submenu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 megacolumn">
+                        <h4>Shoes</h4>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Boots</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Flats</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Sneakers & Atheletic</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Clogs & Mules</span></a>
+                            </li>                       
+                        </ul>
+                        <div class="submenu-img">
+                            <a href="#"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/category-img-01.jpg&quot;}}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 megacolumn">
+                        <h4>Tops</h4>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Dresses</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Shirts & Tops</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Coats & Outerwear</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Sweaters</span></a>
+                            </li>                     
+                        </ul>
+                        <div class="submenu-img">
+                            <a href="#"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/category-img-02.jpg&quot;}}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 megacolumn">
+                        <h4>Bottoms</h4>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Jeans</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Pants</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Slippers</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Suits</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Socks</span></a>
+                            </li>                       
+                        </ul>
+                        <div class="submenu-img">
+                            <a href="#"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/category-img-03.jpg&quot;}}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 megacolumn">
+                        <h4>Accessories</h4>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Sunglasses</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Hats</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Watches</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Jewelry</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Belts</span></a>
+                            </li>                       
+                        </ul>
+                        <div class="submenu-img">
+                            <a href="#"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/category-img-04.jpg&quot;}}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 megacolumn">
+                        <h4>Bags</h4>
+                        <ul class="subchildmenu">
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Handbags</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Backpacks</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>luggage</span></a>
+                            </li>
+                            <li class="ui-menu-item level2">
+                                <div class="open-children-toggle"></div>
+                                <a href="#"><span>Wallets</span></a>
+                            </li>                     
+                        </ul>
+                        <div class="submenu-img">
+                            <a href="#"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url=&quot;wysiwyg/goodwin/menu/category-img-05.jpg&quot;}}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 megacolumn">
+{{block class="Redgiant\Filterproducts\Block\Home\LatestList" name="latest_product" product_count="3" item_type="2" carousel_class="bottom-dots" image_type="" aspect_ratio="0" image_width="320" image_height="380" rating_star="0" slick_prop='{"slidesToShow": 1, "slidesToScroll": 1, "arrows": false, "dots": true}' template="slick_list.phtml"}}                            
+                    </div>
+                </div>
+                <div class="menu-bottom">
+                    <div class="custom-text"><span>FREE</span> STANDARD DELIVERY ON ORDERS OVER $ 150</div>
+                    <div class="custom-text"><span>100%</span> money back guarantee</div>
+                    <div class="custom-text"><span>24/7</span> customer support</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="ui-menu-item level0">
+        <div class="open-children-toggle"></div>
+        <a href="{{store url=''}}" class="level-top"><span>Footwear</span></a>
+    </li>
+    <li class="ui-menu-item level0">
+        <div class="open-children-toggle"></div>
+        <a href="{{store url=''}}" class="level-top"><span>Buy Theme</span><span class="cat-label cat-label-label2">Hurry up!</span></a>
+    </li>
+</ul>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Top 2</title>
+         <identifier>goodwin_footer_top_2</identifier>
+         <content><![CDATA[<div class="holder bgcolor py-3 py-md-5 mt-0" style="background-color: #f3f4f6;">
+	<div class="container">
+		<div class="subscribe-form subscribe-form--style1">
+			{{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe.phtml"}}
+		</div>
+	</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Top 4</title>
+         <identifier>goodwin_footer_top_4</identifier>
+         <content><![CDATA[<div class="holder py-3 py-md-5 mt-0" style="background-color: #756dec;">
+	<div class="container">
+		<div class="subscribe-form subscribe-form--style1">
+			{{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe.phtml"}}
+		</div>
+	</div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Middle 1 For Electronics2</title>
+         <identifier>goodwin_footer_middle_1_for_electronics2</identifier>
+         <content><![CDATA[<div class="container mt-3 mt-md-0">
+        <div class="row py-0 py-md-5">
+            <div class="col-md-6 col-lg-4 mb-2 mb-lg-0">
+                <div class="footer-block">
+                    <div class="footer-logo"><a href="#"><img src="{{media url="wysiwyg/goodwin/footer/logo-footer-dark.png"}}" class="img-fluid" alt=""></a></div>
+                    <p>Lorem ipsum dolor sit amet consestuer adicpising elitr anno dolor sit amet. Lorem ipsum dolor sit amet consestuer adicpising.</p>
+                    <div class="payment-icons"><img src="{{media url="wysiwyg/goodwin/footer/payment-card-visa.png"}}" alt=""> <img src="{{media url="wysiwyg/goodwin/footer/payment-card-mastercard.png"}}" alt=""> <img src="{{media url="wysiwyg/goodwin/footer/payment-card-discover.png"}}" alt=""> <img src="{{media url="wysiwyg/goodwin/footer/payment-card-american-express.png"}}" alt=""></div>
+                </div>
+            </div>
+            <div class="d-none d-lg-flex col-lg-1"></div>
+            <div class="col-md-6 col-lg">
+                <div class="footer-block collapsed-mobile">
+                    <div class="title">
+                        <h4>Customer Service</h4>
+                        <div class="toggle-arrow"></div>
+                    </div>
+                    <div class="collapsed-content">
+                        <ul>
+                            <li><a href="terms-of-use.html">Terms of Use</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="faq.html">F.A.Q.</a></li>
+                            <li><a href="contact.html">Contact Info</a></li>
+                            <li><a href="account-create.html">Create Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg">
+                <div class="footer-block collapsed-mobile">
+                    <div class="title">
+                        <h4>My Account</h4>
+                        <div class="toggle-arrow"></div>
+                    </div>
+                    <div class="collapsed-content">
+                        <ul>
+                            <li><a href="account-details.html">My Account</a></li>
+                            <li><a href="cart.html">View Cart</a></li>
+                            <li><a href="account-wishlist.html">My Wishlist</a></li>
+                            <li><a href="account-history.html">Order Status</a></li>
+                            <li><a href="account-history.html">Track My Order</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg">
+                <div class="footer-block collapsed-mobile">
+                    <div class="title">
+                        <h4>Information</h4>
+                        <div class="toggle-arrow"></div>
+                    </div>
+                    <div class="collapsed-content">
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Site map</a></li>
+                            <li><a href="#">sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Bottom 1 For Electronics2</title>
+         <identifier>goodwin_footer_bottom_1_for_electronics2</identifier>
+         <content><![CDATA[<div class="container footer-bottom">
+    <div class="row lined py-2 py-md-4 justify-content-center">
+        <div class="col-md-6">
+            <div class="footer-copyright text-center">
+                <p class="footer-copyright-text"><span>© Copyright</span> 2019 <a href="#">GoodwinStore</a>. <span>All rights reserved.</span></p>
+                <p class="footer-copyright-links"><a href="">Terms & conditions</a> <a href="">Privacy policy</a></p>
+            </div>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Block for Top Links 2</title>
+         <identifier>goodwin_custom_block_for_top_links_2</identifier>
+         <content><![CDATA[<div class="hdr-line-separate">
+    <ul class="social-list">
+        <li><a href="#" class="icon icon-facebook"></a></li>
+        <li><a href="#" class="icon icon-twitter"></a></li>
+        <li><a href="#" class="icon icon-google"></a></li>
+        <li><a href="#" class="icon icon-instagram"></a></li>
+        <li><a href="#" class="icon icon-youtube"></a></li>
+    </ul>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Top 7</title>
+         <identifier>goodwin_footer_top_7</identifier>
+         <content><![CDATA[<div class="holder bg-cover fullboxed holder--custom-color py-6 mt-0" style="background-image: url({{media url="wysiwyg/goodwin/home/07_sport/newsletter-bg.png"}}); color: #fff;">
+    <div class="container">
+        <div class="subscribe-form subscribe-form--style2">
+            <h2 class="h1-style text-center">subscribe to newsletter:</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            {{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe.phtml"}}
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Middle 1 For Sport</title>
+         <identifier>goodwin_footer_middle_1_for_sport</identifier>
+         <content><![CDATA[<div class="container">
+    <div class="text-center">
+        <a href="#"><img src="{{media url="wysiwyg/goodwin/footer/logo-footer-white.png"}}" class="img-fluid" alt=""></a>
+    </div>
+    <div class="row py-0 py-md-4">
+        <div class="col-md-3">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>Customer Service</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <ul>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="faq.html">F.A.Q.</a></li>
+                        <li><a href="contact.html">Contact Info</a></li>
+                        <li><a href="account-create.html">Create Account</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>My Account</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <ul>
+                        <li><a href="account-details.html">My Account</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="account-wishlist.html">My Wishlist</a></li>
+                        <li><a href="account-history.html">Order Status</a></li>
+                        <li><a href="account-history.html">Track My Order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>Location</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content footer-map">
+                    <div class="footer-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2201.3258493677126!2d-74.01291322172017!3d40.70657451080482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sua!4v1492962272380"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="footer-block">
+                <div class="title">
+                    <h4>Instagram</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content footer-map">
+                    <div class="instagram-grid three-in-row">
+                            {{widget type="Mageplaza\InstagramFeed\Block\Widget" design="0" type_name="Mageplaza Instagram Feed"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Top For Nutrition</title>
+         <identifier>goodwin_footer_top_for_nutrition</identifier>
+         <content><![CDATA[<div class="container">
+    <div class="row pb-md-4">
+        <div class="col-md">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>Categories</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <ul>
+                        <li><a href="#">Women's Fashion</a></li>
+                        <li><a href="#">Mens's Accessories</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">All Brands</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>Customer Service</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <ul>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">F.A.Q.</a></li>
+                        <li><a href="#">Contact Info</a></li>
+                        <li><a href="#">Create Account</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>My Account</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">View Cart</a></li>
+                        <li><a href="#">My Wishlist</a></li>
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Track My Order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="footer-block collapsed-mobile">
+                <div class="title">
+                    <h4>Follow Us</h4>
+                    <div class="toggle-arrow"></div>
+                </div>
+                <div class="collapsed-content">
+                    <p>Lorem ipsum dolor sit amet, cons ectetur adipiscing elit.</p>
+                    <div class="subscribe-form">
+                        {{block class="Magento\Newsletter\Block\Subscribe" template="Magento_Newsletter::subscribe.phtml"}}
+                    </div>
+                    <ul class="social-list">
+				<li><a href="#" class="icon icon-facebook"></a></li>
+				<li><a href="#" class="icon icon-twitter"></a></li>
+				<li><a href="#" class="icon icon-google"></a></li>
+				<li><a href="#" class="icon icon-instagram"></a></li>
+				<li><a href="#" class="icon icon-youtube"></a></li>
+		    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-cover bg-cover py-3 py-md-7" style="background-image: url({{media url="wysiwyg/goodwin/home/06_nutrition/footer-shopfeatures-bg-1.jpg"}})">
+    <div class="container">
+        <div class="row shop-features-style5 light-color">
+            <div class="col-md"><a href="#" class="shop-feature light-color">
+                    <div class="shop-feature-icon"><i class="icon-box3"></i></div>
+                    <div class="shop-feature-text">
+                        <div class="text1">Free worlwide delivery</div>
+                        <div class="text2">Lorem ipsum dolor sit amet</div>
+                    </div>
+                </a></div>
+            <div class="col-md"><a href="#" class="shop-feature light-color">
+                    <div class="shop-feature-icon"><i class="icon-arrow-left-circle"></i></div>
+                    <div class="shop-feature-text">
+                        <div class="text1">100% back guarantee</div>
+                        <div class="text2">Lorem ipsum dolor sit amet</div>
+                    </div>
+                </a></div>
+            <div class="col-md"><a href="#" class="shop-feature light-color">
+                    <div class="shop-feature-icon"><i class="icon-call"></i></div>
+                    <div class="shop-feature-text">
+                        <div class="text1">24/7 customer support</div>
+                        <div class="text2">Lorem ipsum dolor sit amet</div>
+                    </div>
+                </a></div>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Bottom For Nutrition</title>
+         <identifier>goodwin_footer_bottom_for_nutrition</identifier>
+         <content><![CDATA[<div class="container">
+    <div class="row lined py-2 py-md-3">
+        <div class="footer-logo col-md"><a href="#"><img src="{{media url="wysiwyg/goodwin/footer/logo-footer-dark.png"}}" class="img-fluid" alt=""></a></div>
+        <div class="footer-copyright col-md ml-auto text-md-right">
+            <p class="footer-copyright-text"><span>© Copyright</span> 2019 <a href="#">GoodwinStore</a>. <span>All rights reserved.</span></p>
+            <p class="footer-copyright-links"><a href="">Terms & conditions</a> <a href="">Privacy policy</a></p>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Footer Bottom For Toys1</title>
+         <identifier>goodwin_footer_bottom_for_toys1</identifier>
+         <content><![CDATA[<div class="container py-1 py-sm-2">
+    <div class="d-flex justify-content-center">
+        <div class="footer-copyright">
+            <p class="footer-copyright-text"><span>© Copyright</span> 2019 <a href="#">GoodwinStore</a>. <span>All rights reserved.</span></p>
+            <p class="footer-copyright-links"><a href="">Terms & conditions</a> <a href="">Privacy policy</a></p>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Goodwin - Custom Sidebar Block For Category Page</title>
+         <identifier>goodwin_custom_sidebar_for_category</identifier>
+         <content><![CDATA[<div class="category-custom-sidebar">
+	<a href="#" class="bnr bnr--style-3 bnr--left bnr--top" data-fontratio="2.63">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{media url="wysiwyg/goodwin/home/01_fashion1/banner-7.jpg"}}" alt="Banner" class="lazyload"> 
+		<span class="bnr-caption"><span class="bnr-text-wrap"><span class="bnr-text1">Limited discunts for jeans</span>
+			<span class="bnr-text2">65<sup>%</sup><sub>off</sub></span></span>
+		</span>
+	</a>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+   </blocks>
+</root>

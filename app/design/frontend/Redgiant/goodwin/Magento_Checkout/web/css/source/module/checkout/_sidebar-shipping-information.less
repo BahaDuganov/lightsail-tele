@@ -1,0 +1,70 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-sidebar-shipping-information__padding: @indent__l;
+@checkout-sidebar-shipping-information__line-height: @checkout-billing-address-details__line-height;
+
+@checkout-sidebar-shipping-information-edit-icon__color: @minicart-icons-color;
+@checkout-sidebar-shipping-information-edit-icon__content: @icon-settings;
+@checkout-sidebar-shipping-information-edit-icon__font-size: 28px;
+@checkout-sidebar-shipping-information-edit-icon__line-height: 28px;
+@checkout-sidebar-shipping-information-edit-icon__top: 2px;
+@checkout-sidebar-shipping-information-edit-icon__hover__color: @primary__color;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Shipping Information
+    //  ---------------------------------------------
+
+    .opc-block-shipping-information {
+        padding: 20px;
+        background: #fbfbfb;
+
+        .shipping-information-title {
+            margin: 0 0 @indent__base;
+            position: relative;
+            color: #000;
+            font-weight: 600;
+            font-size: 18px;
+            font-family: "Montserrat",sans-serif;
+            text-transform: uppercase;
+            border-bottom: 1px solid #f7f7f7;
+            padding-bottom: 5px;
+
+            .action-edit {
+                display: none;
+            }
+        }
+
+        .shipping-information-content {
+            .lib-css(line-height, @checkout-sidebar-shipping-information__line-height);
+            .actions-toolbar {
+                margin-left: 0;
+            }
+        }
+
+        .ship-to,
+        .ship-via {
+            margin: 0 0 @indent__base;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .opc-block-shipping-information {
+        .shipping-information-title {
+            font-size: 2.3rem;
+        }
+    }
+}

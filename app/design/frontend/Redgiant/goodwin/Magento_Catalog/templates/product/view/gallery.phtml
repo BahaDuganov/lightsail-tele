@@ -1,0 +1,361 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+$_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+
+$aspect_ratio = $_helper->getConfig("goodwin_settings/product/enable_aspect_ratio");
+
+if(empty($aspect_ratio)) {
+    $aspect_ratio = 0;
+}
+$image_width = $_helper->getConfig("goodwin_settings/product/image_width");
+if(empty($image_width)) {
+    $image_width = 700;
+}
+$image_height = $_helper->getConfig("goodwin_settings/product/image_height");
+if($aspect_ratio)
+    $image_height = $image_width;
+if(empty($image_height)) {
+    $image_height = 700;
+}
+
+$_product_helper = $this->helper('Magento\Catalog\Helper\Data');
+    
+$product = $_product_helper->getProduct();
+
+$product_page_type = $product->getData('goodwin_product_page_layout');
+if(!$product_page_type)
+    $product_page_type = $_helper->getConfig('goodwin_settings/product/product_page_layout');
+if(empty($product_page_type))
+    $product_page_type = 'default';
+$current_page = $this->getRequest()->getFullActionName();
+if($current_page == 'weltpixel_quickview_catalog_product_view')
+    $product_page_type = 'full_width_image';
+
+$navdir = 'horizontal';
+if($product_page_type == 'vertical_gallery' || $product_page_type == 'vertical_gallery_right')
+    $navdir = 'vertical';
+?>
+<?php if($product_page_type == 'fixed_content'): ?>
+<?php
+    $images = $product->getMediaGalleryImages();
+?>
+<div id="gallery_images">
+    <?php
+    if ($images instanceof \Magento\Framework\Data\Collection) {
+        foreach ($images as $image) {
+    ?>
+    <div class="product-image-list">
+        <?php if($aspect_ratio): ?>
+        <img src="<?php echo $_imagehelper->init($product, 'product_page_image_medium')->setImageFile($image->getFile())->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($image_width)->getUrl(); ?>" alt=""/>
+        <?php else: ?>
+        <img src="<?php echo $_imagehelper->init($product, 'product_page_image_medium')->setImageFile($image->getFile())->resize($image_width, $image_height)->getUrl(); ?>" alt=""/>
+        <?php endif; ?>
+    </div>
+    <?php
+        }
+    }
+    ?>
+</div>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    var product_info_top = 0;
+    var product_image_box_pos = $(".product.media").offset().top;
+
+    function fixed_content() {
+        product_image_box_pos = $(".product.media").offset().top;
+        if($(window).innerWidth() >= 992) {
+            $(".product-info-main").each(function(){
+                if(($(window).scrollTop() > product_image_box_pos - 75) && (product_image_box_pos + $(".product.media").outerHeight()) > ($(window).scrollTop() + $(this).outerHeight() + 75)) {
+                    product_info_top = $(window).scrollTop() - product_image_box_pos + 75;
+                    $(this).css('top',product_info_top + 'px');
+                } else if ($(window).scrollTop() < product_image_box_pos || $(".product.media").outerHeight() < $(this).outerHeight()) {
+                    product_info_top = 0;
+                    $(this).css('top',product_info_top + 'px');
+                } else {
+                    product_info_top = $(".product.media").outerHeight() - $(this).outerHeight();
+                    $(this).css('top',product_info_top + 'px');
+                }
+            });
+        } else {
+            product_info_top = 0;
+            $(".product-info-main").css('top',product_info_top + 'px');
+        }
+    }
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            fixed_content();
+        });
+
+        $(window).resize(function(){
+            fixed_content();
+        });
+    });
+});
+</script>
+<?php elseif($product_page_type == 'full_width_image'): ?>
+<?php
+    $images = $product->getMediaGalleryImages();
+?>
+<div class="stretch-gallery-slider">
+    <div id="gallery_images" class="slick-carousel slick-arrows-aside-simple" 
+    <?php if($current_page == 'weltpixel_quickview_catalog_product_view'): ?>
+        data-slick='{"slidesToShow": 3, "centerMode": true,"infinite": true, "slidesToScroll": 1}'
+    <?php else:?>
+        data-slick='{"slidesToShow": 1, "centerMode": true, "centerPadding": "<?php echo $image_width / 2; ?>px","infinite": true, "slidesToScroll": 1}'
+    <?php endif;?>>
+        <?php
+        if ($images instanceof \Magento\Framework\Data\Collection) {
+            foreach ($images as $image) {
+        ?>
+        <div class="gallery_item">
+            <?php if($aspect_ratio): ?>
+            <img src="<?php echo $_imagehelper->init($product, 'product_page_image_medium')->setImageFile($image->getFile())->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($image_width)->getUrl(); ?>" alt=""/>
+            <?php else: ?>
+            <img src="<?php echo $_imagehelper->init($product, 'product_page_image_medium')->setImageFile($image->getFile())->resize($image_width, $image_height)->getUrl(); ?>" alt=""/>
+            <?php endif; ?>
+        </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
+    <script>
+        require([
+        'jquery',
+        'slick-skin',
+        ], function ($, slickcarousel) {
+            slickcarousel.init('#gallery_images');
+        });
+    </script>
+</div>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    $(document).ready(function(){
+        $(".product-info-container").append($(".product.info.detailed").detach());
+    });
+})
+</script>
+<?php else: ?>
+<div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /* @escapeNotVerified */ __('Loading...') ?>">
+        </div>
+    </div>
+</div>
+
+<script>
+    var config = {
+            "width": <?php /* @escapeNotVerified */ echo $image_width; ?>,
+            "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+                        ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+            "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+            <?php if (!$aspect_ratio): ?>
+                "height": <?php /* @escapeNotVerified */ echo $image_height; ?>
+            <?php endif; ?>
+        },
+        thumbBarHeight = 0,
+        loader = document.querySelectorAll('[data-gallery-role="gallery-placeholder"] [data-role="loader"]')[0];
+
+    if (config.navtype === 'horizontal') {
+        thumbBarHeight = config.thumbheight;
+    }
+
+    loader.style.paddingBottom = ( config.height / config.width * 100) + "%";
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= /* @escapeNotVerified */ $block->getMagnifier() ?>,
+                "data": <?= /* @escapeNotVerified */ $block->getGalleryImagesJson() ?>,
+                "options": {
+                    "nav": "<?= /* @escapeNotVerified */ $block->getVar("gallery/nav") ?>",
+                    <?php if (($block->getVar("gallery/loop"))): ?>
+                        "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/loop") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/keyboard"))): ?>
+                        "keyboard": <?= /* @escapeNotVerified */ $block->getVar("gallery/keyboard") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/arrows"))): ?>
+                        "arrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/arrows") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/allowfullscreen"))): ?>
+                        "allowfullscreen": <?= /* @escapeNotVerified */ $block->getVar("gallery/allowfullscreen") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/caption"))): ?>
+                        "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/caption") ?>,
+                    <?php endif; ?>
+                   
+                    "thumbwidth": "<?= /* @escapeNotVerified */ $block->getImageAttribute('product_page_image_small', 'width') ?>",
+                    <?php if ($block->getImageAttribute('product_page_image_small', 'height') || $block->getImageAttribute('product_page_image_small', 'width')): ?>
+                        "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+                        ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/thumbmargin"))): ?>
+                        "thumbmargin": <?= /* @noEscape */ (int)$block->getVar("gallery/thumbmargin"); ?>,
+                    <?php endif; ?>
+                    <?php if (!$aspect_ratio): ?>
+                        
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/transition/effect") ?>",
+                    <?php if (($block->getVar("gallery/navarrows"))): ?>
+                        "navarrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/navarrows") ?>,
+                    <?php endif; ?>
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+                    <?php if($navdir == 'vertical'): ?>
+                    "maxheight": "432",
+                    <?php endif; ?>
+                    "navdir": "<?= /* @escapeNotVerified */ $navdir ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/nav") ?>",
+                    <?php if ($block->getVar("gallery/fullscreen/loop")): ?>
+                        "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/loop") ?>,
+                    <?php endif; ?>
+                    "navdir": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navdir") ?>",
+                    <?php if ($block->getVar("gallery/transition/navarrows")): ?>
+                        "navarrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navarrows") ?>,
+                    <?php endif; ?>
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navtype") ?>",
+                    <?php if ($block->getVar("gallery/fullscreen/arrows")): ?>
+                        "arrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/arrows") ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/fullscreen/caption")): ?>
+                        "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/caption") ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/fullscreen/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/effect") ?>"
+                },
+                "breakpoints": <?= /* @escapeNotVerified */ $block->getBreakpoints() ?>
+            }
+        }
+    }
+</script>
+<?php if($product_page_type != 'fixed_content' && $product_page_type != 'full_width_image'  ): ?>
+<script type="text/javascript">
+require([
+    'jquery','jquery-zoom'
+], function ($) {
+    $(document).ready(function(){
+        var loaded = false;
+        $('.product.media .gallery-placeholder').bind("DOMSubtreeModified",function(){
+            $('.product.media .fotorama').on('fotorama:ready', function (e, fotorama, extra) {
+                loaded = false;
+                $('.product.media .fotorama').on('fotorama:load', function (e, fotorama, extra) {
+                    if(!loaded){
+                        $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+                        $('.product.media .fotorama__stage .fotorama__active').zoom({
+                            touch:false,
+                            magnify:1
+                        });
+                        loaded = true;
+                    }
+                    //$('.fotorama__stage').css("height",($('.fotorama__stage__frame.fotorama__active .fotorama__img').height()+2) + "px");
+                });
+                $('.product.media .fotorama').on('fotorama:showend', function (e, fotorama, extra) {
+                    setTimeout(function(){
+                        $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+                        $('.product.media .fotorama__stage .fotorama__active').zoom({
+                            touch:false,
+                            magnify:1
+                        });
+                    }, 300);
+                    //$('.fotorama__stage').css("height",($('.fotorama__stage__frame.fotorama__active .fotorama__img').height()+2) + "px");
+                });
+                $('.fotorama').off('fotorama:fullscreenenter').on('fotorama:fullscreenenter', function (e, fotorama, extra) {
+                    $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+                    $('img.zoomImg').remove();
+                });
+                $('.fotorama').off('fotorama:fullscreenexit').on('fotorama:fullscreenexit', function (e, fotorama, extra) {
+                    $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+                    $('img.zoomImg').remove();
+                    $('img.fotorama__img').not('.fotorama__img--full').each(function(){
+                        $(this).after($(this).parent().children("img.fotorama__img--full"));
+                    });
+                    $('.product.media .fotorama__stage .fotorama__active').zoom({
+                        touch:false,
+                        magnify:1
+                    });
+                    $('.product.media .fotorama').off('fotorama:showend').on('fotorama:showend', function (e, fotorama, extra) {
+                        $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+                        $('.product.media .fotorama__stage .fotorama__active').zoom({
+                            touch:false,
+                            magnify: 1
+                        });
+                    });
+                });
+            });
+        });
+    });
+})
+</script>
+<?php endif; ?>
+    <?php if($product_page_type == 'fixed_image' ): ?>
+        <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
+            $(document).ready(function(){
+                $(".product-info-main").append($(".product.info.detailed").detach());
+
+                var product_image_box_top = 0;
+                var product_info_pos = $(".product-info-main").offset().top;
+
+                function fixed_image() {
+                    product_info_pos = $(".product-info-main").offset().top;
+                    if($(window).innerWidth() >= 992) {
+                        $(".product.media").each(function(){
+                            if(($(window).scrollTop() > product_info_pos - 50) && (product_info_pos + $(".product-info-main").outerHeight()) > ($(window).scrollTop() + $(this).outerHeight() + 50)) {
+                                product_image_box_top = $(window).scrollTop() - product_info_pos + 50;
+                                $(this).css('top',product_image_box_top + 'px');
+                            } else if ($(window).scrollTop() < product_info_pos || $(".product-info-main").outerHeight() < $(this).outerHeight()) {
+                                product_image_box_top = 0;
+                                $(this).css('top',product_image_box_top + 'px');
+                            } else {
+                                product_image_box_top = $(".product-info-main").outerHeight() - $(this).outerHeight();
+                                $(this).css('top',product_image_box_top + 'px');
+                            }
+                        });
+                    } else {
+                        product_image_box_top = 0;
+                        $(".product.media").css('top',product_image_box_top + 'px');
+                    }
+                }
+
+                $(window).scroll(function(){
+                    fixed_image();
+                });
+                $(window).resize(function(){
+                    fixed_image();
+                });
+            });
+        });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

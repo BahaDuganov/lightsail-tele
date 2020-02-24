@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="head.additional">
+            <block class="Redgiant\Goodwin\Block\Template" name="goodwin_custom_head" template="Magento_Theme::html/head.phtml" before="-"/>
+        </referenceContainer>
+
+        <referenceBlock name="goodwin_header">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="switch/languages.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+        </referenceBlock>
+        
+        <move element="navigation.sections" destination="goodwin_header"/>
+        
+        <move element="top.search" destination="goodwin_header"/>
+        <move element="minicart" destination="goodwin_header"/>
+        <move element="currency" destination="goodwin_header"/>
+        <move element="logo" destination="goodwin_header"/>
+        <move element="skip_to_content" destination="goodwin_header"/>
+        
+        <referenceContainer name="header.container" remove="1"/>
+        <referenceContainer name="header.panel" remove="1"/>
+        <referenceContainer name="header-wrapper" remove="1"/>
+
+        <referenceBlock name="footer-container">
+            <block class="Magento\Store\Block\Switcher" name="footer.store_switcher" template="switch/stores.phtml"/>
+            <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe_footer.phtml"/>
+        </referenceBlock>
+        
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Newsletter\Block\Subscribe" name="goodwin_newsletter_popup" template="subscribe_popup.phtml" before="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.top">
+            <block class="Redgiant\Goodwin\Block\Template" name="page.top.blank" template="Magento_Theme::html/page_top_blank.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

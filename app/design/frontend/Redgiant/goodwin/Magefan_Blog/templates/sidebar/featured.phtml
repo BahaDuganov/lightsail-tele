@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog sidebar recent posts template
+ *
+ * @var $block \Magefan\Blog\Block\Sidebar\Featured
+ */
+?>
+
+<?php
+    $_postCollection = $block->getPostCollection();
+?>
+<?php if ($_postCollection->count()) { ?>
+<div class="widget block block-recent-posts" data-bind="scope: 'recemt-posts'">
+    <div class="block-title">
+        <strong><?php echo __('Featured Posts') ?></strong>
+    </div>
+    <div class="block-content">
+        <?php foreach ($_postCollection as $_post) { ?>
+            <div class="item">
+            <?php $_postName = $block->escapeHtml($_post->getTitle(), null, true); ?>
+                <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                    <div class="post-ftimg-hld">
+                        <a href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postName ?>">
+                            <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                        </a>
+                    </div>
+                <?php } ?>
+                <a class="post-item-link"
+                   href="<?php echo $_post->getPostUrl() ?>">
+                    <?php echo $block->escapeHtml($_post->getTitle()) ?>
+                </a>
+                <div class="post-text-hld clearfix">
+                    <?php echo $_post->getShortFilteredContent(); ?>
+                </div>
+                <div class="post-footer">
+                    <div class="item post-posed-date">
+                        <span class="label"><?php echo __('Posted:') ?></span>
+                        <span class="value"><?php echo $_post->getPublishDate('F d, Y') ?></span>
+                    </div>
+                    <a class="post-read-more" href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postName ?>">
+                        <?php echo __('Read more') ?>
+                    </a>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<?php } ?>

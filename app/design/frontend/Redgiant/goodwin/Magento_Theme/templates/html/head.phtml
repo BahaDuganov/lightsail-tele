@@ -1,0 +1,145 @@
+<?php 
+    $_helper = $this->helper('Redgiant\Goodwin\Helper\Cssconfig');
+    $goodwin_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+    $header_type = $goodwin_helper->getConfig('goodwin_settings/header/header_type');
+
+    $_quick_cart = $goodwin_helper->getConfig('goodwin_settings/shopping_cart/quick_cart');
+?>
+<?php //Include Google fonts character subsets (such as extended latin, cyrillic)
+    $d = $this->getConfig('goodwin_design');
+    $charSubset = "";
+    if (isset($d['font']['char_latin_ext']) && $d['font']['char_latin_ext']==1 )
+        $charSubset .= ',latin-ext';
+    if (isset($d['font']['char_subset']) && $d['font']['char_subset'])
+        $charSubset .= ','.$d['font']['char_subset'];
+    $font_weights = "%3A300%2C300italic%2C400%2C400italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic";
+?>
+<?php if (isset($d['font']['custom']) && $d['font']['custom'] && $d['font']['font_family'] == 'google'): ?>
+<link rel="stylesheet" href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $d['font']['google_font_family']).$font_weights; echo $charSubset; ?>' type='text/css' />
+<?php endif;?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<?php
+    $header_type = $goodwin_helper->getConfig('goodwin_settings/header/header_type');
+?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getGoodwinWebDir().'css/header/type'.$header_type.'.css'; ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getDesignFile()?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getSettingsFile()?>">
+
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getGoodwinWebDir().'css/custom.css'; ?>">
+<script type="text/javascript">
+var goodwin_config = {
+    paths: {
+        'jquery-bridget': 'vendor/packery/js/jquery-bridget.min',
+        'imagesloaded': 'vendor/imagesloaded.pkgd.min',
+        'packery': 'vendor/packery/js/packery.pkgd.min',
+        'lazysizes': 'vendor/lazysizes/js/lazysizes.min',
+        'slick': 'vendor/slick/slick.min',
+        'slick-skin': 'js/slick-skin',
+        'timeline-skin': 'js/timeline-skin',
+        'debounce': 'vendor/jquery.ba-throttle-debounce.min',
+        'preparetransition': 'vendor/preparetransition.min',
+        'bn-slider': 'js/slider',
+        'jquery-zoom' : 'vendor/jquery.zoom.min',
+        'bootstrap-bundle' : 'vendor/bootstrap/js/bootstrap.bundle.min',
+        'fullpage' : 'vendor/fullpage/fullpage.min',
+        'fullpage-skin': 'js/fullpage-skin',
+        'type-writer': 'js/typewriter',
+        'isotope': 'vendor/isotope/isotope.pkgd.min',
+        'fancybox': 'vendor/fancybox/jquery.fancybox.min',
+        'gallery-isotope': 'js/galleryisotope',
+    },
+    shim: {
+        'packery': {
+            deps: ['jquery', 'jquery-bridget']
+        },
+        'debounce': {
+            deps: ['jquery']
+        },
+        'imagesloaded': {
+            deps: ['jquery']
+        },
+        'isotope': {
+            deps: ['jquery']
+        },
+        'fancybox': {
+            deps: ['jquery']
+        },
+        'jquery-zoom': {
+            deps: ['jquery']
+        },
+        'preparetransition': {
+            deps: ['jquery']
+        },
+        'timeline-skin': {
+            deps: ['jquery']
+        },
+        'gallery-isotope': {
+            deps: ['jquery', 'isotope', 'fancybox']
+        },
+        'bn-slider': {
+            deps: ['jquery', 'debounce', 'preparetransition', 'slick']
+        },
+        'fullpage' : {
+            deps: ['jquery']
+        },
+    }
+};
+require.config(goodwin_config);
+
+var store_base_url = "<?php echo $goodwin_helper->getBaseLinkUrl(); ?>";
+
+require([
+    'jquery', 'lazysizes'
+], function ($) {
+    
+});
+
+require([
+    'jquery', 'bn-slider'
+], function ($) {
+    
+});
+
+require([
+    'jquery'
+], function ($) {
+    $(document).ready(function(){
+      <?php if($_quick_cart): ?>
+      $("body").addClass("goodwin-quick-cart");
+      <?php endif; ?>
+        var header_one = $("header.page-header");
+<?php if($goodwin_helper->getConfig('goodwin_settings/header/sticky_header')): ?>
+        var windowWidth = window.innerWidth || $(window).width();
+    <?php if(!$goodwin_helper->getConfig('goodwin_settings/header/mobile_sticky_header')): ?>
+        if (windowWidth >= 992) {
+    <?php endif; ?>
+            if($(".page-wrapper").outerHeight() > $(window).innerHeight() + 300 && $(window).scrollTop() > 200) {
+                $(header_one).addClass("goodwin-header_sticky");
+            } else if ($(window).scrollTop() <= 0) {
+                $(header_one).removeClass("goodwin-header_sticky");
+            }
+    <?php if(!$goodwin_helper->getConfig('goodwin_settings/header/mobile_sticky_header')): ?>
+        }
+    <?php endif; ?>
+<?php endif; ?>
+    });
+
+    $(window).scroll(function () {
+<?php if($goodwin_helper->getConfig('goodwin_settings/header/sticky_header')): ?>
+        var windowWidth = window.innerWidth || $(window).width();
+        header_one = $("header.page-header");
+        <?php if(!$goodwin_helper->getConfig('goodwin_settings/header/mobile_sticky_header')): ?>
+        if (windowWidth >= 992) {
+    <?php endif; ?>
+            if($(".page-wrapper").outerHeight() > $(window).innerHeight() + 300 && $(window).scrollTop() > 200) {
+                $(header_one).addClass("goodwin-header_sticky");
+            } else if ($(window).scrollTop() <= 200) {
+                $(header_one).removeClass("goodwin-header_sticky");
+            }
+    <?php if(!$goodwin_helper->getConfig('goodwin_settings/header/mobile_sticky_header')): ?>
+        }
+    <?php endif; ?>
+<?php endif; ?>
+    });
+});
+</script>

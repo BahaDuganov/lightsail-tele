@@ -1,0 +1,41 @@
+<?php
+$dailydealhelper=$this->helper('Redgiant\Dailydeals\Helper\Data');
+$_product = $block->getProduct();
+?>
+<?php if($block->getRequest()->getParam('dailydealproduct') || $dailydealhelper->isDealProduct($_product->getId())) : ?>
+    <div class="rg-dailydeal-wrapper" style="display:none;" data-to-date="<?php echo $dailydealhelper->getDailydealToDate($_product->getSku()); ?>">
+        <div class="rg-dailydeal">
+            <?php if($block->getRequest()->getParam('dailydealproduct')) :?>
+                <p class="expired"></p> 
+            <?php endif; ?>
+            <div class="countdowncontainer" style="display:none;">
+                <span class="number-wrapper">
+                    <span class="number day"><span>00</span></span>
+                    <span class="caption"><?php echo __('days'); ?></span>
+                </span>
+
+                <span class="number-wrapper">
+                    <span class="number hour"><span>00</span></span>
+                    <span class="caption"><?php echo __('hrs'); ?></span>
+                </span>
+
+                <span class="number-wrapper">
+                    <span class="number min"><span>00</span></span>
+                    <span class="caption"><?php echo __('min'); ?></span>
+                </span>
+
+                <span class="number-wrapper">
+                    <span class="number sec"><span>00</span></span>
+                    <span class="caption"><?php echo __('sec'); ?></span>
+                </span>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        'jquery', 'rgDailydeals'     
+    ], function ($) {
+        $.fn.rg_dailydeal_init('.rg-dailydeal-wrapper', '<?php echo $dailydealhelper->getcurrentDate() ?>');
+    });   
+</script>

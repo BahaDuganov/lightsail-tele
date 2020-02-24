@@ -1,0 +1,292 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+$_helper = $this->helper('Redgiant\Goodwin\Helper\Customtabs');
+$goodwin_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+$product = $goodwin_helper->getCurrentProduct();
+$product_page_type = $product->getData('goodwin_product_page_layout');
+if(!$product_page_type)
+    $product_page_type = $goodwin_helper->getConfig('goodwin_settings/product/product_page_layout');
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout(); ?>
+        <?php if($product_page_type == 'default' || $product_page_type == 'fixed_image' ): ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="data item title"
+                     aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                     data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endforeach;?>
+            <?php
+                if($custom_cms_tabs = $_helper->getCustomTabs($goodwin_helper->getCurrentProduct())) {
+                    $i = 1;
+                    foreach($custom_cms_tabs as $_item) {
+                        ?>
+                        <div class="data item title"
+                            aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title"
+                            data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>">
+                            <a class="data switch"
+                            tabindex="-1"
+                            data-toggle="switch"
+                            href="#<?php /* @escapeNotVerified */ echo "custom-".$i; ?>"
+                            id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title">
+                                <span><?php /* @escapeNotVerified */ echo $_item['tab_title']; ?></span>
+                            </a>
+                        </div>
+                        <div class="data item content" id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>" data-role="content">
+                            <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                        </div>
+                        <?php
+                        $i++;
+                    }
+                }
+            ?>
+        </div>
+        <?php endif; ?>
+        <?php if($product_page_type == 'vertical_gallery' || $product_page_type == 'vertical_gallery_right'): ?>
+            <div class="product data items">
+                <div class="row">
+                    <?php foreach ($detailedInfoGroup as $name):?>
+                        <?php
+                            $html = $layout->renderElement($name);
+                            if (!trim($html)) {
+                                continue;
+                            }
+                            $alias = $layout->getElementAlias($name);
+                            $label = $block->getChildData($alias, 'title');
+                        ?>
+                        <div class="col-md-6 <?= /* @escapeNotVerified */ strtolower($alias) ?>">
+                            <div class="data item title active" role="tab" aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>"><h2><?= /* @escapeNotVerified */ $label ?></h2></div>
+                            <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>"><?= /* @escapeNotVerified */ $html ?></div>
+                        </div>
+                    <?php endforeach;?>
+                    <div class="col-md-6 custom-tabs">
+                        <h2><?php echo __('Product Details'); ?></h2>
+                        <?php
+                        if($custom_cms_tabs = $_helper->getCustomTabs($goodwin_helper->getCurrentProduct())) {
+                            $i = 1;
+                            foreach($custom_cms_tabs as $_item) {
+                                ?>
+                                <div class="data item title"
+                                    aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title"
+                                    data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>">
+                                    <a class="data switch <?php if($i == 1) echo 'active' ?>"
+                                    tabindex="-1"
+                                    data-toggle="switch"
+                                    href="javascript:void(0)"
+                                    id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title">
+                                        <span><?php /* @escapeNotVerified */ echo $_item['tab_title']; ?></span>
+                                    </a>
+                                </div>
+                            <div class="data item content" <?php if($i == 1):?> style="display:block;" <?php endif; ?> id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>" data-role="content">
+                                    <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                                </div>
+                                <?php
+                                $i++;
+                            }
+                        }
+                    ?>
+                    </div>
+                </div>
+            </div>
+            <script>
+                require([
+                    "jquery"
+                ], function ($) {
+                    $(".product.info.detailed .data.switch").on('click', function(){
+                        var $this = $(this);
+                        if($this.hasClass('active')){
+                            $this.removeClass('active');
+                            $this.parent().next().slideUp(200);
+                        }else{
+                            $this.addClass('active');
+                            $this.parent().next().slideDown(200);
+                        }
+                    });
+                });
+            </script>
+        <?php endif; ?>
+        <?php if($product_page_type == 'full_width_image'): ?>
+            <div class="product data items">
+                <div class="row">
+                    <?php foreach ($detailedInfoGroup as $name):?>
+                        <?php
+                            $html = $layout->renderElement($name);
+                            if (!trim($html)) {
+                                continue;
+                            }
+                            $alias = $layout->getElementAlias($name);
+                            $label = $block->getChildData($alias, 'title');
+                        ?>
+                        <div class="<?= /* @escapeNotVerified */ strtolower($alias) ?>">
+                            <div class="data item title active" role="tab" aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>"><h2><?= /* @escapeNotVerified */ $label ?></h2></div>
+                            <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>"><?= /* @escapeNotVerified */ $html ?></div>
+                        </div>
+                    <?php endforeach;?>
+                    <div class="custom-tabs">
+                        <h2><?php echo __('Product Details'); ?></h2>
+                        <?php
+                        if($custom_cms_tabs = $_helper->getCustomTabs($goodwin_helper->getCurrentProduct())) {
+                            $i = 1;
+                            foreach($custom_cms_tabs as $_item) {
+                                ?>
+                                <div class="data item title"
+                                    aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title"
+                                    data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>">
+                                    <a class="data switch <?php if($i == 1) echo 'active' ?>"
+                                    tabindex="-1"
+                                    data-toggle="switch"
+                                    href="javascript:void(0)"
+                                    id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title">
+                                        <span><?php /* @escapeNotVerified */ echo $_item['tab_title']; ?></span>
+                                    </a>
+                                </div>
+                            <div class="data item content" <?php if($i == 1):?> style="display:block;" <?php endif; ?> id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>" data-role="content">
+                                    <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                                </div>
+                                <?php
+                                $i++;
+                            }
+                        }
+                    ?>
+                    </div>
+                </div>
+            </div>
+            <script>
+                require([
+                    "jquery"
+                ], function ($) {
+                    $(".product.info.detailed .data.switch").on('click', function(){
+                        var $this = $(this);
+                        if($this.hasClass('active')){
+                            $this.removeClass('active');
+                            $this.parent().next().slideUp(200);
+                        }else{
+                            $this.addClass('active');
+                            $this.parent().next().slideDown(200);
+                        }
+                    });
+                });
+            </script>
+        <?php endif; ?>
+        <?php if($product_page_type == 'fixed_content'): ?>
+        <div class="product data items">
+            <div class="data-item-title-wrapper">
+                <?php $i = 1; foreach ($detailedInfoGroup as $name):?>
+                    <?php
+                        $html = $layout->renderElement($name);
+                        if (!trim($html)) {
+                            continue;
+                        }
+                        $alias = $layout->getElementAlias($name);
+                        $label = $block->getChildData($alias, 'title');
+                    ?>
+                    <div class="data item title <?php echo $i == 1 ? 'active' : '' ?>"
+                        role="tab"
+                        aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                        data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                        <a class="data switch"
+                        tabindex="-1"
+                        data-toggle="switch"
+                        href="javascript:jQuery.fn.openpanel('<?php echo $alias ?>')"
+                        id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                            <?= /* @escapeNotVerified */ $label ?>
+                        </a>
+                    </div>                           
+                <?php $i++; endforeach;?>
+                <?php
+                    if($custom_cms_tabs = $_helper->getCustomTabs($goodwin_helper->getCurrentProduct())) {
+                        $i = 1;
+                        foreach($custom_cms_tabs as $_item) {
+                            ?>
+                            <div class="data item title"
+                                aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title"
+                                data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>">
+                                <a class="data switch"
+                                tabindex="-1"
+                                data-toggle="switch"
+                                href="javascript:jQuery.fn.openpanel('<?php echo "custom-".$i ?>');"
+                                id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title">
+                                    <span><?php /* @escapeNotVerified */ echo $_item['tab_title']; ?></span>
+                                </a>
+                            </div>
+                            <?php
+                            $i++;
+                        }
+                    }
+                ?>
+            </div>
+            <div class="data-item-content-wrapper">
+                <?php $i = 1; foreach ($detailedInfoGroup as $name):?>
+                    <?php
+                        $html = $layout->renderElement($name);
+                        if (!trim($html)) {
+                            continue;
+                        }
+                        $alias = $layout->getElementAlias($name);
+                        $label = $block->getChildData($alias, 'title');
+                    ?>
+                    <div class="data item content" <?php if($i != 1): ?>style="display:none;"<?php endif; ?> id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                        <?= /* @escapeNotVerified */ $html ?>
+                    </div>
+                <?php $i++; endforeach;?>
+                <?php
+                    if($custom_cms_tabs = $_helper->getCustomTabs($goodwin_helper->getCurrentProduct())) {
+                        $i = 1;
+                        foreach($custom_cms_tabs as $_item) {
+                            ?>
+                            <div class="data item content" style="display:none;" id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>" data-role="content">
+                                <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                            </div>
+                            <?php
+                            $i++;
+                        }
+                    }
+                ?>
+            </div>
+        </div>
+        <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
+            $.fn.openpanel = function(tab_id) {
+                var $this = $('.product.data.items .data-item-content-wrapper #' + tab_id);
+                $('.product.data.items .data.item.title ').removeClass('active');
+                $('.product.data.items .data.item.content').fadeOut(200);
+                if($this.length > 0) {
+                    $('.product.data.items #tab-label-' + tab_id).addClass('active');
+                    $this.fadeIn(400);
+                }
+            }
+        });
+        </script>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

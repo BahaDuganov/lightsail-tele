@@ -1,0 +1,64 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+
+/**
+*  General template for displaying group of blocks devided into sections
+*/
+
+$group = $block->getGroupName();
+$groupCss = $block->getGroupCss();
+$groupBehavior = $block->getGroupBehaviour() ? $block->getGroupBehaviour() : '{"tabs":{"openedState":"active"}}';
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames($group, 'getChildHtml')):?>
+    <div class="sections <?= /* @escapeNotVerified */ $groupCss ?>">
+        <div class="mobile-nav-close" style="display:none;"><a href="javascript:void(0)"><?php echo __('Close'); ?></a></div>
+        <?php $layout = $block->getLayout(); ?>
+        <div class="section-items <?= /* @escapeNotVerified */ $groupCss ?>-items" data-mage-init='<?= /* @escapeNotVerified */ $groupBehavior ?>'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html) && ($block->getUseForce() != true)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="section-item-title <?= /* @escapeNotVerified */ $groupCss ?>-item-title" data-role="collapsible">
+                    <a class="<?= /* @escapeNotVerified */ $groupCss ?>-item-switch" data-toggle="switch" href="#<?= /* @escapeNotVerified */ $alias ?>"><?= /* @escapeNotVerified */ $label ?></a>
+                </div>
+                <div class="section-item-content <?= /* @escapeNotVerified */ $groupCss ?>-item-content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content"><?= /* @escapeNotVerified */ $html ?></div>
+            <?php endforeach;?>
+        </div>
+    </div>
+    <script>
+        require([
+            'jquery', 'bn-slider'
+        ], function ($) {
+            $(document).ready(function(){
+                $('.mobile-nav-close').on('click', function(){
+                    $('html').removeClass('nav-before-open nav-open');
+                });
+                if($(window).width() < 992) {
+                    $('.navigation .parent:not(.level0) > .open-children-toggle').off('click').on('click', function(event){
+                        event.preventDefault();
+                        if($(this).parent().find('> a').hasClass('ui-state-active')){
+                            $(this).parent().find('> a').removeClass('ui-state-active');
+                            $(this).parent().find('> ul').slideUp(200);
+                        }else{
+                            $(this).parent().find('> a').addClass('ui-state-active');    
+                            $(this).parent().find('> ul').slideDown(200);
+                        }
+                    });
+                }
+            });      
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,80 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .message.info {
+        font-size: 24px;
+        text-align: center;
+        margin: 80px 0 50px;
+        width: 100%;
+
+        h2 {
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 600;
+            color: #000;
+            text-transform: uppercase;
+            font-family: "Montserrat", sans-serif;
+        }
+        
+        &.empty {
+            a.go-back {
+                margin-top: 25px;
+            }
+
+            h2 > span {
+                color: #27c7d8;
+            }
+
+            &:after {
+                content: "\e93b";
+                font-family: 'icomoon';
+                display: block;
+                font-size: 120px;
+                line-height: 1em;
+                color: #000;
+                margin-top: 43px;
+            }
+        }
+    }
+
+    .message.error {
+        .lib-message-icon-inner(error);
+    }
+
+    .message.warning {
+        .lib-message-icon-inner(warning);
+    }
+
+    .message.notice {
+        .lib-message-icon-inner(notice);
+    }
+
+    .message.success {
+        .lib-message-icon-inner(success);
+        border-top: 1px solid #27c7d8;
+        background: transparent;
+        color: #000;
+        font-weight: 600;
+        font-family: "Montserrat",sans-serif;
+        box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+        text-transform: uppercase;
+        >*:first-child:before {
+            color: #000;
+        }
+        a {
+            margin-left: 10px;
+            color: #27c7d8;
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+<root>
+<config>
+    <web>
+        <default>
+            <cms_home_page>goodwin-home-fashion-1</cms_home_page>
+            <cms_no_route>goodwin-no-route</cms_no_route>
+        </default>
+    </web>
+    <cms>
+        <wysiwyg>
+            <enabled>hidden</enabled>
+        </wysiwyg>
+    </cms>
+	<design>
+		<header>
+			<logo_width></logo_width>
+			<logo_height></logo_height>
+			<logo_src>default/logo.png</logo_src>
+		</header>
+	</design>
+	<dev>
+		<js>
+			<merge_files>1</merge_files>
+		</js>
+	</dev>
+    <goodwin_settings>
+        <header>
+            <header_type>1</header_type>
+            <static_block_custom_menu></static_block_custom_menu>
+            <static_block_top_links>goodwin_custom_block_for_top_links_1</static_block_top_links>
+            <static_block></static_block>
+            <sticky_header>1</sticky_header>
+            <sticky_header_logo_src></sticky_header_logo_src>
+            <mobile_sticky_header>0</mobile_sticky_header>
+            <notice_block>below_header</notice_block>
+            <notice_static_block>goodwin_notice_block_1</notice_static_block>
+        </header>
+        <footer>
+            <footer_top>1</footer_top>
+            <footer_top_custom>goodwin_footer_top_1</footer_top_custom>
+            <footer_middle>1</footer_middle>
+            <footer_middle_column_1>custom</footer_middle_column_1>
+            <footer_middle_column_1_custom>goodwin_footer_middle_1</footer_middle_column_1_custom>
+            <footer_middle_column_1_size>12</footer_middle_column_1_size>
+            <footer_middle_column_2></footer_middle_column_2>
+            <footer_middle_column_2_custom></footer_middle_column_2_custom>
+            <footer_middle_column_2_size>3</footer_middle_column_2_size>
+            <footer_middle_column_3></footer_middle_column_3>
+            <footer_middle_column_3_custom></footer_middle_column_3_custom>
+            <footer_middle_column_3_size>3</footer_middle_column_3_size>
+            <footer_middle_column_4></footer_middle_column_4>
+            <footer_middle_column_4_custom></footer_middle_column_4_custom>
+            <footer_middle_column_4_size>3</footer_middle_column_4_size>
+            <footer_bottom>1</footer_bottom>
+            <footer_bottom_custom>goodwin_footer_bottom_1</footer_bottom_custom>
+        </footer>
+        <catalog>
+            <layout>2columns-left</layout>
+            <product_per_row>3</product_per_row>
+            <show_columnmode>1</show_columnmode>
+            <available_columns>2,3,4</available_columns>
+            <grid_layout>default</grid_layout>
+            <grid_style>type1</grid_style>
+            <enable_aspect_ratio>1</enable_aspect_ratio>
+            <image_width>320</image_width>
+            <image_height>427</image_height>
+            <image_type>hover</image_type>
+            <new_label>New</new_label>
+            <sale_label>Sale</sale_label>
+            <label_type>2</label_type>
+            <show_percent>0</show_percent>
+            <show_review>1</show_review>
+            <enable_infinite>3</enable_infinite>
+            <sidebar_cms_block>goodwin_custom_sidebar_for_category</sidebar_cms_block>
+            <content_bottom_cms_block></content_bottom_cms_block>
+        </catalog>
+        <product>   
+            <product_page_layout>default</product_page_layout>
+            <enable_aspect_ratio>1</enable_aspect_ratio>
+            <image_width>600</image_width>
+            <image_height>709</image_height>
+            <show_related_products>1</show_related_products>
+            <show_upsell_products>1</show_upsell_products>
+            <quicknav>1</quicknav>
+            <content_cms_block>goodwin_custom_block_2_for_productpage</content_cms_block>
+            <custom_social><![CDATA[<div class="addthis_inline_share_toolbox_w0tc"><label style="margin-right: 5px;font-size: 16px;display:none;">Share:</label></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6907796e30f69"></script>
+
+<style type="text/css">.addthis_inline_share_toolbox_w0tc > div.at-resp-share-element{display: inline-block !important;vertical-align: middle;}
+.prd-safecheckout { margin-top: 20px; }
+</style>
+<div class="prd-safecheckout">
+    <h3 class="h2-style">guaranteed safe checkout</h3>
+    <img src="http://rgtheme.com/magento2/goodwin/pub/media/goodwin/web/img/safecheckout.png" alt="" class="img-fluid">
+</div>]]></custom_social>
+        </product>
+        <shopping_cart>
+            <quick_cart>0</quick_cart>
+        </shopping_cart>
+        <newsletter>
+            <enable>1</enable>
+            <bg_image>default/newsletter-popup-fashion.png</bg_image>
+        </newsletter>
+        <contacts>
+            <contacts_type>1</contacts_type>
+            <enable>1</enable>
+            <full_width>1</full_width>
+            <latitude>-34.398</latitude>
+            <longitude>150.884</longitude>
+            <zoom>18</zoom>
+            <infoblock1><![CDATA[]]></infoblock1>
+            <infoblock2><![CDATA[<h2>Contact us any time for any questions</h2>
+<div class="contact-info">
+    <div class="contact-info-icon"><i class="icon-mobile"></i></div>
+    <div class="contact-info-title">CALL US:</div>
+    <div class="contact-info-text">1 (800) 233-2742</div>
+</div>
+<div class="contact-info">
+    <div class="contact-info-icon"><i class="icon-clock"></i></div>
+    <div class="contact-info-title">HOURS:</div>
+    <div class="contact-info-text">Mon-fri 9am-8pm sat 9am-6pm</div>
+</div>
+<div class="contact-info">
+    <div class="contact-info-icon"><i class="icon-mail"></i></div>
+    <div class="contact-info-title">E-MAIL:</div>
+    <div class="contact-info-text"><a href="mailto:info@goodwin.us"></a>info@goodwin.us</div>
+</div>
+<div class="contact-info">
+    <div class="contact-info-icon"><i class="icon-location"></i></div>
+    <div class="contact-info-title">ADDRESS:</div>
+    <div class="contact-info-text">goodwin store 140 new str., suite 21 brooklyn, NY</div>
+</div>]]></infoblock2>
+        </contacts>
+        <custom_settings>
+            <custom_style><![CDATA[]]></custom_style>
+        </custom_settings>
+    </goodwin_settings>
+    <goodwin_design>
+        <general>
+            <theme_color>27c7d8</theme_color>
+        </general>
+        <font>
+            <custom>0</custom>
+            <font_size></font_size>
+            <font_family></font_family>
+            <google_font_family></google_font_family>
+        </font>
+    </goodwin_design>
+    <rg_megamenu>
+        <custom_links>
+            <staticblock_before>goodwin_custom_menu_before</staticblock_before>
+            <staticblock_after>goodwin_custom_menu</staticblock_after>
+        </custom_links>
+    </rg_megamenu>
+</config>
+</root>

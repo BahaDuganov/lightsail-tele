@@ -1,0 +1,77 @@
+<?php
+    $_goodwinhelper = $this->helper( 'Redgiant\Goodwin\Helper\Data' );
+    $_columns = $_goodwinhelper->getConfig('goodwin_settings/catalog/available_columns');
+    $_perrow = $_goodwinhelper->getConfig( 'goodwin_settings/catalog/product_per_row' );
+    $_columns = explode(',', $_columns);
+
+if( count($_columns) > 0 ):
+?>
+<div class="column-modes-wrapper">
+    <label class="label" for="column-mode"><?= __('Column') ?></label>
+    <div class="column-modes">
+        <div class="d-flex d-md-none">
+            <span class="col-mode" data-columns="sm-12"><i class="icon icon-view-1"></i></span>
+            <span class="col-mode active" data-columns="sm-6"><i class="icon icon-view-2"></i></span>
+        </div>
+        <div class="d-none d-md-flex d-xl-none">
+            <span class="col-mode <?php if($_perrow < 3) echo 'active'; ?>" data-columns="md-6"><i class="icon icon-view-2"></i></span>
+            <span class="col-mode <?php if($_perrow >= 3) echo 'active'; ?>" data-columns="md-4"><i class="icon icon-view-3"></i></span>
+        </div>
+        <div class="d-none d-xl-flex">
+            <?php foreach($_columns as $_column): 
+                if($_column == 5) $_cols = 'xl-c2'; else $_cols = 'xl-' . 12 / $_column;
+            ?>
+                <span class="col-mode <?php if($_perrow == $_column){ echo 'active'; } ?>" data-columns="<?php echo $_cols; ?>"><i class="icon icon-view-<?php echo $_column; ?>"></i></span>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require([
+        'jquery'        
+    ], function ($) {
+
+        $('.column-modes .col-mode').on('click', function(){
+            var $this = $(this);
+            var colclass = $('.column.main .products.grid .product-item').attr('class'), 
+                columns = $this.data('columns').split('-'), regexp = /col-sm-(\d)/g;
+
+            switch(columns[0]){
+                case 'sm':
+                    regexp = /col-sm-(\d+)/g;
+                    break;
+                case 'md':
+                    regexp = /col-md-(\d+)/g;
+                    break;
+                case 'xl':
+                    regexp = /col-xl-(\d+)/g;
+                    break;
+            }
+
+            var matches = colclass.match(regexp);
+            if(matches && matches.length > 0) {
+                colclass = colclass.replace(matches[0], 'col-' + $this.data('columns'));
+            }else{
+                matches = colclass.match(/col-xl-\w+(\d)/g);
+                colclass = colclass.replace(matches[0], 'col-' + $this.data('columns'));
+            }
+            
+            $this.siblings().removeClass('active');
+            $this.addClass('active');
+
+            $('.column.main .products.grid .product-item').attr('class', colclass);
+
+            if($('.column.main .products.grid.isotope .products.list').length > 0) {
+                var packery_grid = $('.column.main .products.grid.isotope .products.list').packery({
+                    itemSelector: ".product-item",
+                    percentPosition: false
+                });
+                setTimeout(function () {
+                    packery_grid.packery('layout');
+                }, 500);
+            }
+        });
+    });
+</script>

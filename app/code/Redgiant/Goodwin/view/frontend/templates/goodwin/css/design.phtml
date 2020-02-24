@@ -1,0 +1,157 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * <?php echo date("Y-m-d H:i:s"); ?>
+ */
+
+<?php
+    $d = $this->getConfig("goodwin_design",$this->_coreRegistry->registry('cssgen_store'));
+    $_helper = $this->helper('Redgiant\Goodwin\Helper\Cssconfig');
+?>
+<?php if(isset($d['general']['theme_color']) && $d['general']['theme_color']): ?>
+<?php
+    $primary_color = '#'.$d['general']['theme_color'];
+?>
+.theme-color, .product-info-main .product-addto-links>a.action:hover, .page-product-downloadable .product-add-form .product-addto-links>a.action:hover, .product-info-main .action.mailto.friend:hover, .page-product-downloadable .product-add-form .action.mailto.friend:hover,.minicart-wrapper .action.showcart:hover:before, .minicart-wrapper .action.showcart.active:before, .minicart-wrapper .action.showcart.active:hover:before, .minicart-wrapper .action.showcart:hover .minicart-title .text, .minicart-wrapper .action.showcart.active .minicart-title .text, .minicart-wrapper .action.showcart.active:hover .minicart-title .text,
+.page-header .dropdn .dropdn-link:hover,.prod-carousel-tabs .tab-nav > a.active, .prod-carousel-tabs .tab-nav > a:hover,
+.price-box .old-price .price,.page-footer ul:not([class]) li a[href^="mailto:"], .footer-block ul.contact-list li a[href^="mailto:"],.page-footer .social-list li a:hover, .action.weltpixel-quickview,
+.page-footer a:hover, .page-footer .footer-block a:hover, .page-footer .footer-block ul li a:hover, .page-footer .footer-block ul li a[href^="mailto:"]:hover, .product.name a:hover,
+.swatch-option-link-layered:hover,.filter-options .filter-options-title:hover, .column-modes-wrapper .col-mode:hover, .column-modes-wrapper .col-mode.active,
+.product-add-form .product-social-links .product-addto-links .action.towishlist, .product-add-form .product-social-links .product-addto-links .action.tocompare,
+.minicart-items .action.edit:before, .minicart-items .action.delete:before,.cart-container .checkout-methods-items .action.multicheckout,
+.cart.table-wrapper .actions-toolbar>.action, .action-gift,.page-header.type6 .dropdn .dropdn-link:hover, .page-header.type6 .dropdn.active .dropdn-link, .page-header.type6 .minicart-wrapper .action.showcart:hover:before, .page-header.type6 .minicart-wrapper .action.showcart.active:before, .page-header.type6 .minicart-wrapper .action.showcart.active:hover:before, .page-header.type6 .minicart-wrapper .action.showcart:hover .minicart-title .text, .page-header.type6 .minicart-wrapper .action.showcart.active .minicart-title .text, .page-header.type6 .minicart-wrapper .action.showcart.active:hover .minicart-title .text, .page-header.type6 .rg-megamenu.navigation li.level0:hover>.level-top,
+.page-header .switcher .options .dropdown li:hover a, .page-header .switcher .options .dropdown li.active a,
+.rg-megamenu.navigation li.level0.classic .subchildmenu li.ui-menu-item.parent:hover>a:after,
+.rg-megamenu.navigation li.level0.fullwidth .submenu a:hover, .rg-megamenu.navigation li.level0.staticwidth .submenu a:hover,
+.rating-summary .rating-result>span:before,.widget.block.block-recent-posts .item a.post-item-link:hover, .post-footer .post-read-more:hover,
+.page-header .switcher .options .action.toggle:hover:after, .page-footer .switcher .options .action.toggle:hover:after,
+.page-header .custom-text a:hover,.page-header .minicart-wrapper .action.showcart .counter.qty
+{
+    color: <?php echo $primary_color; ?>;
+}
+.theme-bgcolor, .action.towishlist span:after, .action.tocompare span:after,
+form .action.primary, .action.tocart.primary, .block-new-customer .actions-toolbar .action.primary, .action.back, .action.captcha-reload, .sidebar .block-compare .actions-toolbar .action, .sidebar .block-wishlist .actions-toolbar .action.details, .wishlist-index-index .column.main form>.actions-toolbar button.action, .data.table-order-items>tbody>tr>td.actions .action, .block-reorder .actions-toolbar .action.view, .block-addresses-list+.actions-toolbar .action.add, .account .order-actions-toolbar .action, .cart-container .form-cart .actions>.action, .cart-container .checkout-methods-items .action.primary, .cart-summary .actions-toolbar>.primary button, .opc-wrapper .action-show-popup, .checkout-payment-method .payment-option-content .form-discount .action-apply, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-update, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-cancel, .form.contact .action.submit, .weltpixel_quickview_catalog_product_view .box-gotoproduct .action.primary, .weltpixel_quickview-catalog_product-view .box-gotoproduct .action.primary,
+.btn-decor:after, .btn-decor span.btn-line, .subscribe-form--style1 .action.primary:after, .back-to-top:hover, .back-to-top, .rg-dailydeal:before, .filter-options-item:before,
+.block.related .products-grid .product-item .action.weltpixel-quickview span:after, .block.upsell .products-grid .product-item .action.weltpixel-quickview span:after, .block.crosssell .products-grid .product-item .action.weltpixel-quickview span:after,
+.action.back:hover, .sidebar .block-compare .actions-toolbar .action.clear:hover, .wishlist-index-index .column.main form>.actions-toolbar .action.update:hover, .cart-container .form-cart .actions>.action.update:hover, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-cancel:hover, .action.back:focus, .sidebar .block-compare .actions-toolbar .action.clear:focus, .wishlist-index-index .column.main form>.actions-toolbar .action.update:focus, .cart-container .form-cart .actions>.action.update:focus, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-cancel:focus,
+.wishlist-index-index .column.main form>.actions-toolbar .action.share:hover, .data.table-order-items>tbody>tr>td.actions .action.order:hover, .account .order-actions-toolbar .action.print:hover, .cart-container .form-cart .actions>.action.clear:hover, .cart-summary .actions-toolbar>.primary button:hover, .checkout-payment-method .payment-option-content .form-discount .action-apply:hover, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-update:hover, .wishlist-index-index .column.main form>.actions-toolbar .action.share:focus, .data.table-order-items>tbody>tr>td.actions .action.order:focus, .account .order-actions-toolbar .action.print:focus, .cart-container .form-cart .actions>.action.clear:focus, .cart-summary .actions-toolbar>.primary button:focus, .checkout-payment-method .payment-option-content .form-discount .action-apply:focus, .checkout-payment-method .checkout-billing-address .actions-toolbar .action-update:focus,
+.opc-progress-bar-item._active:before,.opc-progress-bar-item._active>span:before,.modal--newsletter .fancybox-close-small,
+.products-grid .product-item .product-item-info.type2 .action.weltpixel-quickview, .products-grid .product-item .product-item-info.type3 .action.weltpixel-quickview,
+.products-grid .product-item .product-item-info.type4 .action.weltpixel-quickview span:after, .mfp-iframe-holder .mfp-content:before
+{
+    background-color: <?php echo $primary_color; ?>;
+}
+#fp-nav ul li:hover a:not(.active) span, .fp-slidesNav ul li:hover a:not(.active) span {
+    background-color: <?php echo $primary_color; ?> !important;
+}
+.slick-dots li.slick-active button {
+    border-color: <?php echo $primary_color; ?>;
+}
+#fp-nav ul li a.active span, .fp-slidesNav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li:hover a.active span {
+    border-color: <?php echo $primary_color; ?> !important;
+}
+.pages .items .item.current, .pages .items .item:hover, .block-minicart .block-content>.actions>.primary .action.primary,.block-minicart .block-content>.actions a.action.viewcart:hover {
+    background: <?php echo $primary_color; ?>;
+    border-color: <?php echo $primary_color; ?>;
+}
+.swatch-option.text:hover, .toolbar .modes-mode.active,.toolbar .modes-mode:not(.active):hover,.qty-changer:hover, .swatch-option.selected {
+    border-color: <?php echo $primary_color; ?>;
+    color: <?php echo $primary_color; ?>;
+}
+.product-item-details .swatch-attribute .swatch-option.color:not(.disabled):hover, .product-options-wrapper .swatch-attribute .swatch-option.color:not(.disabled):hover, .product-item-details .swatch-attribute .swatch-option.image:not(.disabled):hover, .product-options-wrapper .swatch-attribute .swatch-option.image:not(.disabled):hover, .product-item-details .swatch-attribute .swatch-option.color.selected, .product-options-wrapper .swatch-attribute .swatch-option.color.selected, .product-item-details .swatch-attribute .swatch-option.image.selected, .product-options-wrapper .swatch-attribute .swatch-option.image.selected {
+    box-shadow: 0 0 0 1px <?php echo $primary_color; ?>;
+}
+.at-share-btn svg {
+    fill: <?php echo $primary_color; ?> !important;
+}
+@media (min-width: 992px) {
+    .rg-megamenu.navigation li.level0:hover>.level-top, .rg-megamenu.navigation li.level0.classic .submenu li:hover>a,
+    .page-header .switcher .options .action.toggle:not(.active):hover strong, .page-header .switcher .options .action.toggle.active strong {
+        color: <?php echo $primary_color; ?>;
+    }
+    .rg-megamenu.navigation li.level0>.level-top:before {
+        background-color: <?php echo $primary_color; ?>;
+    }
+}
+<?php endif; ?>
+<?php
+if(isset($d['font']['custom']) && $d['font']['custom']==1){
+?>
+html, body, .abs-action-addto-product, .block-event .slider-panel .slider .item .action.event, .bundle-options-container .block-bundle-summary .product-addto-links > .action, .product-info-main .action.tocompare, .product-options-bottom .action.tocompare, .product-info-main .action.towishlist, .product-options-bottom .action.towishlist, .block-bundle-summary .action.towishlist { 
+<?php
+    if(isset($d['font']['font_size']) && $d['font']['font_size']){
+?>
+        font-size: <?php echo $d['font']['font_size']; ?>; 
+<?php
+    }
+    if(isset($d['font']['font_family']) && $d['font']['font_family'] == 'google'){
+?>
+        font-family: <?php echo $d['font']['google_font_family']; ?>;
+<?php
+    }
+    elseif (isset($d['font']['font_family']) && $d['font']['font_family'] == 'custom') {
+        if($d['font']['custom_font_family']) {
+?>
+        font-family: <?php echo $d['font']['custom_font_family']; ?>;
+<?php
+        }
+    }
+    else {
+?>
+        font-family: <?php echo $d['font']['font_family']; ?>;
+<?php
+    }
+?>
+}
+<?php
+}
+if(isset($d['colors']['custom']) && $d['colors']['custom']==1){
+    if(isset($d['colors']['text_color']) && $d['colors']['text_color']){
+?>
+html,body{color:<?php if (strlen($d['colors']['text_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['text_color']; ?>}
+<?php
+    }
+    if(isset($d['colors']['link_color']) && $d['colors']['link_color']){
+?>
+a, a:focus {color:<?php if (strlen($d['colors']['link_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_color']; ?>}
+<?php
+    }
+    if(isset($d['colors']['link_hover_color']) && $d['colors']['link_hover_color']){
+?>
+a:hover{color:<?php if (strlen($d['colors']['link_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_hover_color']; ?>}
+<?php
+    }
+?>
+<?php
+}
+if(isset($d['cat_label_colors']['custom']) && $d['cat_label_colors']['custom']==1){
+    if(isset($d['cat_label_colors']['cat_label_1']) && $d['cat_label_colors']['cat_label_1']){
+?>
+.rg-megamenu.navigation span.cat-label.cat-label-label1 {
+    background-color: <?php if (strlen($d['cat_label_colors']['cat_label_1']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_1']; ?>
+}
+.rg-megamenu.navigation li.level0>a>span.cat-label.cat-label-label1:before, .rg-megamenu.navigation li .subchildmenu li>a>span>span.cat-label.cat-label-label1:before {
+    border-right-color: <?php if (strlen($d['cat_label_colors']['cat_label_1']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_1']; ?>
+}
+<?php
+    }
+    if(isset($d['cat_label_colors']['cat_label_2']) && $d['cat_label_colors']['cat_label_2']){
+?>
+.rg-megamenu.navigation span.cat-label.cat-label-label2 {
+    background-color: <?php if (strlen($d['cat_label_colors']['cat_label_2']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_2']; ?>
+}
+.rg-megamenu.navigation li.level0>a>span.cat-label.cat-label-label2:before, .rg-megamenu.navigation li .subchildmenu li>a>span>span.cat-label.cat-label-label2:before {
+    border-right-color: <?php if (strlen($d['cat_label_colors']['cat_label_2']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_2']; ?>
+}
+<?php
+    }
+    if(isset($d['cat_label_colors']['cat_label_3']) && $d['cat_label_colors']['cat_label_3']){
+?>
+.rg-megamenu.navigation span.cat-label.cat-label-label3 {
+    background-color: <?php if (strlen($d['cat_label_colors']['cat_label_3']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_3']; ?>
+}
+.rg-megamenu.navigation li.level0>a>span.cat-label.cat-label-label3:before, .rg-megamenu.navigation li .subchildmenu li>a>span>span.cat-label.cat-label-label3:before {
+    border-right-color: <?php if (strlen($d['cat_label_colors']['cat_label_3']) == 6): echo "#"; endif; ?><?php echo $d['cat_label_colors']['cat_label_3']; ?>
+}
+<?php
+    }
+}

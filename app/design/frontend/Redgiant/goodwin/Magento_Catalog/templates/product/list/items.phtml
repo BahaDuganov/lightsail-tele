@@ -1,0 +1,499 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Catalog\Block\Product\AbstractProduct */
+?>
+
+<?php
+$_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+$_product_helper = $this->helper('Magento\Catalog\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$_dailydealhelper = $this->helper('Redgiant\Dailydeals\Helper\Data');
+
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+$moduleManager = $objectManager->get('\Magento\Framework\Module\Manager');
+
+switch ($type = $block->getType()) {
+
+    case 'related-rule':
+        if ($exist = $block->hasItems()) {
+            $type = 'related';
+            $class = $type;
+
+            $image = 'related_products_list';
+            $title = __('Related Products');
+            $items = $block->getAllItems();
+            $limit = $block->getPositionLimit();
+            $shuffle = (int) $block->isShuffled();
+            $canItemsAddToCart = $block->canItemsAddToCart();
+
+            $showAddTo = true;
+            $showCart = false;
+            $templateType = null;
+            $description = false;
+        }
+    break;
+
+    case 'related':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
+        if ($exist = $block->getItems()->getSize()) {
+            $type = 'related';
+            $class = $type;
+
+            $image = 'related_products_list';
+            $title = __('Related Products');
+            $items = $block->getItems();
+            $limit = 0;
+            $shuffle = 0;
+            $canItemsAddToCart = $block->canItemsAddToCart();
+
+            $showAddTo = true;
+            $showCart = false;
+            $templateType = null;
+            $description = false;
+        }
+    break;
+
+    case 'upsell-rule':
+        if ($exist = $block->hasItems()) {
+            $type = 'upsell';
+            $class = $type;
+
+            $image = 'upsell_products_list';
+            $title = __('You may like it');
+            $items = $block->getAllItems();
+            $limit = $block->getPositionLimit();
+            $shuffle = (int) $block->isShuffled();
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = null;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'upsell':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Upsell $block */
+        if ($exist = count($block->getItemCollection()->getItems())) {
+            $type = 'upsell';
+            $class = $type;
+
+            $image = 'upsell_products_list';
+            $title = __('You may like it');
+            $items = $block->getItemCollection()->getItems();
+            $limit = $block->getItemLimit('upsell');
+            $shuffle = 0;
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = null;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'crosssell-rule':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = $block->hasItems()) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $title = __('More Choices:');
+            $items = $block->getItemCollection();
+
+            $showAddTo = true;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'crosssell':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = count($block->getItems())) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $title = __('More Choices');
+            $items = $block->getItems();
+
+            $showAddTo = true;
+            $showCart = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    case 'new':
+        if ($exist = $block->getProductCollection()) {
+            $type = 'new';
+            $mode = 'grid';
+            $type = $type . ' ' . $mode;
+
+            $class = 'widget' . ' ' . $type;
+
+            $image = 'new_products_content_widget_grid';
+            $title = __('New Products');
+            $items = $exist;
+
+            $showAddTo = true;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = ($mode == 'list') ? true : false;
+            $canItemsAddToCart = false;
+        }
+    break;
+
+    default:
+        $exist = null;
+}
+
+$product_page_type = '';
+
+if ($type == 'related' || $type == 'upsell') {
+    $product = $_product_helper->getProduct();
+
+    $product_page_type = $product->getData('goodwin_product_page_layout');
+    if(!$product_page_type)
+        $product_page_type = $_helper->getConfig('goodwin_settings/product/product_page_layout');
+    if(empty($product_page_type))
+        $product_page_type = 'default';
+}
+
+$aspect_ratio = $_helper->getConfig("goodwin_settings/catalog/enable_aspect_ratio");
+
+if(empty($aspect_ratio)) {
+    $aspect_ratio = 0;
+}
+$image_width = $_helper->getConfig("goodwin_settings/catalog/image_width");
+if(empty($image_width)) {
+    $image_width = 400;
+}
+$image_height = $_helper->getConfig("goodwin_settings/catalog/image_height");
+if($aspect_ratio)
+    $image_height = $image_width;
+if(!$image_height) {
+    $image_height = 400;
+}
+$image_hover_type = 'hover'; //$_helper->getConfig("goodwin_settings/catalog/image_type");
+$_sale_label = $_helper->getConfig('goodwin_settings/catalog/sale_label');
+$_new_label = $_helper->getConfig('goodwin_settings/catalog/new_label');
+$_show_review = $_helper->getConfig('goodwin_settings/catalog/show_review');
+$per_page = 3;
+?>
+
+<?php if ($exist):?>
+
+    <?php if ($type == 'related' || $type == 'upsell'): ?>
+        <?php if ($type == 'related'): ?>
+            <div class="block <?= /* @escapeNotVerified */ $class ?>" data-mage-init='{"relatedProducts":{"relatedCheckbox":".related.checkbox"}}' data-limit="<?= /* @escapeNotVerified */ $limit ?>" data-shuffle="<?= /* @escapeNotVerified */ $shuffle ?>">
+        <?php else: ?>
+            <div class="block <?= /* @escapeNotVerified */ $class ?>" data-mage-init='{"upsellProducts":{}}' data-limit="<?= /* @escapeNotVerified */ $limit ?>" data-shuffle="<?= /* @escapeNotVerified */ $shuffle ?>">
+        <?php endif; ?>
+    <?php else: ?>
+        <div class="block <?= /* @escapeNotVerified */ $class ?>">
+    <?php endif; ?>
+    <div class="block-title title">
+        <strong id="block-<?= /* @escapeNotVerified */ $class ?>-heading" role="heading" aria-level="2"><?= /* @escapeNotVerified */ $title ?></strong>
+    </div>
+    <div class="block-content content" aria-labelledby="block-<?= /* @escapeNotVerified */ $class ?>-heading">
+        <?php if ($type == 'related' && $canItemsAddToCart): ?>
+        <div class="block-actions">
+            <?= /* @escapeNotVerified */ __('Check items to add to the cart or') ?>
+            <button type="button" class="action select" role="select-all"><span><?= /* @escapeNotVerified */ __('select all') ?></span></button>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($type == 'related' || $type == 'upsell' || $type == 'crosssell'): ?>
+            <div class="products wrapper grid products-grid products-<?= /* @escapeNotVerified */ $type ?>">
+                <?php $iterator = 1;?>
+                <div class="products list items product-items slick-carousel slick-arrows-aside-simple">
+        <?php else: ?>
+        <div class="products wrapper grid products-grid products-<?= /* @escapeNotVerified */ $type ?>">
+            <ol class="products list items product-items slick-carousel slick-arrows-aside-simple">
+                <?php $iterator = 1; ?>
+        <?php endif; ?>
+                <?php foreach ($items as $_item): ?>
+                <?php $available = ''; ?>
+                <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                    <?php if (!$_item->getRequiredOptions()): ?>
+                        <?php $available = 'related-available'; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php if ($type == 'related' || $type == 'upsell' || $type == 'crosssell'): ?>
+                    <?= /* @escapeNotVerified */ ($iterator++ == 1) ? '<div class="item product product-item ">' : '</div><div class="item product product-item ">' ?>
+                <?php else: ?>
+                    <?= /* @escapeNotVerified */ ($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                <?php endif; ?>
+                <?php
+                    $_stock_available = ''; 
+                    if (!$_item->isSaleable() && !$_item->isAvailable()){
+                        $_stock_available = 'unavailable';
+                    }
+                ?>
+                <div class="product-item-info <?= /* @escapeNotVerified */ $available ?> type1 <?php echo $_stock_available ?>">
+                    <div class="shadow-overlay"></div>                   
+                    <div class="product-photo-container">
+                        <a href="<?php echo $_item->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?php if($image_hover_type): ?>
+                                <?php
+                                    $image_type = 'category_page_grid';
+                                    $_product = $objectManager->create('Magento\Catalog\Model\Product')->load($_item->getId());
+                                    $images = $_product->getMediaGalleryImages();
+                                    if ($images instanceof \Magento\Framework\Data\Collection) {
+                                        $image_count = 0;
+                                        foreach ($images as $image) {
+                                            if ($image_hover_type == 'hover' && $image_count == 1)
+                                                echo '<div class="hover-image">';
+                                            if ($image_hover_type == 'hover' && $image_count > 1)
+                                                continue;
+                                ?>
+                                    <?php if($aspect_ratio): ?>
+                                    <img class="product-image-photo lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="<?php echo $_imagehelper->init($_product, $image_type)->setImageFile($image->getFile())->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($image_width)->getUrl(); ?>" alt=""/>
+                                    <?php else: ?>
+                                    <img class="product-image-photo lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="<?php echo $_imagehelper->init($_product, $image_type)->setImageFile($image->getFile())->resize($image_width, $image_height)->getUrl(); ?>" alt=""/>
+                                    <?php endif; ?>
+                                <?php
+                                            if ($image_hover_type == 'hover' && $image_count == 1 )
+                                                echo '</div>';
+                                            $image_count++;
+                                        }
+                                    }
+                                ?>
+                                <?php if($image_count < 1): ?>
+                                    <?php
+                                        $image_type = 'category_page_grid';
+                                        if($aspect_ratio)
+                                            $productImage = $_imagehelper->init($_product, $image_type)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($image_width);
+                                        else
+                                            $productImage = $_imagehelper->init($_product, $image_type)->resize($image_width, $image_height);
+                                        $productImageUrl = $productImage->getUrl();
+                                    ?>
+                                    <img class="product-image-photo default-image active lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="<?php echo $productImageUrl; ?>" alt=""/>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php
+                                    $image_type = 'category_page_grid';
+                                    if($aspect_ratio)
+                                        $productImage = $_imagehelper->init($_item, $image_type)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($image_width);
+                                    else
+                                        $productImage = $_imagehelper->init($_item, $image_type)->resize($image_width, $image_height);
+                                    $productImageUrl = $productImage->getUrl();
+                                ?>
+                                <img class="product-image-photo default-image active lazyload" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="<?php echo $productImageUrl; ?>" alt=""/>
+                            <?php endif; ?>
+                        </a>
+                        <?php if($image_hover_type == 'gallery' && $image_count > 1): ?>
+                            <div class="gallery-nav">
+                                <a href="javascript:void(0)" class="gallery-prev"></a>
+                                <a href="javascript:void(0)" class="gallery-next"></a>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php
+                            $product_label = "";
+                            if($_sale_label) {
+                                $orgprice = $_item->getPrice();
+                                $specialprice = $_item->getSpecialPrice();
+                                $specialfromdate = $_item->getSpecialFromDate();
+                                $specialtodate = $_item->getSpecialToDate();
+                                $today = time();
+                                if(!$specialprice)
+                                    $specialprice = $orgprice;
+                                if($specialprice < $orgprice) {
+                                    if((is_null($specialfromdate) && is_null($specialtodate)) || ($today >= strtotime($specialfromdate) && is_null($specialtodate)) || ($today <= strtotime($specialtodate) && is_null($specialfromdate)) || ($today >= strtotime($specialfromdate) && $today <= strtotime($specialtodate))){
+                                        $percent = number_format ( ($specialprice - $orgprice) / $orgprice * 100) . '%';
+                                        if($_show_percent) $_sale_label = $percent;
+                                        $product_label .= '<div class="product-label sale-label">';$product_label .= '<span>'. $_sale_label .'</span>';$product_label .= '</div>';
+                                    }
+                                }
+                            }
+                            if($_new_label) {
+                                $now = date("Y-m-d");
+                                $newsFrom= substr($_item->getData('news_from_date'),0,10);
+                                $newsTo=  substr($_item->getData('news_to_date'),0,10);
+                                if ($newsTo != '' || $newsFrom != ''){
+                                    if (($newsTo != '' && $newsFrom != '' && $now>=$newsFrom && $now<=$newsTo) || ($newsTo == '' && $now >=$newsFrom) || ($newsFrom == '' && $now<=$newsTo)) {
+                                        $product_label .= '<div class="product-label new-label">';$product_label .= '<span>'. $_new_label .'</span>';$product_label .= '</div>';
+                                    }
+                                }
+                            }
+                            echo '<div class="product-label-container">'.$product_label;
+                        ?>
+                        <?php if (!$_item->isSaleable()): ?>
+                            <?php if (!$_item->isAvailable()): ?>
+                                <div class="stock unavailable"><span><?php echo __('Out of stock') ?></span></div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo '</div>' //---Label Container End---; ?>
+
+                        <!-- Dailydeal Product data -->
+                        <?php if($_dailydealhelper->isDealProduct($_item->getId())) : ?>
+                        <div class="rg-dailydeal-wrapper" style="display:none;" data-to-date="<?php echo $_dailydealhelper->getDailydealToDate($_item->getSku()); ?>">
+                            <div class="rg-dailydeal">
+                                <p class="expired"></p> 
+                                <div class="countdowncontainer" style="display:none;">
+                                    <span class="number-wrapper">
+                                        <span class="number day"><span>00</span></span>
+                                        <span class="caption"><?php echo __('days'); ?></span>
+                                    </span>
+
+                                    <span class="number-wrapper">
+                                        <span class="number hour"><span>00</span></span>
+                                        <span class="caption"><?php echo __('hrs'); ?></span>
+                                    </span>
+
+                                    <span class="number-wrapper">
+                                        <span class="number min"><span>00</span></span>
+                                        <span class="caption"><?php echo __('min'); ?></span>
+                                    </span>
+
+                                    <span class="number-wrapper">
+                                        <span class="number sec"><span>00</span></span>
+                                        <span class="caption"><?php echo __('sec'); ?></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?> 
+                        <!-- Dailydeal Product End -->
+                        <!-- Add To Links-->
+                        <?php if ($type == 'related' || $type == 'upsell' || $type == 'crosssell'): ?>
+                            <div data-role="add-to-links" class="add-to-links">
+                                <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
+                                    <?php echo $addToBlock->setProduct($_item)->getChildHtml() ?>
+                                <?php endif; ?>
+                                <?php if($moduleManager->isEnabled('WeltPixel_Quickview')): ?>
+                                    <a class="weltpixel-quickview action" data-quickview-url="<?php echo $_helper->getQuickViewUrl($_item->getId()); ?>" href="javascript:void(0);"><span><?php echo __('Quickview'); ?></span></a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <!-- Add To Links End -->
+                    </div>
+                    <div class="product details product-item-details">
+                        <?php
+                            $_categoryIds = $_item->getCategoryIds();
+                            if(count($_categoryIds) > 0 && $_categoryIds[0] != $_helper->getRootCategoryId() ) {
+                                echo '<div class="product-cats">';
+                                $i = 0;
+                                foreach($_categoryIds as $_categoryId) {
+                                    if($_categoryId != $_helper->getRootCategoryId()) {
+                                        $category = $objectManager->create('Magento\Catalog\Model\Category')->load($_categoryId);
+                                        if($i > 0)
+                                            echo ", ";
+                                        echo '<a href="'.$category->getUrl().'">'.$category->getName().'</a>';
+                                        $i ++;
+                                    }
+                                }
+                                echo '</div>';
+                            }
+                        ?>
+                        <strong class="product name product-item-name"><a class="product-item-link" title="<?= $block->escapeHtml($_item->getName()) ?>" href="<?= /* @escapeNotVerified */ $block->getProductUrl($_item) ?>">
+                            <?= $block->escapeHtml($_item->getName()) ?></a>
+                        </strong>
+                        <?php
+                            if($_show_review) {
+                                $review_html = $block->getReviewsSummaryHtml( $_item, \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW );
+
+                                if($review_html)
+                                    echo $review_html;
+                                else {
+                        ?>
+                        <div class="product-reviews-summary short">
+                            <div class="rating-summary">
+                                <span class="label"><span>Rating:</span></span>
+                                <div class="rating-result" title="0%">
+                                    <span style="width:0%"><span>0%</span></span>
+                                </div>
+                            </div>
+                            <div class="reviews-actions">
+                                <a class="action view" href="<?php echo $_item->getProductUrl() ?>#reviews">2&nbsp;<span>Reviews</span></a>
+                            </div>
+                        </div>
+                        <?php
+                                }
+                            }
+                        ?>
+                        <?= /* @escapeNotVerified */ $block->getProductPrice($_item) ?>
+
+                            <?php if ($canItemsAddToCart && !$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                                <?php if (!$_item->getRequiredOptions()): ?>
+                                    <div class="field choice related">
+                                        <input type="checkbox" class="checkbox related" id="related-checkbox<?= /* @escapeNotVerified */ $_item->getId() ?>" name="related_products[]" value="<?= /* @escapeNotVerified */ $_item->getId() ?>" />
+                                        <label class="label" for="related-checkbox<?= /* @escapeNotVerified */ $_item->getId() ?>"><span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span></label>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if ($showAddTo || $showCart): ?>
+                                <div class="product-item-inner">
+                                    <div class="product actions product-item-actions">
+                                        <?php if ($showCart || $_item->getTypeId() == \Magento\ConfigurableProduct\Model\Product\Type\Configurable::TYPE_CODE): ?>
+                                            <div class="actions-primary">
+                                                <?php if ($_item->isSaleable()): ?>
+                                                    <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+                                                        <button class="action tocart primary" data-mage-init='{"redirectUrl": {"url": "<?= /* @escapeNotVerified */ $block->getAddToCartUrl($_item) ?>"}}' type="button" title="<?= /* @escapeNotVerified */ __('Add to Cart') ?>">
+                                                            <span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span>
+                                                        </button>
+                                                    <?php else: ?>
+                                                        <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                        $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                                        ?>
+                                                        <button class="action tocart primary"
+                                                                data-post='<?= /* @escapeNotVerified */ $postData ?>'
+                                                                type="button" title="<?= /* @escapeNotVerified */ __('Add to Cart') ?>">
+                                                            <span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span>
+                                                        </button>
+                                                    <?php endif; ?>
+                                                <?php else: ?>
+                                                    <?php if ($_item->getIsSalable()): ?>
+                                                        <div class="stock available"><span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+                                                    <?php else: ?>
+                                                        <div class="stock unavailable"><span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if ($type == 'related' || $type == 'upsell' || $type == 'crosssell'): ?>
+                        <?php echo ($iterator == count($items)+1) ? '</div>' : '' ?>
+                    <?php else: ?>
+                        <?php echo ($iterator == count($items)+1) ? '</li>' : '' ?>
+                    <?php endif; ?>
+                <?php endforeach ?>
+            <?php if ($type == 'related' || $type == 'upsell' || $type == 'crosssell'): ?>
+            </div>
+            <script>
+                require([
+                'jquery',
+                'slick-skin',
+                ], function ($, slickcarousel) {
+                    $('.products.list .product-item').hover(function(){
+                        var $this = $(this);
+                        $this.find('.product-item-info .shadow-overlay').css('margin-bottom', 0 - $this.find('.product-item-inner').outerHeight());
+                        $this.find('.product-item-inner').css('bottom', 0 - $this.find('.product-item-inner').outerHeight());
+                    });
+                    slickcarousel.init('.products.list.slick-carousel');
+                });
+            </script>
+            <?php else: ?>
+            </ol>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>

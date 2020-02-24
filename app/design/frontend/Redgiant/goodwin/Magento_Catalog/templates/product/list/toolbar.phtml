@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+
+$_goodwinhelper = $this->helper( 'Redgiant\Goodwin\Helper\Data' );
+$_show_column_mode = $_goodwinhelper->getConfig('goodwin_settings/catalog/show_columnmode');
+$_viewmode = $block->getCurrentMode();
+?>
+<?php if ($block->getCollection()->getSize()): ?>
+    <div class="toolbar toolbar-products" data-mage-init='<?= /* @escapeNotVerified */ $block->getWidgetOptionsJson() ?>'>
+        <?php if ($block->isExpanded()): ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+        <?php endif; ?>
+
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+        
+        <?php if($_show_column_mode && $_viewmode == 'grid'): ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/columnmode.phtml')) ?>
+        <?php endif; ?>
+
+        <?= $block->getPagerHtml() ?>
+
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+
+        <?php if ($block->isExpanded()): ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php endif; ?>
+
+        <div class="filter-mobile-toggle">
+            <a href="javascript:void(0)" class="btn-filter-toggle"><span><?php echo __('Filter'); ?></span></a>
+        </div>
+    </div>
+<?php endif ?>

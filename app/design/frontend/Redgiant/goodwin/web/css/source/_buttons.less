@@ -1,0 +1,109 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    form .action.primary, .action.tocart.primary, .block-new-customer .actions-toolbar .action.primary,
+    .action.back, .action.captcha-reload, .sidebar .block-compare .actions-toolbar .action, .sidebar .block-wishlist .actions-toolbar .action.details,
+    .wishlist-index-index .column.main form > .actions-toolbar button.action, .data.table-order-items > tbody > tr > td.actions .action,
+    .block-reorder .actions-toolbar .action.view,
+    .block-addresses-list + .actions-toolbar .action.add, .account .order-actions-toolbar .action,
+    .cart-container .form-cart .actions > .action,
+    .cart-container .checkout-methods-items .action.primary,
+    .cart-summary .actions-toolbar>.primary button,
+    .opc-wrapper .action-show-popup, .checkout-payment-method .payment-option-content .form-discount .action-apply,
+    .checkout-payment-method .checkout-billing-address .actions-toolbar .action-update,
+    .checkout-payment-method .checkout-billing-address .actions-toolbar .action-cancel,
+    .form.contact .action.submit, .weltpixel_quickview_catalog_product_view .box-gotoproduct .action.primary, .weltpixel_quickview-catalog_product-view .box-gotoproduct .action.primary {
+        display: block;
+        padding: 10px 22px;
+        font-size: 11px;
+        line-height: 16px;
+        text-transform: uppercase;
+        border-radius: 0;
+        border: 0;
+        font-weight: 500;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: none;
+        color: #fff;
+        background-color: @theme_color;
+        outline: none;
+        text-decoration: none;
+        
+        &:hover, &:focus {
+            color: #fff;
+            background-color: #000;
+            outline: 0;
+            border: 0;
+            transition: all 0.2s ease;
+        }
+    }
+    .cart-container .checkout-methods-items .action.primary {
+        padding: 16px 30px;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+    }
+    .sidebar .block-compare .actions-toolbar .action,
+    .sidebar .block-wishlist .actions-toolbar .action.details,
+    .sidebar .block-reorder .actions-toolbar .action.view {
+        background-color: #000;
+        padding: 8px 14px;
+        &:hover, &:focus {
+            background-color: @theme_color;
+        }
+    }
+    .action.back, .sidebar .block-compare .actions-toolbar .action.clear,
+    .wishlist-index-index .column.main form > .actions-toolbar .action.update,
+    .cart-container .form-cart .actions > .action.update,
+    .checkout-payment-method .checkout-billing-address .actions-toolbar .action-cancel  {
+        background-color: #bcbcbc;
+        &:hover, &:focus {
+            background-color: @theme_color;
+        }
+    }
+    .wishlist-index-index .column.main form > .actions-toolbar .action.update:before,
+    .cart-container .form-cart .actions > .action.update span:before {
+        content: "\e91a";
+        display: inline-block;
+        font-family: 'icomoon';
+        font-size: 14px;
+        margin-right: 10px;
+    }
+    .wishlist-index-index .column.main form > .actions-toolbar .action.share {
+        &:before {
+            content: "\e80D";
+            display: inline-block;
+            font-family: 'icomoon';
+            font-size: 14px;
+            margin-right: 10px;
+        }
+    }
+    .wishlist-index-index .column.main form > .actions-toolbar .action.share,
+    .data.table-order-items > tbody > tr > td.actions .action.order,
+    .account .order-actions-toolbar .action.print, .cart-container .form-cart .actions > .action.clear,
+    .cart-summary .actions-toolbar>.primary button,
+    .checkout-payment-method .payment-option-content .form-discount .action-apply,
+    .checkout-payment-method .checkout-billing-address .actions-toolbar .action-update {
+        background-color: #000;
+        &:hover, &:focus {
+            background-color: @theme_color;
+        }
+    }
+
+    button {
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
+}

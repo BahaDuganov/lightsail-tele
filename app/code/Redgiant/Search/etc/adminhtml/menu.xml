@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Redgiant_Search::search" title="Search" module="Redgiant_Search" sortOrder="150" resource="Redgiant_Search::configuration" parent="Redgiant_Core::rg_all"/>
+        <add id="Redgiant_Search::configuration" title="Configuration" module="Redgiant_Search" sortOrder="10" action="adminhtml/system_config/edit/section/rgsearch" parent="Redgiant_Search::search" resource="Redgiant_Search::configuration"/>
+    </menu>
+</config>
+
+

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <goodwin_settings>
+            <general>
+                <is_demo>0</is_demo>
+            </general>
+            <header>
+                <header_type>1</header_type>
+                <static_block>goodwin_custom_block_for_header_1</static_block>
+                <static_block_top_links>goodwin_custom_block_for_top_links_1</static_block_top_links>
+                <sticky_header>1</sticky_header>
+                <sticky_header_logo_src></sticky_header_logo_src>
+                <mobile_sticky_header>0</mobile_sticky_header>
+                <notice_block>above_header</notice_block>
+                <notice_static_block>goodwin_notice_block_1</notice_static_block>
+            </header>
+            <footer>
+                <footer_top>1</footer_top>
+                <footer_top_custom>goodwin_footer_top_1</footer_top_custom>
+                <footer_middle>1</footer_middle>
+                <footer_middle_column_1>custom</footer_middle_column_1>
+                <footer_middle_column_1_custom>goodwin_footer_middle_1</footer_middle_column_1_custom>
+                <footer_middle_column_1_size>12</footer_middle_column_1_size>
+                <footer_middle_column_2></footer_middle_column_2>
+                <footer_middle_column_2_custom></footer_middle_column_2_custom>
+                <footer_middle_column_2_size>3</footer_middle_column_2_size>
+                <footer_middle_column_3></footer_middle_column_3>
+                <footer_middle_column_3_custom></footer_middle_column_3_custom>
+                <footer_middle_column_3_size>3</footer_middle_column_3_size>
+                <footer_middle_column_4></footer_middle_column_4>
+                <footer_middle_column_4_custom></footer_middle_column_4_custom>
+                <footer_middle_column_4_size>3</footer_middle_column_4_size>
+                <footer_bottom>1</footer_bottom>
+                <footer_bottom_custom>goodwin_footer_bottom_1</footer_bottom_custom>
+            </footer>
+            <catalog>
+                <layout>2columns-left</layout>
+                <product_per_row>3</product_per_row>
+                <grid_style>type1</grid_style>
+                <show_columnmode>0</show_columnmode>
+                <image_type></image_type>
+                <enable_aspect_ratio>0</enable_aspect_ratio>
+                <image_width>320</image_width>
+                <image_height>427</image_height>
+                <new_label>New</new_label>
+                <sale_label>Sale</sale_label>
+                <label_type>2</label_type>
+                <show_percent>0</show_percent>
+                <show_review>1</show_review>
+                <enable_infinite>1</enable_infinite>
+                <sidebar_cms_block>goodwin_category_sideblock</sidebar_cms_block>
+            </catalog>
+            <product>
+                <product_page_layout>default</product_page_layout>
+                <enable_aspect_ratio>1</enable_aspect_ratio>
+                <image_width>600</image_width>
+                <image_height>600</image_height>
+                <show_addto_links>1</show_addto_links>
+                <show_related_products>1</show_related_products>
+                <show_upsell_products>1</show_upsell_products>
+                <quicknav>1</quicknav>
+                <content_cms_block>goodwin_product_contentblock</content_cms_block>
+                <custom_social><![CDATA[<div class="addthis_inline_share_toolbox_w0tc"><label style="margin-right: 5px;font-size: 16px;">Share:</label></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6907796e30f69"></script>
+<style type="text/css">.addthis_inline_share_toolbox_w0tc > div.at-resp-share-element{display: inline-block !important;vertical-align: middle;}</style>]]></custom_social>
+            </product>
+            <shopping_cart>
+                <quick_cart>0</quick_cart>
+            </shopping_cart>
+            <contacts>
+                <enable>1</enable>
+                <goodwin_settings_contacts_api_key></goodwin_settings_contacts_api_key>
+                <latitude>-34.398</latitude>
+                <longitude>150.884</longitude>
+                <zoom>18</zoom>
+                <infoblock><![CDATA[<h4 class="font__family-montserrat font__weight-bold font__size-21 line__height-22">Chicago, USA</h4>
+												
+<div class="brk-map__infoicon--text">
+													
+<ul class="font__size-15 line__height-21">
+														
+<li><i class="fas fa-phone"></i><a href="tel:8800123456789">+88(0) 344 956 40</a>
+</li>
+														
+<li><i class="far fa-clock"></i> <span>Mon - Sat 8:00 - 18:00<br>Sunday CLOSED</span>
+</li>
+													
+</ul>
+												
+</div>]]></infoblock>
+            </contacts>
+            <custom_settings>
+                <custom_style></custom_style>
+                <custom_style_2></custom_style_2>
+            </custom_settings>
+        </goodwin_settings>
+        <goodwin_design>
+            <cat_label_colors>
+                <custom>0</custom>
+                <cat_label_1>88b643</cat_label_1>
+                <cat_label_2>C62828</cat_label_2>
+                <cat_label_3>0AE3EB</cat_label_3>
+            </cat_label_colors>
+        </goodwin_design>
+    </default>
+</config>

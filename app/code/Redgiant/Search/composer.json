@@ -1,0 +1,14 @@
+{
+  "name": "redgiant/module-search",
+  "description": "Magento 2 Search extension",
+  "type": "magento2-module",
+  "version": "2.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Redgiant\\Search\\": ""
+    }
+  }
+}

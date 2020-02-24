@@ -1,0 +1,239 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .clearfix:after {
+        clear: both;
+        content: '';
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .swatch {
+        &-attribute {
+            .swatch-option-link-layered {
+                color: #424242;
+            }
+            &.size {
+                .swatch-option-link-layered {
+                    margin: 0 7px 7px 0;
+                    display: inline-block;
+                }
+            }
+            &.color {
+                .swatch-option-link-layered {
+                    display: inline-block;
+                    margin: 0 0 4px;
+                    width: 45%;
+                    padding-right: 15px;
+                }
+            }
+        }
+
+        &-option {
+            display: inline-flex;
+            align-items: flex-start;
+
+            &.text {
+                display: inline-block;
+                text-decoration: none;
+                min-width: 27px;
+                height: 27px;
+                padding: 0 8px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #e2e2e2;
+                color: #424242;
+                font-size: 11px;
+                line-height: 25px;
+                text-transform: uppercase;
+                text-align: center;
+                transition: border-color 0.2s ease;
+
+                &:hover {
+                    border-color: @theme_color;
+                    color: @theme_color;
+                }
+            }
+
+            &.selected {
+                border-color: @theme_color;
+                color: @theme_color;
+            }
+
+            &.image,
+            &.color {
+                span.value {
+                    position: relative;
+                    margin-right: 5px;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    height: 25px;
+                    width: 25px;
+                    flex: 0 0 25px;
+                    min-width: inherit;
+                    padding: 3px;
+                    transition: all .2s ease-in-out;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        border-radius: 50%;
+                        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+                    }
+                }
+                span.label {
+                    font-size: 11px;
+                    line-height: 14px;
+                    text-transform: uppercase;
+                    align-self: center;
+                }
+                
+                &:not(.disabled):hover, &.selected {
+                    span.value {
+                        box-shadow: 0 0 0 1px @theme_color;
+                    }
+                }
+            }
+
+            &.disabled {
+                cursor: default;
+                pointer-events: none;
+                opacity: .5;
+            }
+
+            &-tooltip {
+                border: 1px solid #e1e1e1;
+                color: #949494;
+                display: none;
+                max-height: 100%;
+                max-width: 140px;
+                min-height: 20px;
+                min-width: 25px;
+                padding: 5px;
+                position: absolute;
+                text-align: center;
+                z-index: 999;
+                background: #fff;
+
+                &,
+                &-layered {
+                    .corner {
+                        bottom: 0;
+                        height: 8px;
+                        left: 50% !important;
+                        margin-left: -7px;
+                        position: absolute;
+
+                        &:before,
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            border-left: 7px solid transparent;
+                            border-right: 7px solid transparent;
+                            top: 100%;
+                        }
+
+                        &:before {
+                            border-top: 7px solid #e1e1e1;
+                        }
+
+                        &:after {
+                            border-top: 7px solid #fff;
+                            margin-top: -1px;
+                            z-index: 1;
+                        }
+                    }
+
+                    .image {
+                        display: block;
+                        height: 130px;
+                        margin: 0 auto;
+                        width: 130px;
+                    }
+                }
+
+                &-layered {
+                    display: none;
+                    left: -47px;
+                    position: absolute;
+                    width: 140px;
+                    z-index: 999;
+                }
+
+                .title {
+                    color: #424242;
+                    display: block;
+                    max-height: 200px;
+                    max-width: 140px;
+                    min-height: 20px;
+                    overflow: hidden;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+            }
+
+            &-link-layered {
+                margin: 0;
+                padding: 0;
+                position: relative;
+
+                &:hover {
+                    color: @theme_color;
+                }
+
+                &:hover > .swatch-option-tooltip-layered {
+                    display: block;
+                }
+            }
+        }
+
+        &-input {
+            left: -1000px;
+            position: absolute;
+            visibility: hidden;
+        }
+    }
+
+    .product-item-details, .product-options-wrapper { 
+        .swatch-attribute .swatch-option {
+            cursor: pointer;
+            margin-right: 3px;
+
+            &.color, &.image {
+                position: relative;
+                margin-right: 5px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                height: 25px;
+                width: 25px;
+                flex: 0 0 25px;
+                min-width: inherit;
+                padding: 3px;
+                display: inline-block;
+                transition: all .2s ease-in-out;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 50%;
+                    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+                }
+
+                &:not(.disabled):hover, &.selected {
+                    box-shadow: 0 0 0 1px @theme_color;
+                }
+            }
+        }
+    }
+}

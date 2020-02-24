@@ -1,0 +1,755 @@
+<?php 
+    $_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+    $header_type = $_helper->getConfig('goodwin_settings/header/header_type');
+    $notice_block = $_helper->getConfig('goodwin_settings/header/notice_block');
+	$notice_block_id = $_helper->getConfig('goodwin_settings/header/notice_static_block');
+	$static_block_custom_menu = $_helper->getConfig('goodwin_settings/header/static_block_custom_menu');
+	$static_block = $_helper->getConfig('goodwin_settings/header/static_block');
+?>
+<div class="page-loading">
+    <div class="dots">
+        <div class="dot one"></div><div class="dot two"></div><div class="dot three"></div>
+    </div>
+</div>
+<?php if($notice_block && $notice_block == 'above_header' && $notice_block_id): ?>
+<div class="goodwin-notice-block">
+	<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($notice_block_id)->toHtml(); ?>
+</div>
+<?php endif; ?>
+<header class="page-header type<?php echo $header_type; ?>">
+	<?php if($header_type == 1): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+					<div class="col top-bar-center">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+				    </div>
+				    <div class="col-auto top-bar-right">
+						<div class="dropdn dropdn_search">
+						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						    <div class="dropdn-content">
+                                <div class="container">
+									<?php echo $this->getChildHtml("top.search"); ?>
+								</div>
+							</div>
+						</div>
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto logo-holder">
+						<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+						<?php echo $this->getChildHtml("logo"); ?>
+					</div>
+					<div class="nav-holder">
+						<?php echo $this->getChildHtml("navigation.sections"); ?>
+					</div>
+					<div class="col-auto minicart-holder">
+						<a href="javascript:void(0)" class="links-mobile link-search"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="links-mobile link-wishlist" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+				    	<?php echo $this->getChildHtml("minicart"); ?>
+			    	</div>
+			    </div>
+		    </div>
+		</div>
+	<?php elseif($header_type == 2): ?>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col search-holder">
+							<?php
+								$block_lang = $this->getChildHtml("store_language");
+								$block_cur = $this->getChildHtml("currency");
+							?>
+							<?php if ($block_lang || $block_cur): ?>
+							<div class="dropdn dropdn_settings">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-globe"></i><span><?php echo __('Settings'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $block_lang; ?>
+										<?php echo $block_cur; ?>
+									</div>
+								</div>
+							</div>
+							<?php endif; ?>
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col minicart-holder">
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+							<div class="dropdn dropdn_wishlist link-only">
+								<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 3): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+					<div class="col top-bar-center">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+				    </div>
+				    <div class="col-auto top-bar-right">
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col search-holder">
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col minicart-holder">
+							<div class="dropdn dropdn_wishlist link-only">
+								<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="sidemenu-close"><?php echo __('Close'); ?></div>
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 4): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+					</div>
+				    <div class="col-auto top-bar-right">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto logo-holder">
+						<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+						<?php echo $this->getChildHtml("logo"); ?>
+					</div>
+					<div class="nav-holder">
+						<?php echo $this->getChildHtml("navigation.sections"); ?>
+					</div>
+					<div class="col-auto minicart-holder">
+						<div class="dropdn dropdn_search">
+						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						    <div class="dropdn-content">
+                                <div class="container">
+									<?php echo $this->getChildHtml("top.search"); ?>
+								</div>
+							</div>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+				    	<?php echo $this->getChildHtml("minicart"); ?>
+			    	</div>
+			    </div>
+		    </div>
+		</div>
+	<?php elseif($header_type == 5): ?>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col nav-toggle-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i><span><?php echo __('Menu'); ?></span></span>
+						</div>
+						<div class="col logo-holder">
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col minicart-holder">
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="sidemenu-close"><?php echo __('Close'); ?></div>
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+					<?php echo $this->getChildHtml("store_language"); ?>
+					<?php echo $this->getChildHtml("currency"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 6): ?>
+		<div class="header-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto logo-holder">
+						<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+						<?php echo $this->getChildHtml("logo"); ?>
+					</div>
+					<div class="nav-holder">
+						<?php echo $this->getChildHtml("navigation.sections"); ?>
+					</div>
+					<div class="col-auto minicart-holder">
+						<div class="dropdn dropdn_search">
+						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						    <div class="dropdn-content">
+                                <div class="container">
+									<?php echo $this->getChildHtml("top.search"); ?>
+								</div>
+							</div>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+				    	<?php echo $this->getChildHtml("minicart"); ?>
+			    	</div>
+			    </div>
+		    </div>
+		</div>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+					</div>
+				    <div class="col-auto top-bar-right">
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 7): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+				    <div class="col-auto top-bar-right">
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto logo-holder">
+						<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+						<?php echo $this->getChildHtml("logo"); ?>
+					</div>
+					<div class="nav-holder">
+						<?php echo $this->getChildHtml("navigation.sections"); ?>
+					</div>
+					<div class="col-auto minicart-holder">
+						<div class="dropdn dropdn_search">
+						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						    <div class="dropdn-content">
+                                <div class="container">
+									<?php echo $this->getChildHtml("top.search"); ?>
+								</div>
+							</div>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+				    	<?php echo $this->getChildHtml("minicart"); ?>
+			    	</div>
+			    </div>
+		    </div>
+		</div>
+	<?php elseif($header_type == 8): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+					<div class="col top-bar-center">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+				    </div>
+				    <div class="col-auto top-bar-right">
+						<div class="dropdn dropdn_wishlist link-only">
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col search-holder">
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-auto custom-col">
+							<?php
+					    		$static_block_header = $_helper->getConfig('goodwin_settings/header/static_block');
+					            if (isset($static_block_header) && $static_block_header) {
+					                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+					                if ($block) {
+					                    $block->setBlockId($static_block_header);
+					                }
+					                if ($block) {
+					                    echo $block->toHtml();
+					                }
+					            }
+					        ?>
+						</div>
+						<div class="col minicart-holder">
+							<div class="dropdn dropdn_wishlist link-only">
+								<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 9): ?>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col search-holder">
+							<?php
+								$block_lang = $this->getChildHtml("store_language");
+								$block_cur = $this->getChildHtml("currency");
+							?>
+							<?php if ($block_lang || $block_cur): ?>
+							<div class="dropdn dropdn_settings">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-globe"></i><span><?php echo __('Settings'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $block_lang; ?>
+										<?php echo $block_cur; ?>
+									</div>
+								</div>
+							</div>
+							<?php endif; ?>
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col minicart-holder">
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+							<div class="dropdn dropdn_wishlist link-only">
+								<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 10): ?>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col settings-holder">
+							<?php
+								$block_lang = $this->getChildHtml("store_language");
+								$block_cur = $this->getChildHtml("currency");
+							?>
+							<?php if ($block_lang || $block_cur): ?>
+							<div class="dropdn dropdn_settings">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-globe"></i><span><?php echo __('Settings'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $block_lang; ?>
+										<?php echo $block_cur; ?>
+									</div>
+								</div>
+							</div>
+							<?php endif; ?>
+						</div>
+						<div class="col logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col minicart-holder">							
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+		    <div class="nav-holder">
+		    	<div class="container">
+					<?php echo $this->getChildHtml("navigation.sections"); ?>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 11): ?>
+		<div class="header-main">
+			<div class="main-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col-auto logo-holder">
+							<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+							<?php echo $this->getChildHtml("logo"); ?>
+						</div>
+						<div class="col-auto main-right">
+							<?php
+					    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+					            if (isset($static_block_top_links) && $static_block_top_links) {
+					                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+					                if ($block) {
+					                    $block->setBlockId($static_block_top_links);
+					                }
+					                if ($block) {
+					                    echo $block->toHtml();
+					                }
+					            }
+					        ?>
+					        <?php echo $this->getChildHtml("store_language"); ?>
+							<?php echo $this->getChildHtml("currency"); ?>
+							<div class="dropdn dropdn_wishlist link-only">
+								<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+							</div>
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+			<div class="bottom-bar">
+				<div class="container">
+					<div class="row">
+						<div class="nav-holder">
+							<?php echo $this->getChildHtml("navigation.sections"); ?>
+						</div>					
+						<div class="col-auto minicart-holder">
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="links-mobile link-wishlist" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	<?php elseif($header_type == 12): ?>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto top-bar-left">
+						<?php echo $this->getChildHtml("store_language"); ?>
+						<?php echo $this->getChildHtml("currency"); ?>
+					</div>
+				    <div class="col-auto top-bar-right">
+						<?php
+				    		$static_block_top_links = $_helper->getConfig('goodwin_settings/header/static_block_top_links');
+				            if (isset($static_block_top_links) && $static_block_top_links) {
+				                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+				                if ($block) {
+				                    $block->setBlockId($static_block_top_links);
+				                }
+				                if ($block) {
+				                    echo $block->toHtml();
+				                }
+				            }
+				        ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto logo-holder">
+						<span data-action="toggle-nav" class="action nav-toggle"><i class="icon icon-menu"></i></span>
+						<?php echo $this->getChildHtml("logo"); ?>
+					</div>
+					<div class="nav-holder">
+						<?php echo $this->getChildHtml("navigation.sections"); ?>
+					</div>
+					<div class="col-auto minicart-holder">
+						<div class="dropdn dropdn_search">
+						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
+						    <div class="dropdn-content">
+                                <div class="container">
+									<?php echo $this->getChildHtml("top.search"); ?>
+								</div>
+							</div>
+						</div>
+						<div class="dropdn dropdn_account">
+							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
+							<div class="dropdn-content">
+	                            <div class="container">
+									<?php echo $this->getChildHtml("header.links"); ?>
+								</div>
+							</div>
+						</div>
+				    	<?php echo $this->getChildHtml("minicart"); ?>
+			    	</div>
+			    </div>
+		    </div>
+		</div>
+	<?php endif; ?>
+</header>
+<?php if($notice_block && $notice_block == 'below_header' && $notice_block_id): ?>
+<div class="goodwin-notice-block">
+	<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($notice_block_id)->toHtml(); ?>
+</div>
+<?php endif; ?>

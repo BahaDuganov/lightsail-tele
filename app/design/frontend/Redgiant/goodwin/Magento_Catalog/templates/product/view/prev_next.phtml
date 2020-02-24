@@ -1,0 +1,117 @@
+<?php
+    $goodwin_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $quicknav = $goodwin_helper->getConfig('goodwin_settings/product/quicknav');
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+    
+    $priceRender = $this->getLayout()->getBlock('product.price.render.default')->setData('is_product_list', true);
+    
+    if($quicknav) {
+        $_product = $block->getProduct();
+        $prev_product = $goodwin_helper->getPrevProduct($_product);
+        $next_product = $goodwin_helper->getNextProduct($_product);
+?>
+<?php if($prev_product || $next_product):?>
+<div class="prev-next-products">
+    <?php if($prev_product): ?>
+    <?php
+        $productImage = $_imagehelper->init($prev_product, 'category_page_grid')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(90);
+        $productImageUrl = $productImage->getUrl();
+    ?>
+    <div class="product-nav product-prev">
+        <a href="<?php echo $prev_product->getProductUrl(); ?>" class="product-nav-arrow" title="<?php echo __('Previous Product'); ?>"><span><?php echo __('Prev'); ?></span></a>
+        <div class="product-nav-detail">
+            <div class="product-image">
+                <img class="product-image" src="<?php echo $productImageUrl; ?>" alt="<?php echo $productImage->getLabel(); ?>"/>
+            </div>
+            <div class="product-info">
+                <?php
+                    $_categoryIds = $prev_product->getCategoryIds();
+                    if(count($_categoryIds) > 0 && $_categoryIds[0] != $goodwin_helper->getRootCategoryId() ) {
+                        echo '<div class="product-cat">';
+                        $i = 0;
+                        foreach($_categoryIds as $_categoryId) {
+                            if($_categoryId != $goodwin_helper->getRootCategoryId()) {
+                                $category = $objectManager->create('Magento\Catalog\Model\Category')->load($_categoryId);
+                                if($i > 0)
+                                    break;
+                                echo '<a href="'.$category->getUrl().'">'.$category->getName().'</a>';
+                                $i ++;
+                            }
+                        }
+                        echo '</div>';
+                    }
+                ?>
+                <a href="<?php echo $prev_product->getProductUrl(); ?>" class="product-name" title="<?php echo __('Previous Product'); ?>"><?php echo $prev_product->getName(); ?></a>
+                <?php
+                if ($priceRender) {
+                    echo $priceRender->render(
+                        'final_price',
+                        $prev_product,
+                        [
+                            'include_container' => true,
+                            'display_minimal_price' => true,
+                            'zone' => 'item_list',
+                            'list_category_page' => true
+                        ]
+                    );
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php if($next_product): ?>
+    <?php
+        $productImage = $_imagehelper->init($next_product, 'category_page_grid')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(90);
+        $productImageUrl = $productImage->getUrl();
+    ?>
+    <div class="product-nav product-next">
+        <a href="<?php echo $next_product->getProductUrl(); ?>" class="product-nav-arrow" title="<?php echo __('Next Product'); ?>"><span><?php echo __('Next'); ?></span></a>
+        <div class="product-nav-detail">
+            <div class="product-image">
+                <img class="product-image" src="<?php echo $productImageUrl; ?>" alt="<?php echo $productImage->getLabel(); ?>"/>
+            </div>
+            <div class="product-info">
+                <?php
+                    $_categoryIds = $next_product->getCategoryIds();
+                    if(count($_categoryIds) > 0 && $_categoryIds[0] != $goodwin_helper->getRootCategoryId() ) {
+                        echo '<div class="product-cat">';
+                        $i = 0;
+                        foreach($_categoryIds as $_categoryId) {
+                            if($_categoryId != $goodwin_helper->getRootCategoryId()) {
+                                $category = $objectManager->create('Magento\Catalog\Model\Category')->load($_categoryId);
+                                if($i > 0)
+                                    break;
+                                echo '<a href="'.$category->getUrl().'">'.$category->getName().'</a>';
+                                $i ++;
+                            }
+                        }
+                        echo '</div>';
+                    }
+                ?>
+                <a href="<?php echo $next_product->getProductUrl(); ?>" class="product-name" title="<?php echo __('Next Product'); ?>"><?php echo $next_product->getName(); ?></a>
+                <?php
+                if ($priceRender) {
+                    echo $priceRender->render(
+                        'final_price',
+                        $next_product,
+                        [
+                            'include_container' => true,
+                            'display_minimal_price' => true,
+                            'zone' => 'item_list',
+                            'list_category_page' => true
+                        ]
+                    );
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
+<?php
+    }
+?>

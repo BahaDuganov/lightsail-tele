@@ -1,0 +1,234 @@
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+
+#post-comments * {
+    box-sizing: border-box;
+}
+
+/*styles for all blocks*/
+.c-count {
+    margin: 0 0 20px;
+    padding: 0;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.2em;
+}
+
+.c-img {width: 48px; position: absolute; left: 0; top: 0; z-index: 5;}
+.c-img img {width: 100%;}
+.c-reply, .c-comment {position: relative; margin-bottom: 18px;}
+
+.c-allcomments,
+.c-allcomments:visited {
+    display: block;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    background: #1979c3;
+    margin-top: 24px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    transition: 200ms cubic-bezier(.08,.52,.52,1) background-color;
+    text-decoration: none;
+}
+
+.c-allcomments:hover {
+    background-color: #e2e2e2;
+    color: #fff;
+    text-decoration: none;
+}
+
+/*reply form*/
+.c-replyform .left-hld,
+.c-replyform .right-hld {float:left; width: 35%; padding: 0px 15px 0 0;}
+.c-replyform textarea,
+.c-replyform input {
+    color: #222;
+    background: #fff!important;
+    display: block;
+    border-color: #e2e2e2;
+}
+.c-replyform textarea {
+    padding: 8px;
+    height: 70px;
+    border-bottom: 0px;
+}
+.c-replyform textarea:focus,
+.c-replyform input:focus {
+    box-shadow:none;
+}
+
+.c-replyform div.mage-error[generated] {
+    display: none!important;
+}
+.c-replyform .mage-error{
+    background-color: #fff3f3!important;
+    border-color:#d5d6da;
+}
+
+.c-replyform button {
+    display: block;
+    padding: 10px 22px;
+    font-size: 11px;
+    line-height: 16px;
+    text-transform: uppercase;
+    border-radius: 0;
+    border: 0;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    color: #fff;
+    background-color: #27c7d8;
+    outline: none;
+    text-decoration: none;
+}
+
+.c-replyform button:hover {
+    color: #fff;
+    background-color: #000;
+    outline: 0;
+    border: 0;
+}
+
+.c-replyform button.cancel {
+    background-color: #bcbcbc;
+    color: #fff;
+}
+
+.c-replyform button.cancel:hover {
+    background-color: #27c7d8;
+}
+
+.c-replyform .c-btn-hld {
+    background: #fbfbfb;
+    border:1px solid #e2e2e2;
+    padding: 8px;
+    text-align: right;
+}
+@media screen and (max-width: 414px) {
+    .c-replyform .c-btn-hld {
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+    }
+    .c-replyform .lr-hld {
+        order: 1;
+        -webkit-box-ordinal-group: 1;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+    }
+    .c-replyform button {
+        order: 3;
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+    }
+    .c-replyform form .c-btn-hld .input-box {
+        order: 2;
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 2;
+        -ms-flex-order: 2;
+    }
+    .c-replyform .clearfix {}
+}
+
+.c-replyform form .c-btn-hld  .input-box {
+    text-align: left;
+    padding: 6px 0;
+    display: inline-block;
+    float: left;
+}
+
+.c-replyform form .c-btn-hld .input-box .checkbox.required-entry {
+    float: left;
+    margin: 4px 10px 0 0;
+}
+
+.c-replyform form .c-btn-hld .input-box .checkbox.required-entry.mage-error {
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(250, 166, 166);
+    -moz-box-shadow: 0px 0px 5px 0px rgb(250, 166, 166);
+    box-shadow: 0px 0px 5px 0px rgb(250, 166, 166);
+}
+
+.c-replyform input[type="text"], .c-replyform input[type="email"] {
+    height: 36px;
+}
+/*comment*/
+.c-post .p-name { font-weight: 700;  color: #000;}
+.c-post .p-actions {padding: 8px 0 10px;}
+.c-post .p-actions {font-size: 12px;}
+.c-post .p-actions a {color: #27c7d8;margin-right: 10px; text-transform: uppercase;}
+.c-post .p-actions a:hover {text-decoration: underline; color: #000;}
+.c-post .p-actions span {
+    color: #90949c;
+}
+
+/*post's replies and reply form*/
+.p-replies {border-left: 1px dotted #bdbdbd; padding-left: 10px;}
+.p-replies .c-img {width: 36px;}
+.p-replies .c-post, .p-replies .c-replyform {margin-left: 20px;}
+.p-replies .c-comment {margin-bottom: 10px;}
+.p-replies .c-more {
+    background: #fbfbfb;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.p-replies .c-more a {color: #27c7d8; font-weight: 700; font-size: 11px;}
+.p-replies .c-more a:hover {text-decoration: underline;}
+.p-replies .c-more i{
+    width: 0px;
+    height: 0px;
+    border-left: 3px solid rgba(0, 0, 0, 0);
+    border-right: 3px solid rgba(0, 0, 0, 0);
+    border-top: 3px solid #768196;
+    vertical-align: middle;
+    margin-left: 3px;
+    position: relative;
+    top: 7px;
+}
+
+.c-comments .c-comment .p-text {
+    font-size: 14px;
+    line-height: 24px;
+    font-style: italic;
+}
+
+.c-comments .c-comment {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+@media screen and (max-width: 450px) {
+    .c-img {width: 38px;}
+    .c-post {font-size: 13px;}
+    .c-post .p-actions {font-size: 11px;}
+    .c-reply, .c-comment {position: relative; margin-bottom: 18px;}
+    .c-replyform, .c-post {margin-left: 0}
+    .p-replies {padding-left: 5px;}
+    .p-replies .c-img {width: 28px;}
+    .p-replies .c-post, .p-replies .c-replyform {margin-left: 34px;}
+    .p-replies .c-more a {font-size: 10px; padding: 3px;}
+    .c-replyform .left-hld,
+    .c-replyform .right-hld {float:none; width: 100%; padding: 0 0 5px 0}
+}

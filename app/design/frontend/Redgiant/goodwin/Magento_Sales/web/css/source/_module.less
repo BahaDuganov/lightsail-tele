@@ -1,0 +1,463 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .order-links {
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: #000;
+        font-family: "Montserrat", sans-serif;
+
+        .item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+
+    .order-actions-toolbar {
+        .action {
+            margin: 0 10px 0 0;
+        }
+    }
+
+    .order-details-items {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+
+        .order-title {
+            display: none;
+        }
+
+        .items-qty {
+            &:extend(.abs-reset-list all);
+
+            .item {
+                white-space: nowrap;
+            }
+
+            .title {
+                &:after {
+                    content: ': ';
+                }
+            }
+        }
+
+        .table-order-items {
+            .product-item-name {
+                margin-top: 0;
+            }
+
+            tbody + tbody {
+                border-top: @border-width__base solid @border-color__base;
+            }
+        }
+
+        .table-order-items {
+            .col.price .price, .col.subtotal .price {
+                font-size: 14px;
+                font-weight: 600;
+            }
+            tfoot {
+                border: 1px solid #f7f7f7;
+                .mark {
+                    background-color: #fbfbfb;
+                }
+                > tr > th, > tr > td {
+                    border: 0 !important;
+                }
+            }
+            .item-options {
+                font-size: 11px;
+                font-weight: 400;
+                text-transform: uppercase;
+                padding-left: 20px;
+            }
+        }
+        .item-options {
+            dt {
+                margin: 0;
+            }
+
+            dd {
+                margin: 0 0 15px;
+            }
+
+            &.links {
+                dt {
+                    display: inline-block;
+
+                    &:after {
+                        content: ': ';
+                    }
+                }
+
+                dd {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .order-pager-wrapper {
+        .toolbar-amount {
+            padding-top: 3px;
+        }
+
+        .pages-items {
+            .item {
+                &:first-child,
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .order-actions-toolbar {
+        margin-bottom: 25px;
+
+        .action {
+            &.print {
+                margin: 0;
+            }
+        }
+    }
+
+    .order-status {
+        &:extend(.abs-status all);
+        text-transform: uppercase;
+        font-size: 11px;
+        color: #15c979;
+    }
+
+    .page-title-wrapper {
+        .order-date {
+            margin: 0 0 @indent__base;
+            text-transform: uppercase;
+        }
+    }
+
+    .account,
+    [class^='sales-guest-'],
+    .sales-guest-view {
+        .page-title-wrapper {
+            .page-title {
+                margin-right: @indent__m;
+            }
+        }
+    }
+
+    .form-orders-search {
+        .field {
+            &.email,
+            &.zip {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .block-reorder {
+        .block-title {
+            &:extend(.abs-block-title all);
+        }
+        .product-items {
+            list-style: none;
+            padding: 0;
+        }
+        .product-item {
+            .checkbox {
+                position: relative;
+                top: 2px;
+                vertical-align: baseline;
+            }
+
+            .label {
+                margin: 0 10px 17px 0;
+                span {
+                    display: none;
+                }
+            }
+
+            .field.item {
+                display: inline-block;
+            }
+        }
+
+        .product-item-name {
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .actions-toolbar {
+            .action.primary {
+                padding: 8px 14px;
+            }
+        }
+
+        .sidebar-main & .subtitle,
+        .sidebar-additional & .subtitle {
+            &:extend(.abs-no-display all);
+        }
+    }
+
+    .block-order-details {
+        &-comments {
+            margin: 0 0 40px;
+
+            .comment-date {
+                font-weight: @font-weight__semibold;
+            }
+
+            .comment-content {
+                line-height: 1.6;
+                margin: 0 0 20px;
+            }
+        }
+
+        &-view {
+            .box-content {
+                .payment-method {
+                    .title {
+                        font-weight: @font-weight__regular;
+                    }
+
+                    .content {
+                        margin: 0;
+
+                        > strong {
+                            font-weight: @font-weight__regular;
+
+                            &:after {
+                                content: ': ';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .order-tracking {
+        border-bottom: @border-width__base solid @border-color__base;
+        margin: 0;
+        padding: 20px 0;
+
+        .tracking-title {
+            display: inline-block;
+        }
+
+        .tracking-content {
+            display: inline-block;
+            margin: 0 0 0 5px;
+        }
+    }
+
+    //
+    //  Guest order view page
+    //  ---------------------------------------------
+
+    [class^='sales-guest-'],
+    .sales-guest-view {
+        .column.main {
+            .block:not(.widget) {
+                &:extend(.abs-account-blocks all);
+            }
+        }
+    }
+
+    .data.table-order-items {
+        border: 1px solid #f7f7f7;
+        > thead > tr > th {
+            border: 1px solid #f7f7f7 !important;
+            width: auto;
+            font-weight: 400;
+        }
+        > tbody {
+            > tr{
+                &:nth-child(odd) {
+                    background-color: #f7f7f7;
+                }
+                td {
+                    border: 1px solid #f7f7f7 !important;
+                    width: auto;
+                    &:first-child {
+                        font-weight: 700;
+                    }
+                    &.actions {
+                        text-align: center;
+                        .action {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .account {
+        .order-details-items {
+            .table-order-items {
+                .product-item-name,
+                .price-including-tax,
+                .price-excluding-tax,
+                .items-qty {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            }
+        }
+
+        .toolbar {
+            &:extend(.abs-add-clearfix-mobile all);
+
+            .pages {
+                float: right;
+            }
+
+            .limiter {
+                clear: both;
+            }
+        }
+    }
+
+    .order-details-items {
+        thead {
+            display: block;
+
+            tr,
+            td {
+                display: block;
+            }
+        }
+    }
+
+    .table-wrapper {
+        .table.table-order-items {
+            tfoot {
+                td.order-pager-wrapper {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .order-pager-wrapper {
+        .toolbar-amount {
+            left: inherit;
+            position: relative;
+            text-align: center;
+            top: inherit;
+        }
+
+        .pages {
+            text-align: center;
+        }
+
+        .action.previous,
+        .action.next {
+            margin: 0;
+        }
+    }
+    .order-actions-toolbar .action {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .data.table-order-items{
+        > tbody > tr > td {
+            padding-left: 5px !important;
+            padding-right: 7px !important;
+            border-bottom: none !important;
+            &:last-child {
+                border-bottom: 1px solid #f7f7f7;
+            }
+        }
+        > tfoot > tr > td, > tfoot > tr > th {
+            padding-left: 5px !important;
+            padding-right: 7px !important;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .table-order-items {
+        .subtotal,
+        .amount {
+            text-align: right;
+        }
+
+        &.creditmemo {
+            .col {
+                &.qty,
+                &.discount,
+                &.subtotal {
+                    text-align: center;
+                }
+
+                &.total {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .order-pager-wrapper {
+        .order-pager-wrapper-top {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .pages {
+            float: right;
+        }
+    }
+
+    .order-actions-toolbar .actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .page-title-wrapper {
+        .order-date {
+            @order-status-indent: ceil(@h1__margin-bottom__desktop/2);
+            .lib-css(margin-top, -@order-status-indent);
+        }
+    }
+
+    //
+    //  Guest order view page
+    //  ---------------------------------------------
+
+    [class^='sales-guest-'],
+    .sales-guest-view {
+        .column.main {
+            .block:not(.widget) {
+                .block-content {
+                    &:extend(.abs-add-clearfix-desktop all);
+
+                    .box {
+                        &:extend(.abs-blocks-2columns all);
+                        margin-bottom: @indent__base;
+                    }
+                }
+            }
+        }
+    }
+}

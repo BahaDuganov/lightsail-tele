@@ -1,0 +1,334 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@form-field__vertical-indent__desktop: 29px;
+@form-calendar-icon__color: @primary__color;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .fieldset {
+        .lib-form-fieldset();
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        > .field,
+        > .fields > .field {
+            .lib-form-field();
+
+            &.no-label {
+                > .label {
+                    &:extend(.abs-visually-hidden all);
+                }
+            }
+
+            &.choice {
+                .label {
+                    display: inline-block;
+                    font-weight: normal;
+                }
+            }
+
+            .label {
+                .column:not(.main) & {
+                    font-weight: normal;
+                }
+                color: #555555;
+                font-weight: 400;
+                &:after {
+                    color: #555555 !important;
+                }
+            }
+
+            .field.choice {
+                margin-bottom: @indent__s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            input[type=file] {
+                margin: @indent__xs 0;
+            }
+            .control {
+                position: relative;
+            }
+            .control div.mage-error {
+                position: absolute;
+                top: 0;
+                transform: translateY(-115%);
+                left: 10px;
+                z-index: 10;
+                padding: 7px 15px 7px 35px;
+                background: #fff;
+                box-shadow: 0 3px 10px rgba(0,0,0,.1);
+                border-radius: 4px;
+                margin: 0;
+                -webkit-transition: all 0.4s ease-out;
+                transition: all 0.4s ease-out;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    bottom: -7px;
+                    border-top: 8px solid #fff;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    z-index: 9;
+                    left: 15px;
+                }
+                &:before {
+                    content: "\E914";
+                    font-family: "icomoon";
+                    color: #e02b27;
+                    font-size: 14px;
+                    font-weight: 600;
+                    position: absolute;
+                    width: 17px;
+                    height: 17px;
+                    left: 10px;
+                    top: 7px;
+                }
+            }
+
+            input[type="text"], input[type="password"], 
+            input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"], input[type="radio"] {
+                border: 1px solid #e2e2e2;
+                height: 40px;
+                &:focus {
+                    box-shadow: none;
+                    outline: none;
+                    border-color: #e2e2e2;
+                }
+            }
+        }
+        >.legend {
+            color: #555;
+        }
+    }
+
+    input[type="checkbox"] {
+        display: none;
+
+        + label {
+            font-size: 13px;
+            font-weight: normal;
+            line-height: 24px;
+            margin: 0 10px 12px 0;
+            min-width: 22px;
+            padding-left: 30px;
+            position: relative;
+
+            &:before, &:after {
+                box-sizing: content-box;
+                content: '';
+                display: block;
+                left: 0;
+                position: absolute;
+            }
+            &:before {
+                transition: background-color 0.2s;
+                background-color: #fff;
+                border-color: #e2e2e2;
+                border-style: solid;
+                border-width: 1px;
+                height: 20px;
+                text-align: center;
+                top: 1px;
+                width: 20px;
+            }
+            &:after {
+                transform: rotate(-45deg) scale(0);
+                transition: none;
+                background-color: transparent;
+                border-color: #000;
+                border-style: solid;
+                border-width: 0 0 2px 2px;
+                height: 4px;
+                left: 6px;
+                top: 7px;
+                width: 9px;
+            }
+        }
+
+        &:checked {
+            + label {
+                &:before {
+                    animation: borderscale .2s ease-in;
+                    -moz-animation: borderscale .2s ease-in;
+                    -webkit-animation: borderscale .2s ease-in;
+                }
+                &:after {
+                    transform: rotate(-45deg) scale(1);
+                    transition: transform 0.2s ease-out;
+                    content: '';
+                }
+            }
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .legend + .fieldset,
+    .legend + div {
+        clear: both;
+    }
+
+    .legend {
+        strong {
+            margin-left: @indent__xs;
+        }
+    }
+
+    fieldset.field {
+        border: 0;
+        padding: 0;
+    }
+
+    .field {
+        &.date {
+            &:extend(.abs-field-date all);
+
+            .time-picker {
+                display: inline-block;
+                margin-top: @indent__s;
+                white-space: nowrap;
+            }
+        }
+
+        .message {
+            &.warning {
+                margin-top: @indent__s;
+            }
+        }
+
+        textarea {
+            border: 1px solid #e2e2e2;
+            &:focus {
+                box-shadow: none;
+                outline: none;
+                border-color: #e2e2e2;
+            }
+        }
+    }
+
+    select {
+        white-space: normal;
+        color: #656565;
+        border: 1px solid #e2e2e2;
+        height: 38px;
+        background: #fff url(../images/select-bg.png) no-repeat 100% 45%;
+        background-clip: padding-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        background-size: 11px;
+        background-position: ~'calc(100% - 12px)' 50%;
+        &:focus {
+            box-shadow: none !important;
+            outline: none !important;
+            border-color: #e2e2e2;
+        }
+    }
+
+    .field-error,
+    div.mage-error[generated] {
+        margin-top: 7px;
+    }
+
+    .field-error {
+        .lib-form-validation-note();
+    }
+
+    .field .tooltip {
+        .lib-tooltip(right);
+        .tooltip-content {
+            min-width: 200px;
+            white-space: normal;
+        }
+    }
+
+    input:focus ~ .tooltip .tooltip-content,
+    select:focus ~ .tooltip .tooltip-content {
+        display: block;
+    }
+
+    ._has-datepicker {
+        ~ .ui-datepicker-trigger {
+            .lib-button-reset();
+            .lib-icon-font(
+            @_icon-font-content: @icon-calendar,
+            @_icon-font-color: @primary__color__lighter,
+            @_icon-font-size: @icon-calendar__font-size,
+            @_icon-font-line-height: @icon-calendar__font-size,
+            @_icon-font-display: block,
+            @_icon-font-text-hide: true
+            );
+            display: inline-block;
+            vertical-align: middle;
+
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+            }
+        }
+    }
+
+    //
+    //  Sidebar forms
+    //  -----------------------------------------
+
+    .sidebar {
+        .fieldset {
+            margin: 0;
+
+            > .field:not(.choice) >,
+            .fields > .field {
+                &:not(:last-child) {
+                    margin: 0 0 @form-field__vertical-indent;
+                }
+
+                .label {
+                    margin: 0 0 4px;
+                    padding: 0 0 @indent__xs;
+                    text-align: left;
+                    width: 100%;
+                }
+
+                .control {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .fieldset {
+        .legend {
+            &:extend(.abs-margin-for-forms-desktop all);
+        }
+
+        > .field {
+            margin: 0 0 18px;
+        }
+    }
+}

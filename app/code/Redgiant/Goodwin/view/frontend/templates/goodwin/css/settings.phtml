@@ -1,0 +1,29 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * <?php echo date("Y-m-d H:i:s"); ?>
+ */
+<?php
+    $s = $this->getConfig("goodwin_settings",$this->_coreRegistry->registry('cssgen_store'));
+    $_helper = $this->helper('Redgiant\Goodwin\Helper\Cssconfig');
+    $goodwin_helper = $this->helper('Redgiant\Goodwin\Helper\Data');
+?>
+<?php
+$boxed_layout_bg = "";
+if(isset($s['general']['boxed_layout_bg']) && $s['general']['boxed_layout_bg']) {
+	$boxed_layout_bg = $s['general']['boxed_layout_bg'];
+    $folderName = \Redgiant\Goodwin\Model\Config\Backend\Image\Boxedbg::UPLOAD_DIR;
+    $path = $folderName . '/' . $boxed_layout_bg;
+    $boxed_layout_bg = $goodwin_helper->getBaseUrl() . $path;
+}
+?>
+<?php if($boxed_layout_bg): ?>
+body {
+	background-image: url(<?php echo $boxed_layout_bg; ?>);
+}
+<?php endif; ?>
+<?php
+if(isset($s['custom_settings']['custom_style']) && $s['custom_settings']['custom_style'])
+    echo $s['custom_settings']['custom_style'];
+if(isset($s['custom_settings']['custom_style_2']) && $s['custom_settings']['custom_style_2'])
+    echo $s['custom_settings']['custom_style_2'];
+?>
