@@ -94,11 +94,11 @@
 
             .custom-text {
                 span {
-                    color: @theme_color;
+                    color: @theme_color_orange;
                 }
 
                 [class*='icon-'] {
-                    color: @theme_color;
+                    color: @theme_color_orange;
                 }
             }
 
@@ -175,17 +175,17 @@
             -ms-flex-align: center;
             -moz-align-items: center;
             align-items: center;
-            padding: 10px 18px;
+            padding: 10px 10px;
             color: #424242;
 
             .icon {
-                font-size: 13px;
+                font-size: 20px;
                 display: inline-block;
                 vertical-align: middle;
             }
 
             [class*='icon-'] {
-                color: @theme_color;
+                color: @theme_color_white;
                 transition: 0.2s;
             }
 
@@ -380,6 +380,18 @@
                 background-color: #fff;
                 box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
                 padding: 5px 0;
+            }
+        }
+    }
+
+    .page-header.type4 {
+        .top-bar {
+            .top-bar-right {
+                .minicart-holder {
+                    display: inline-block;
+                    vertical-align: middle;
+                    position: initial;
+                }
             }
         }
     }
