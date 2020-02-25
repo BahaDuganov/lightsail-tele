@@ -234,6 +234,25 @@
 						<div class="dropdn dropdn_wishlist link-only">
 							<a href="<?php echo $_helper->getBaseLinkUrl(). 'wishlist' ?>" class="dropdn-link" title="My Wish List"><i class="icon icon-heart-1"></i><span><?php echo __('Wishlist'); ?></span></a>
 						</div>
+						<div class="col-auto minicart-holder">
+							<div class="dropdn dropdn_search">
+							    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i></a>
+							    <div class="dropdn-content">
+	                                <div class="container">
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div>
+								</div>
+							</div>
+							<div class="dropdn dropdn_account">
+								<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i></a>
+								<div class="dropdn-content">
+		                            <div class="container">
+										<?php echo $this->getChildHtml("header.links"); ?>
+									</div>
+								</div>
+							</div>
+					    	<?php echo $this->getChildHtml("minicart"); ?>
+				    	</div>
 					</div>
 				</div>
 			</div>
@@ -248,25 +267,6 @@
 					<div class="nav-holder">
 						<?php echo $this->getChildHtml("navigation.sections"); ?>
 					</div>
-					<div class="col-auto minicart-holder">
-						<div class="dropdn dropdn_search">
-						    <a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-search2"></i><span><?php echo __('Search'); ?></span></a>
-						    <div class="dropdn-content">
-                                <div class="container">
-									<?php echo $this->getChildHtml("top.search"); ?>
-								</div>
-							</div>
-						</div>
-						<div class="dropdn dropdn_account">
-							<a href="javascript:void(0)" class="dropdn-link"><i class="icon icon-person"></i><span><?php echo __('My Account'); ?></span></a>
-							<div class="dropdn-content">
-	                            <div class="container">
-									<?php echo $this->getChildHtml("header.links"); ?>
-								</div>
-							</div>
-						</div>
-				    	<?php echo $this->getChildHtml("minicart"); ?>
-			    	</div>
 			    </div>
 		    </div>
 		</div>
