@@ -1,0 +1,307 @@
+<?php
+$configurationData = $this->getStoreConfigurationData();
+$storeList = $this->getStoresList();
+$mediaPath = $this->getMediaBaseUrl();
+$weekDays = $this->getWeekList();
+$placeHolder = $this->getPlaceholderImage();
+$postData = $this->getPostParams();
+$location = $this->getMapSession();
+$minRange = $configurationData['min-range'];
+$maxRange = $configurationData['max-range'];
+$averageRange = $configurationData['average-range'];
+$getMainStore = $this->getMainStoreDetails();
+$countryList = $this->getCountryList();
+?>
+
+<div class="wb-store-main wb-store-heading">
+    <h2>
+        <?php if (isset($configurationData['title'])):?>
+            <?= $configurationData['title'];?>
+        <?php else:?>
+            <?= 'Store List(s)'?>
+        <?php endif;?>
+    </h2>
+</div>
+
+<div class="wb-store-contents">
+    <div class="wb-store-form">
+        <div class="wb-store-fields">
+            <form name="store-form" id="store-form" enctype="multipart/form-data" action="#"
+                  method="post">
+                <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+                <input type="hidden" id="baseurl" value="<?= $block->getBaseUrl();?>">
+                <div class="store-main-content">
+                    <div class="wb-store-enter-field">
+                        <input type="text" id="wbcom-store" name="store-text" placeholder="<?php echo __('Enter Keyword'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['store-text']))) { echo $postData['store-text'];}?>"/>
+                        <select name="country">
+                            <option value="US" selected="">United States</option>
+                        </select>
+                        <input type="text" id="wbcom-state" name="state" placeholder="<?php echo __('State'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['state']))) { echo $postData['state'];}?>"/>
+                        <input type="text" id="wbcom-city" name="city" placeholder="<?php echo __('City'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['city']))) { echo $postData['city'];}?>"/>
+                        <input type="text" id="wbcom-zipcode" name="zipcode" placeholder="<?php echo __('Zipcode'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['zipcode']))) { echo $postData['zipcode'];}?>"/>
+                        <div class="wb-store-range-slider wb-store-range">
+                            <div id="slider-range">
+                            </div>
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" name="range">
+                            <input type="hidden" name="min-range" id="min-range" value="<?php if (isset($postData['min-range'])){ echo $postData['min-range'];}?>">
+                            <input type="hidden" name="max-range" id="max-range" value="<?php if (isset($postData['max-range'])){ echo $postData['max-range'];}?>">
+                            <input type="hidden" name="latitude" id="ulatitude" value="<?php if (isset($location['latitude'])){ echo $location['latitude'];}?>">
+                            <input type="hidden" name="longitude" id="ulongitude" value="<?php if (isset($location['longitude'])){ echo $location['longitude'];}?>">
+                        </div>
+                    </div>
+                    <div class="wb-store-search">
+                        <input type="submit" title="<?php echo __('Check Availability'); ?>" id="store-filter-check" class="action primary" value="<?php echo __('Search'); ?>" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="wb-store-listing-main">
+        <div class="wb-store-details wb-listing">
+            <?php if(!empty($storeList)) {?>
+                <?php foreach ($storeList as $key => $data) {
+                    $storeWorking = (array) json_decode($data['working_days']);
+                    $date = date('Y-m-d H:i:s');
+                    $day = date('D', strtotime($date));
+                    $dayVal = $weekDays[$day];
+                    $status = 'close';
+                    $check = $dayVal.'_check';
+                    if (array_key_exists($check,$storeWorking)){
+                        $status = $storeWorking[$check];
+                    }
+                    $openTime  = $storeWorking[$dayVal.'_opening_time'];
+                    $closeTime  = $storeWorking[$dayVal.'_closing_time'];
+                    ?>
+                    <div class="wb-store-data">
+                        <div class="wb-store-info-image">
+                            <?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
+                                <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
+                            <?php } else {?>
+                                <?= $placeHolder;?>
+                            <?php }?>
+                        </div>
+                        <div class="wb-store-details">
+                            <input type="hidden" name="values" id="<?= $key;?>" value="<?= $data['id'];?>">
+                            <span class="wb-store-name wb-store-info">
+                                <a href="javascript:void(0)" onclick="setStore(<?= $key?>)" value="<?= $data['id']?>">
+                                <h3><?= $data['store_name'];?></h3>
+                            </a>
+                            </span>
+                            <span class="wb-status wb-store-info">
+                                <?php if($status != 'close') {?>
+                                    <strong><?='Hours:'?></strong><?= ' ('.$openTime .' To '.$closeTime.' )';?>
+                                <?php }?>
+                                <span class="wb-status-state"><?= $status?></span>
+                            </span>
+                            <span class="wb-address wb-store-info">
+                                <strong><?= 'Address: '?></strong>
+                                <?= $data['address']?>
+                            </span>
+                            <span class="wb-description wb-store-info" id="des-view-more-<?= $key?>">
+                                <strong><?= 'Dealing In:'?></strong>
+                                <?= $data['store_description'];?>
+                            </span>
+                            <span class="wb-contact wb-store-info">
+                                <strong><?= 'Contact No.'?></strong>
+                                <?= $data['contact_no'];?>
+                            </span>
+                            <span class="wb-email wb-store-info">
+                                <strong><?= 'Email.'?></strong>
+                                <?= $data['contact_email'];?>
+                            </span>
+                        </div>
+                    </div>
+                <?php }?>
+            <?php } else{?>
+                <div class="no-store">
+                    <?php if ((!empty($postData)) && (isset($postData['store-text']))){
+                        echo 'No store is found with searching keyword, currently our main store visible on map';
+                    } else{
+                        echo 'No Store Found.';
+                    }
+                    ?>
+                </div>
+            <?php }?>
+        </div>
+        <div class="wb-store-maps">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var uLagL, uLongL, uLag, uLong;
+        uLagL = document.getElementById('ulatitude').value.length;
+        uLongL = document.getElementById('ulongitude').value.length;
+        var sLat, sLong, zoomLevel;
+        var storeList = <?php echo json_encode($storeList) ?>;
+        var mainStore = <?php echo json_encode($getMainStore) ?>;
+        var storeContent = new Array("");
+        var infowindow = new google.maps.InfoWindow();
+
+        for(var j=0; j< storeList.length; j++){
+            sLat = storeList[j]['lattitude'];
+            sLong = storeList[j]['longitude'];
+            zoomLevel = storeList[j]['zoom_level'];
+        }
+        if (storeList.length <= 0 ){
+            sLat = parseFloat('<?= $configurationData['lattitude']?>');
+            sLong = parseFloat('<?= $configurationData['longitude']?>');
+            zoomLevel = '<?= $configurationData['zoomLevel']?>';
+        }
+        if (zoomLevel > 0){
+            zoomLevel = 4;
+        }
+        var uluru = {lat: parseFloat(sLat), lng: parseFloat(sLong)};
+        var map = new google.maps.Map(
+            document.getElementById('map'),
+            {zoom: zoomLevel, center: uluru});
+        var marker = new google.maps.Marker({position: uluru, map: map});
+
+        /*code for start marker*/
+        if (storeList.length > 0){
+            for (var i = 0; i < storeList.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(storeList[i]['lattitude'], storeList[i]['longitude']),
+                    map: map,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                storeContent[i] = '<div class="wb-map-container">'+
+                    '<h4 class="store-name">'+storeList[i]['store_name']+'</h4>'+
+                    '<div id="bodyContent">'+
+                    '<p>'+storeList[i]['store_description']+'</p>'+
+                    '<p class="wb-store-contact">'+storeList[i]['contact_no']+' , '+storeList[i]['contact_email']+'</p>'+
+                    '</div>'+
+                    '</div>';
+                google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                    return function() {
+                        infowindow.setContent(storeContent[i]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker,i));
+            }
+        }else {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(sLat, sLong),
+                map: map,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            storeContent[i] = '<div class="wb-map-container">'+
+                '<h4 class="store-name">'+mainStore['main_store_name']+'</h4>'+
+                '<div id="bodyContent">'+
+                '<p>'+mainStore['main_store_description']+'</p>'+
+                '<p class="wb-store-contact">'+mainStore['main_store_mobile']+' , '+mainStore['main_store_email']+'</p>'+
+                '</div>'+
+                '</div>';
+            google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                return function() {
+                    infowindow.setContent(storeContent[i]);
+                    infowindow.open(map, marker);
+                }
+            })(marker,i));
+        }
+    }
+
+    function setStore(sId){
+        var storeList, lat,lng, mmzoomlevel;
+        var storeList = <?php echo json_encode($storeList) ?>;
+        var store = document.getElementById(sId);
+        var storeVal = store.value;
+        for(var j=0; j< storeList.length; j++){
+            if(storeList[j]['id'] == storeVal){
+                lat = storeList[j]['lattitude'];
+                lng = storeList[j]['longitude'];
+                mmzoomlevel = storeList[j]['zoom_level'];
+                break;
+            }
+        }
+        var uluru = {lat: eval(lat),lng: eval(lng) };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom:  eval(mmzoomlevel),
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+        var storeContent = new Array("");
+        var infowindow = new google.maps.InfoWindow();
+        for (var i = 0; i < storeList.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(storeList[i]['lattitude'], storeList[i]['longitude']),
+                map: map,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            storeContent[i] = '<div class="wb-map-container">'+
+                '<h4 class="store-name">'+storeList[i]['store_name']+'</h4>'+
+                '<div id="bodyContent">'+
+                '<p>'+storeList[i]['store_description']+'</p>'+
+                '<p class="wb-store-contact">'+storeList[i]['contact_no']+' , '+storeList[i]['contact_email']+'</p>'+
+                '</div>'+
+                '</div>';
+            google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                return function() {
+                    infowindow.setContent(storeContent[i]);
+                    infowindow.open(map, marker);
+                }
+            })(marker,i));
+        }
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<?= $configurationData['googleApi']?>&callback=initMap">
+</script>
+
+<!-- codes start for validating and sending ajax request -->
+<script type="text/javascript">
+    require([ 'jquery', 'jquery/ui'], function($){
+        $( function() {
+            var minRange = '<?php echo $minRange;?>';
+            var maxRange = '<?php echo $maxRange;?>';
+            var averageRange = '<?php echo $averageRange;?>';
+            var minrangeLen = $('#min-range').val().length;
+            console.log(minrangeLen);
+            if (minrangeLen > 0){
+                minRange = $('#min-range').val();
+                averageRange = $('#max-range').val();
+            }
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 0,
+                max: maxRange,
+                values: [ minRange, averageRange ],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val(ui.values[ 0 ]+" Km(s) " + " - " + ui.values[ 1 ]+ " Km(s) " );
+                    $('#min-range').val(ui.values[ 0 ]);
+                    $('#max-range').val(ui.values[ 1 ]);
+                }
+            });
+            $( "#amount" ).val($( "#slider-range" ).slider( "values", 0 )+" Km(s) " +
+                " - " + $( "#slider-range" ).slider( "values", 1 )+" Km(s) " );
+            $('#min-range').val($( "#slider-range" ).slider( "values", 0 ));
+            $('#max-range').val($( "#slider-range" ).slider( "values", 1 ));
+        } );
+
+        /*codes start for getting user current location*/
+        var ulati = $('#ulatitude').val().length;
+        if (ulati <= 0){
+            getLocation();
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        function showPosition(position) {
+            var ulat = position.coords.latitude;
+            var ulng = position.coords.longitude;
+            document.getElementById('ulatitude').value = ulat;
+            document.getElementById('ulongitude').value = ulng;
+        }
+    });
+</script>
+

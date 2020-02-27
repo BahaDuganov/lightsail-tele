@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <wbstore>
+            <general>
+                <enable>1</enable>
+                <page_title>Store Locator</page_title>
+                <lattitude>26.831914</lattitude>
+                <longititude>80.914033</longititude>
+                <main_store_name>Main Store</main_store_name>
+                <main_store_description>Mens, Womens, Electronic, etc.</main_store_description>
+                <main_store_mobile>9090909090</main_store_mobile>
+                <main_store_email>abhinay@gmail.com</main_store_email>
+                <apikey>AIzaSyCtjf0biMpWkb1Qpsig9-4yozuvd2wjztk</apikey>
+                <mapzoom>11</mapzoom>
+            </general>
+            <filter>
+                <min_range>0</min_range>
+                <max_range>2000</max_range>
+                <average_range>500</average_range>
+            </filter>
+        </wbstore>
+    </default>
+</config>

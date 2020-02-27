@@ -1,0 +1,47 @@
+<?php
+$helper = $this->helper('Wbcom\StoreLocator\Helper\Data');
+$configurationData = $helper->getConfigData();
+//print_r($configurationData);die('==asdsadsad');
+?>
+
+<div id="map" style="height:300px !important;"></div>
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "jquery/ui"
+    ], function ($) {
+        function getMap(latLat, latLng){
+            var uluru = {lat: parseFloat(latLat), lng: parseFloat(latLng)};
+            var map = new google.maps.Map(
+                document.getElementById('map'),
+                {zoom: 11, center: uluru});
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+        var lattitude, longitude;
+        var latLen = $('#lattitude').val().length;
+        var logiLen = $('#longitude').val().length;
+        if ((latLen > 0) && (logiLen > 0)){
+            lattitude = $('#lattitude').val();
+            longitude = $('#longitude').val();
+        }else{
+            var config = <?php echo json_encode($configurationData) ?>;
+            lattitude = config['lattitude'];
+            longitude = config['longitude'];
+        }
+        var uluru = {lat: parseFloat(lattitude), lng: parseFloat(longitude)};
+        var map = new google.maps.Map(
+            document.getElementById('map'),
+            {zoom: 11, center: uluru});
+        var marker = new google.maps.Marker({position: uluru, map: map});
+
+        google.maps.event.addListener(map, "click", function (e) {
+            $('#lattitude').val(e.latLng.lat());
+            $('#longitude').val(e.latLng.lng());
+            getMap(e.latLng.lat(), e.latLng.lng());
+        });
+    });
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<?= $configurationData['googleApi']?>">
+</script>

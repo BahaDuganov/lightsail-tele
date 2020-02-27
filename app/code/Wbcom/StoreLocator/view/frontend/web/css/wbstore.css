@@ -1,0 +1,186 @@
+.no-store{
+    color: red;
+    font-size: large;
+}
+#map {
+    height: 500px;
+    width: auto;
+}
+.wb-store-main {
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+.wb-store-main > h2 {
+    margin: 0px;
+}
+.wb-store-details.wb-listing {
+    height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+    float: left;
+    text-align: left;
+    width: 40% !important;
+    display: grid;
+    box-shadow: 0 0 10px #eee;
+    border-radius: 5px 5px 0;
+    background-color: #fff;
+}
+.wb-description{
+    text-align: left;
+}
+.wb-store-info-image {
+    padding-right: 15px;
+    width: 35%;
+}
+.wb-store-data {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 5px;
+}
+.store-name{
+    margin: 0px;
+}
+.wb-store-contact{
+    font-weight: bold;
+}
+.wb-status-state{
+    font-weight: bold;
+}
+.wb-store-enter-field input,
+.wb-store-enter-field select{
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    width: 32.4%;
+    float: left;
+    margin:5px;
+}
+/*Store Locator form*/
+.store-main-content {
+    padding: 20px 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+.wb-store-enter-field {
+    overflow: hidden;
+}
+#amount {
+    padding: 0;
+    background: none;
+}
+.ui-slider-handle{
+    background-color: #e6741d;
+    height: 10px;
+    width: 20px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+.grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+}
+.ui-slider-handle.ui-state-default.ui-corner-all {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+}
+#store-filter-check {
+    padding: 10px 30px;
+    border-radius: 4px;
+}
+.wb-store-range-slider.wb-store-range {
+    float: left;
+    width: 32.33%;
+    padding: 8px;
+    margin: 5px 5px 0;
+}
+.wb-store-range-slider input#amount {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+.wb-store-search {
+    padding: 0 5px;
+}
+
+/*Store Details*/
+.wb-store-details {
+    width: 65%;
+}
+.wb-store-info-image .wb-image{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.wb-store-info-image img {
+    border-radius: 5px;
+}
+.wb-store-details span {
+    display: block;
+    line-height: normal;
+    margin-top: 5px;
+}
+.wb-store-details h3{
+    margin:0;
+}
+
+
+/*Mobile Css*/
+@media only screen and (max-width: 767px) {
+    .wb-store-enter-field input,
+    .wb-store-enter-field select {
+        width: 100%;
+        margin:5px 0;
+    }
+    .wb-store-range-slider.wb-store-range {
+        width: 97%;
+        margin: 5px 0;
+    }
+    .wb-store-details.wb-listing {
+        width: 100% !important;
+        display: block;
+        float: none;
+    }    
+    #map {
+        height: 350px;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    
+    .wb-store-data {
+        display: block;
+    }
+    .wb-store-info-image {
+        padding-right: 0;
+        width: auto;
+    }
+    .wb-store-details {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .wb-store-maps {
+        margin-top:15px;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width:1141px ) {
+    .wb-store-enter-field input,
+    .wb-store-enter-field select,
+    .wb-store-range-slider.wb-store-range {
+        width: 32%;
+        margin: 4px;
+    }
+}

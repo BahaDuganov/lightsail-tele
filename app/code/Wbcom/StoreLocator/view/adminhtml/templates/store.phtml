@@ -1,0 +1,77 @@
+<?php
+$default = '10:00';
+$interval = '+30 minutes';
+$current = strtotime( '00:00' );
+$end = strtotime( '23:59' );
+$output = '';
+$arrayOption = [];
+while( $current <= $end ) {
+    $time = date( 'H:i', $current );
+    $sel = ( $time == $default ) ? ' selected' : '';
+    $arrayOption[]['value'] = date( 'h.i A', $current );
+    $current = strtotime( $interval, $current );
+}
+
+$days = [
+    'sunday'=> 'Sunday',
+    'monday'=> 'Monday',
+    'tuesday'=> 'Tuesday',
+    'wesnesday'=> 'Wednesday',
+    'thursday'=> 'Thursday',
+    'friday'=> 'Friday',
+    'saturday'=> 'Saturday'
+];
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$registryData = $objectManager->get('\Magento\Framework\Registry')->registry('store')->getData();
+$storeData = '';
+if (isset($registryData['working_days'])){
+    $storeData = json_decode($registryData['working_days']);
+    $storeData = (array) $storeData;
+}
+
+?>
+<style>
+    .holiday-list-status{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .holiday-list-main {
+        padding-top: 10px;
+    }
+    h3.days-heading{
+        font-weight: bold;
+        font-size: large;
+        margin-bottom: 0px;
+    }
+</style>
+<div class="holiday-list-main">
+    <?php foreach ($days as $key=> $day) { ?>
+        <div class="holiday-list">
+            <h3 class="days-heading"><?= $day;?></h3>
+            <div class="holiday-list-content">
+                <span class="holiday-list-status"><?= 'Open/Close';?></span>
+                <input type="checkbox" name="workingDays[<?= $key?>_check]" value="open" <?php if(isset($storeData[$key.'_check'])) { echo 'checked';} ?> >
+                <span class="holiday-seprator"><?= 'FROM';?></span>
+                <select name="workingDays[<?= $key?>_opening_time]">
+                    <?php foreach ($arrayOption as $data){ ?>
+                        <?php if(isset($storeData[$key.'_check'])) { ?>
+                            <option value="<?= $data['value'];?>" <?php if($storeData[$key.'_opening_time'] == $data['value']) { echo 'selected';} ?> ><?= $data['value'];?></option>
+                        <?php } else { ?>
+                            <option value="<?= $data['value'];?>"><?= $data['value'];?></option>
+                        <?php } ?>
+                    <?php } ?>
+                </select>
+                <span class="holiday-seprator"><?= 'TO';?></span>
+                <select name="workingDays[<?= $key?>_closing_time]">
+                    <?php foreach ($arrayOption as $data){ ?>
+                        <?php if(isset($storeData[$key.'_check'])) { ?>
+                            <option value="<?= $data['value'];?>" <?php if($storeData[$key.'_closing_time'] == $data['value']) { echo 'selected';} ?> ><?= $data['value'];?></option>
+                        <?php } else{?>
+                            <option value="<?= $data['value'];?>"><?= $data['value'];?></option>
+                        <?php } ?>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+    <?php } ?>
+</div>

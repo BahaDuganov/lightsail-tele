@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="wbstore" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="300">
+            <label>Store Locator</label>
+            <tab>wbcomcore</tab>
+            <resource>Wbcom_StoreLocator::store_config</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30">
+                <label>General Settings</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Store Page Title</label>
+                    <comment>For Store Page Title</comment>
+                </field>
+                <field id="lattitude" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Store Lattitude</label>
+                    <comment>For Showing Default Location In Map.</comment>
+                </field>
+                <field id="longititude" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Store Longititude</label>
+                    <comment>For Showing Default Location In Map.</comment>
+                </field>
+                <field id="main_store_name" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Store Name</label>
+                    <comment>For Showing Main Store Name.</comment>
+                </field>
+                <field id="main_store_description" translate="label" type="textarea" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Short Description</label>
+                    <comment>For Showing Main Store Short Description (Fill in keywords like, mens, womens etc.).</comment>
+                </field>
+                <field id="main_store_mobile" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Store Contact Number</label>
+                    <comment>For Showing Main Store Contact Number.</comment>
+                </field>
+                <field id="main_store_email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Main Store Contact Email</label>
+                    <comment>For Showing Main Store Email.</comment>
+                </field>
+                <field id="apikey" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Google Api(s) Key</label>
+                    <comment>Google Map Api Key For Showing Map On Frontend</comment>
+                </field>
+                <field id="mapzoom" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Google Map Zoom Level</label>
+                    <comment>For Showing Default Map And Zoom Level.</comment>
+                </field>
+            </group>
+            <group id="filter" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30">
+                <label>Filter Settings</label>
+                <field id="min_range" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Min Range For Slider</label>
+                    <comment>Range in km(s)</comment>
+                </field>
+                <field id="max_range" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Max Range For Slider</label>
+                    <comment>Range in km(s)</comment>
+                </field>
+                <field id="average_range" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Average Range For Filter</label>
+                    <comment>Range in km(s)</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

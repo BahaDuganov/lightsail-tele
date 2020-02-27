@@ -399,7 +399,7 @@ h6.h-lined,
     height: 3px;
     width: 100%;
     max-width: 100%;
-    background: #27c7d8;
+    background: #ff8b00;
     transform: translateX(-50%);
     transition: all 0.3s ease-out;
 }
@@ -4133,7 +4133,7 @@ button:hover, .cart.table-wrapper .actions-toolbar>.action:hover, .action-gift:h
           margin-top: 10px; } }
     .bnr.bnr--style-1-1 .bnr-caption .bnr-text3 {
       margin-top: .35em;
-      font-size: .4em;
+      font-size: .54em;
       line-height: 1.35em;
       font-weight: 700;
       text-transform: uppercase;

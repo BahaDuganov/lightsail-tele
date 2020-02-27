@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Wbcom\StoreLocator\Model\ResourceModel\Store\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wbcom_store</argument>
+            <argument name="resourceModel" xsi:type="string">Wbcom\StoreLocator\Model\ResourceModel\Store\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="wbcom_store_listing_grid_data_source" xsi:type="string">Wbcom\StoreLocator\Model\ResourceModel\Store\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Wbcom_StoreLocator::store" title="Store Locator"
+             translate="title" module="Wbcom_StoreLocator"
+             parent="Wbcom_Core::Wbcom" sortOrder="12"
+             resource="Wbcom_StoreLocator::store" dependsOnConfig="wbstore/general/enable"/>
+
+        <add id="Wbcom_StoreLocator::manage_store"
+             title="Manage Store" translate="title"
+             sortOrder="11" module="Wbcom_StoreLocator"
+             parent="Wbcom_StoreLocator::store"
+             action="wbstore/store/index"
+             resource="Wbcom_StoreLocator::manage_store"/>
+
+        <add id="Wbcom_StoreLocator::store_configuration"
+             title="Store Configuration" module="Wbcom_StoreLocator"
+             sortOrder="12" parent="Wbcom_StoreLocator::store"
+             action="adminhtml/system_config/edit/section/wbstore"
+             resource="Wbcom_StoreLocator::store_config"/>
+
+    </menu>
+</config>

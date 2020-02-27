@@ -1,0 +1,21 @@
+{
+  "name": "wbcomdesigns/module-core",
+  "description": "core module to manage all other modules related to wbcom",
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Wbcom",
+      "email": "support@wbcomdesigns.com",
+      "homepage": "https://zerodesk.wbcomdesigns.com",
+      "role": "Support"
+    }
+  ],
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Wbcom\\Core\\": ""
+    }
+  }
+}

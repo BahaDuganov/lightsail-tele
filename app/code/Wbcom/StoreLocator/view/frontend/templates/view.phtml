@@ -1,0 +1,258 @@
+<?php
+$configurationData = $this->getStoreConfigurationData();
+$storeList = $this->getStoresList();
+$mediaPath = $this->getMediaBaseUrl();
+$weekDays = $this->getWeekList();
+$placeHolder = $this->getPlaceholderImage();
+$postData = $this->getPostParams();
+$location = $this->getMapSession();
+$minRange = $configurationData['min-range'];
+$maxRange = $configurationData['max-range'];
+$averageRange = $configurationData['average-range'];
+$getMainStore = $this->getMainStoreDetails();
+$countryList = $this->getCountryList();
+?>
+<div class="home-locations">
+	<div class="locations">
+		<div class="lcontainer-fluid locations__container has-carousel">
+			<div class="locations__wrapper row">
+				<div class="locations_form col-md-4">
+					<div class="">
+						<header class="locations__header text-center"><h3 class="locations__title">Store Locations</h3><p class="locations__subtitle">Come in for a mattress buying experience unlike any other!</p>
+						</header>
+						<form class="locations-form">
+							<input name="zip" placeholder="enter zip code" type="number" class="input locations-form__input">
+							<button type="submit" class="locations-find" style="display: none;"></button>
+						</form>
+						<div class="text-center">
+							<a href="/storelocator" class="btn btn-locations"><span class="btn__label">All Locations</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="locations__items col-md-8">
+					<div class="locations__carousel flickity-enabled is-draggable" tabindex="0">
+						<div class="flickity-viewport" style="height: 523px; touch-action: pan-y;">
+							<div class="flickity-slider" style="left: 0px;">
+								<?php if(!empty($storeList)) {?>
+								<div class="stores-carousel js-brand-carousel slick-arrows-aside-simple" data-slick='{"slidesToShow": 3, "slidesToScroll": 2}'>
+					                <?php foreach ($storeList as $key => $data) {
+					                    $storeWorking = (array) json_decode($data['working_days']);
+					                    $date = date('Y-m-d H:i:s');
+					                    $day = date('D', strtotime($date));
+					                    $dayVal = $weekDays[$day];
+					                    $status = 'close';
+					                    $check = $dayVal.'_check';
+					                    if (array_key_exists($check,$storeWorking)){
+					                        $status = $storeWorking[$check];
+					                    }
+					                    $openTime  = $storeWorking[$dayVal.'_opening_time'];
+					                    $closeTime  = $storeWorking[$dayVal.'_closing_time'];
+					                    ?>
+		                     		<div>
+						            	<article class="location">
+											<div class="location_wrapper">
+												<a href="" class="">
+												<div class="location__map ir ir--map">
+													<?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
+						                                <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
+						                            <?php } else {?>
+						                                <?= $placeHolder;?>
+						                            <?php }?>
+												</div></a>
+												<div class="location_details">
+													<a href="" class="">
+														<h5 class="location_title"><?= $data['store_name'];?></h5></a>
+														<address class="location_address">
+															<span class="location_address location_address-street">5253 SE 82nd Ave, Suite 101 Portland</span>
+															<span class="location_address location_address-city">Oregon</span>,
+													        <span class="location_address">CA</span>
+													        <span class="location_address location_address-zip">97266</span>
+													        <span class="hide">USA</span>
+													    </address>
+													    <a href="tel:<?= $data['contact_no']?>" class="location_phone"><?= $data['contact_no']?></a>
+													<div class="location__hours">
+														<p><strong>Mon-Fri</strong> 10am - 9pm</p><p><strong class="location__hours-saturday">Sat</strong> 10am - 6pm</p><p><strong class="location__hours-sunday">Sun</strong> 11am - 6pm</p>
+													</div>
+													<div class="location__link-wrap">
+														<a href="" class="location__directions location__directions--details"><span class="btn-decor btn-decor--xs bnr-btn">view map<span class="btn-line"></span></span></a>
+													</div>
+												</div>
+											</div>
+										</article>
+						            </div>
+					                <?php }?>
+					            	<?php } else{?>
+					                <div class="no-store">
+					                    <?php if ((!empty($postData)) && (isset($postData['store-text']))){
+					                        echo 'No store is found with searching keyword, currently our main store visible on map';
+					                    } else{
+					                        echo 'No Store Found.';
+					                    }
+					                    ?>
+					                </div>
+					            	<?php }?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wb-store-contents">
+    <div class="wb-store-listing-main">
+        <div class="wb-store-details wb-listing">
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var uLagL, uLongL, uLag, uLong;
+        uLagL = document.getElementById('ulatitude').value.length;
+        uLongL = document.getElementById('ulongitude').value.length;
+        var sLat, sLong, zoomLevel;
+        var storeList = <?php echo json_encode($storeList) ?>;
+        var mainStore = <?php echo json_encode($getMainStore) ?>;
+        var storeContent = new Array("");
+        var infowindow = new google.maps.InfoWindow();
+
+        for(var j=0; j< storeList.length; j++){
+            sLat = storeList[j]['lattitude'];
+            sLong = storeList[j]['longitude'];
+            zoomLevel = storeList[j]['zoom_level'];
+        }
+        if (storeList.length <= 0 ){
+            sLat = parseFloat('<?= $configurationData['lattitude']?>');
+            sLong = parseFloat('<?= $configurationData['longitude']?>');
+            zoomLevel = '<?= $configurationData['zoomLevel']?>';
+        }
+        if (zoomLevel > 0){
+            zoomLevel = 4;
+        }
+        var uluru = {lat: parseFloat(sLat), lng: parseFloat(sLong)};
+        var map = new google.maps.Map(
+            document.getElementById('map'),
+            {zoom: zoomLevel, center: uluru});
+        var marker = new google.maps.Marker({position: uluru, map: map});
+
+        /*code for start marker*/
+        if (storeList.length > 0){
+            for (var i = 0; i < storeList.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(storeList[i]['lattitude'], storeList[i]['longitude']),
+                    map: map,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                storeContent[i] = '<div class="wb-map-container">'+
+                    '<h4 class="store-name">'+storeList[i]['store_name']+'</h4>'+
+                    '<div id="bodyContent">'+
+                    '<p>'+storeList[i]['store_description']+'</p>'+
+                    '<p class="wb-store-contact">'+storeList[i]['contact_no']+' , '+storeList[i]['contact_email']+'</p>'+
+                    '</div>'+
+                    '</div>';
+                google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                    return function() {
+                        infowindow.setContent(storeContent[i]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker,i));
+            }
+        }else {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(sLat, sLong),
+                map: map,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            storeContent[i] = '<div class="wb-map-container">'+
+                '<h4 class="store-name">'+mainStore['main_store_name']+'</h4>'+
+                '<div id="bodyContent">'+
+                '<p>'+mainStore['main_store_description']+'</p>'+
+                '<p class="wb-store-contact">'+mainStore['main_store_mobile']+' , '+mainStore['main_store_email']+'</p>'+
+                '</div>'+
+                '</div>';
+            google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                return function() {
+                    infowindow.setContent(storeContent[i]);
+                    infowindow.open(map, marker);
+                }
+            })(marker,i));
+        }
+    }
+
+    function setStore(sId){
+        var storeList, lat,lng, mmzoomlevel;
+        var storeList = <?php echo json_encode($storeList) ?>;
+        var store = document.getElementById(sId);
+        var storeVal = store.value;
+        for(var j=0; j< storeList.length; j++){
+            if(storeList[j]['id'] == storeVal){
+                lat = storeList[j]['lattitude'];
+                lng = storeList[j]['longitude'];
+                mmzoomlevel = storeList[j]['zoom_level'];
+                break;
+            }
+        }
+        var uluru = {lat: eval(lat),lng: eval(lng) };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom:  eval(mmzoomlevel),
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+        var storeContent = new Array("");
+        var infowindow = new google.maps.InfoWindow();
+        for (var i = 0; i < storeList.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(storeList[i]['lattitude'], storeList[i]['longitude']),
+                map: map,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            storeContent[i] = '<div class="wb-map-container">'+
+                '<h4 class="store-name">'+storeList[i]['store_name']+'</h4>'+
+                '<div id="bodyContent">'+
+                '<p>'+storeList[i]['store_description']+'</p>'+
+                '<p class="wb-store-contact">'+storeList[i]['contact_no']+' , '+storeList[i]['contact_email']+'</p>'+
+                '</div>'+
+                '</div>';
+            google.maps.event.addListener(marker, 'click', (function(marker,i) {
+                return function() {
+                    infowindow.setContent(storeContent[i]);
+                    infowindow.open(map, marker);
+                }
+            })(marker,i));
+        }
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<?= $configurationData['googleApi']?>&callback=initMap">
+</script>
+
+<!-- codes start for validating and sending ajax request -->
+<script type="text/javascript">
+    require([ 'jquery', 'jquery/ui'], function($){
+
+        /*codes start for getting user current location*/
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    });
+</script>
+
+<script>
+    require([
+    'jquery',
+    'slick-skin'
+    ], function ($, slickcarousel) {
+         slickcarousel.init('.stores-carousel');
+    });
+</script>
