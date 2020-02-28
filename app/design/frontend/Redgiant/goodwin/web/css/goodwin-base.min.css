@@ -1,6 +1,6 @@
 body {
     background-color: #fff;
-    color: #424242;
+    color: #262323;
     letter-spacing: 0;
     font-size: 14px;
     line-height: 24px;
@@ -42,7 +42,7 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
     background-color: #fff;
     border-color: #e2e2e2;
     border-radius: 0;
-    color: #424242;
+    color: #262323;
     font-size: 13px;
     height: 40px;
     line-height: 16px;
@@ -1754,6 +1754,9 @@ body.boxed .page-footer.global_width .footer-bottom:not(:first-child) .row:befor
 @media screen and (max-width: 767px) {
     .page-footer .collapsed-mobile {
         position: relative;
+    }
+    .page-footer .footer-middle .footer-social {
+        margin-top: 2rem;
     }
     .collapsed-mobile {
         position: relative;

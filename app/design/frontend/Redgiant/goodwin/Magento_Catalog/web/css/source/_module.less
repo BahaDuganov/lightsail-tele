@@ -170,6 +170,14 @@
         margin-bottom: 30px;
         margin-top: 30px;
 
+        .description {
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2;
+            letter-spacing: 0.18px;
+            text-align: left;
+        }
         .additional-attributes {
             width: auto;
             font-size: 11px;
@@ -184,6 +192,15 @@
                 padding: 7px 10px;
             }
         }
+
+        .items .data {
+            font-size: 12px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.25;
+            letter-spacing: 0.15px;
+        }
     }
 
     .product-info-main {
@@ -194,6 +211,13 @@
                 line-height: @line-height__base;
                 margin-bottom: @indent__s;
                 text-align: left;
+                font-family: "Open Sans", sans-serif;
+                font-size: 28px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.36;
+                letter-spacing: normal;
             }
         }
 
@@ -248,7 +272,13 @@
                 &.overview {
                     margin: 0 0 20px;
                     padding-top: 20px;
-                    border-top: 1px solid #f7f7f7;
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.67;
+                    letter-spacing: normal;
+                    text-align: left;
                 }
             }
 
@@ -853,8 +883,8 @@
             flex-basis: auto;
         }
         .product-info-price {
-            flex: 0 0 30%;
-            max-width: 30%;
+            flex: 0 0 50%;
+            max-width: 50%;
             padding-right: 10px;
         }
         .product-social-links {
@@ -879,16 +909,14 @@
                     span {
                         width: 27px;
                         height: 27px;
-                        &:after {
-                            display: none;
-                        }
                     }
                 }
             }
         }
         .action.tocart {
-            font-size: 14px;
+            font-size: 12px;
             padding: 16px 20px;
+            font-weight: normal;
             span:before {
                 display: inline-block;
                 vertical-align: text-top;
@@ -944,15 +972,15 @@
     .product-info-main {
         .price-box{
             height: 100%;
-            color: #000;
-            font-family: "Montserrat", sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: .5px;
-            line-height: 1.2em;
+            color: #262323;
+            font-family: "Open Sans", sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: normal;
+            line-height: 1.36;
             display: flex;
             flex-direction: column;
-            text-align: center;
+            text-align: left;
             justify-content: center;
 
             .price-label {
@@ -967,9 +995,9 @@
     }
 
     .product-info-main .product-attributes {
-        display: flex;
+        display: block;
         flex-wrap: wrap;
-        font-size: 11px;
+        font-size: 10px;
         margin-bottom: 20px;
 
         .product-info-stock-sku {
@@ -980,7 +1008,7 @@
                 font-size: 11px;
                 font-weight: 600;
                 &.available {
-                    color: #15c979;                    
+                    color: #ff8b00;
                 }
                 &.unavailable {
                     color: #ffc427;
@@ -993,6 +1021,8 @@
 
             .type {
                 font-weight: 400;
+                color: #ff8b00;
+                font-size: 10px;
                 &:after {
                     content: ':';
                 }
@@ -1317,6 +1347,22 @@
 
         .product.media {
             .lib-vendor-prefix-order(-1);
+        }
+        .box-tocart {
+            flex: 1 0 44%;
+            text-align: right;
+            right: 0;
+        }
+        .product-add-form {
+            .product-info-price {
+                flex: 0 0 40%;
+                padding-right: 10px;
+                max-width: 40%;
+            }
+            .product-social-links {
+                flex: 0 0 10%;
+                text-align: right;
+            }
         }
     }
     .catalog-product-view .column.main > .block {
