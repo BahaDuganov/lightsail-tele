@@ -353,23 +353,23 @@ h6.h-lined,
 .btn, .btn:active, .btn:active:focus, .btn:visited, .btn:focus {
     box-shadow: none;
     color: #fff;
-    background-color: #27c7d8;
+    background-color: #274375;
     outline: none;
     text-decoration: none;
 }
 .btn:hover, .btn:active:hover, .btn:focus:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #274375;
     outline: 0;
     transition: all 0.2s ease;
 }
 .btn--alt, .btn--alt:active, .btn--alt:active:focus, .btn--alt:visited, .btn--alt:focus {
     color: #fff;
-    background-color: #000;
+    background-color: #274375;
 }
 .btn--alt:hover {
     color: #fff;
-    background-color: #27c7d8;
+    background-color: #274375;
 }
 .btn-decor {
     position: relative;
@@ -6076,7 +6076,7 @@ body:not(.zoom-off) .bnr.bnr-hover-scale:hover > img {
   right: 30px;
   width: 72px;
   height: 72px;
-  background: #27c7d8;
+  background: #274375;
   text-align: center;
   pointer-events: none;
   transition: opacity 0.5s; }
