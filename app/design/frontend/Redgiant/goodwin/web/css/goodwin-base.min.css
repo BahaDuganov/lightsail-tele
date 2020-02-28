@@ -6520,7 +6520,7 @@ body:not(.zoom-off) .bnr.bnr-hover-scale:hover > img {
         .title-with-arrows--center .carousel-arrows:empty {
           display: none; }
 .price-box .old-price {
-  margin-right: 5px;
+  margin-right: 25px;
 }
 .pb-6, .py-6 {
   padding-bottom: 60px !important;
