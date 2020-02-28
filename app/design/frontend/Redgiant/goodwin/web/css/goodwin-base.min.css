@@ -89,13 +89,16 @@ h1,
 .h1-style {
     margin: 0 0 30px;
     padding: 0;
-    color: #000;
+    color: #262323;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 28px;
     font-family: "Montserrat", sans-serif;
-    line-height: 1.5em;
+    line-height: 1.2em;
+}
+.prod-carousel-tabs.goodwin-tabs .h1-style {
+    font-weight: bold;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     h1,
@@ -6086,7 +6089,7 @@ body:not(.zoom-off) .bnr.bnr-hover-scale:hover > img {
     color: inherit !important;
     text-decoration: none; }
   .back-to-top:hover {
-    background: #27c7d8; }
+    background: #274375; }
     .back-to-top:hover .icon {
       margin-top: -10px; }
       .back-to-top:hover .icon:after {
