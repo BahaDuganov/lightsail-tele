@@ -13,50 +13,53 @@ $getMainStore = $this->getMainStoreDetails();
 $countryList = $this->getCountryList();
 ?>
 
-<div class="wb-store-main wb-store-heading">
-    <h2>
-        <?php if (isset($configurationData['title'])):?>
-            <?= $configurationData['title'];?>
-        <?php else:?>
-            <?= 'Store List(s)'?>
-        <?php endif;?>
-    </h2>
-</div>
-
 <div class="wb-store-contents">
     <div class="wb-store-form">
         <div class="wb-store-fields">
             <form name="store-form" id="store-form" enctype="multipart/form-data" action="#"
                   method="post">
+                <div class="content-title">
+                <div class="title"><h2><?php if (isset($configurationData['title'])):?>
+                            <?= $configurationData['title'];?>
+                        <?php else:?>
+                            <?= 'Store List(s)'?>
+                        <?php endif;?>
+                    </h2>
+                </div>
+                <span class="description">Come in for a mattress buying experience unlike<br> any other!</span>
                 <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
                 <input type="hidden" id="baseurl" value="<?= $block->getBaseUrl();?>">
                 <div class="store-main-content">
                     <div class="wb-store-enter-field">
                         <input type="text" id="wbcom-store" name="store-text" placeholder="<?php echo __('Enter Keyword'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['store-text']))) { echo $postData['store-text'];}?>"/>
-                        <select name="country">
+                        <select style="display: none;">
                             <option value="US" selected="">United States</option>
                         </select>
-                        <input type="text" id="wbcom-state" name="state" placeholder="<?php echo __('State'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['state']))) { echo $postData['state'];}?>"/>
-                        <input type="text" id="wbcom-city" name="city" placeholder="<?php echo __('City'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['city']))) { echo $postData['city'];}?>"/>
+                        <input type="hidden" id="wbcom-state" name="state" placeholder="<?php echo __('State'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['state']))) { echo $postData['state'];}?>"/>
+                        <input type="hidden" id="wbcom-city" name="city" placeholder="<?php echo __('City'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['city']))) { echo $postData['city'];}?>"/>
                         <input type="text" id="wbcom-zipcode" name="zipcode" placeholder="<?php echo __('Zipcode'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['zipcode']))) { echo $postData['zipcode'];}?>"/>
                         <div class="wb-store-range-slider wb-store-range">
                             <div id="slider-range">
                             </div>
-                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" name="range">
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" name="range" style="display: none;">
                             <input type="hidden" name="min-range" id="min-range" value="<?php if (isset($postData['min-range'])){ echo $postData['min-range'];}?>">
                             <input type="hidden" name="max-range" id="max-range" value="<?php if (isset($postData['max-range'])){ echo $postData['max-range'];}?>">
                             <input type="hidden" name="latitude" id="ulatitude" value="<?php if (isset($location['latitude'])){ echo $location['latitude'];}?>">
                             <input type="hidden" name="longitude" id="ulongitude" value="<?php if (isset($location['longitude'])){ echo $location['longitude'];}?>">
                         </div>
+                        <input type="submit" title="<?php echo __('find'); ?>" id="zipcode-filter-check" class="zipcode" value="<?php echo __(''); ?>" />
                     </div>
                     <div class="wb-store-search">
-                        <input type="submit" title="<?php echo __('Check Availability'); ?>" id="store-filter-check" class="action primary" value="<?php echo __('Search'); ?>" />
+                        <input type="submit" title="<?php echo __('ALL LOCATION'); ?>" id="store-filter-check" class="action primary" value="<?php echo __('ALL LOCATION'); ?>" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div class="wb-store-listing-main">
+        <div class="wb-store-maps">
+            <div id="map"></div>
+        </div>
         <div class="wb-store-details wb-listing">
             <?php if(!empty($storeList)) {?>
                 <?php foreach ($storeList as $key => $data) {
@@ -109,6 +112,7 @@ $countryList = $this->getCountryList();
                                 <strong><?= 'Email.'?></strong>
                                 <?= $data['contact_email'];?>
                             </span>
+                            <a href="javascript:void(0)" onclick="setStore(<?= $key?>)" value="<?= $data['id']?>"><span class="view-map btn-decor">view map<span class="btn-line"></span></span></a>
                         </div>
                     </div>
                 <?php }?>
@@ -122,9 +126,6 @@ $countryList = $this->getCountryList();
                     ?>
                 </div>
             <?php }?>
-        </div>
-        <div class="wb-store-maps">
-            <div id="map"></div>
         </div>
     </div>
 </div>
@@ -304,4 +305,105 @@ $countryList = $this->getCountryList();
         }
     });
 </script>
-
+<style>
+    .page-main{
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .content-title {
+        text-align: center;
+        padding: 40px 0 30px;
+    }
+    .content-title input{
+        float: none;
+    }
+    .content-title #store-filter-check {
+        font-family: "Open Sans", sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.42;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        margin: auto;
+    }
+    #zipcode-filter-check {
+        width: 10px;
+        background: transparent;
+        border: none;
+    }
+    .wb-store-search {
+        padding-top: 20px;
+    }
+    .content-title .title h2 {
+        font-size: 28px;
+        font-weight: 800;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.21;
+        letter-spacing: normal;
+        text-align: center;
+        color: #262323;
+    }
+    .content-title span {
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #262323;
+    }
+    .content-title #wbcom-zipcode {
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.42;
+        letter-spacing: normal;
+        text-align: left;
+        color: #262323;
+    }
+    .wb-listing {
+        max-width: 1170px;
+        padding: 40px 15px;
+        margin: auto;
+        display: block;
+        position: relative;
+    }
+    .wb-store-data {
+        width: 24%;
+        display: inline-block;
+        flex-wrap: unset;
+        float: left;
+        border-bottom: none;
+    }
+    .wb-store-info-image {
+        width: 100%;
+    }
+    .wb-store-details {
+        width: 90%;
+        margin: auto;
+        padding-top: 20px;
+    }
+    .wb-store-details a {
+        display: block;
+    }
+    .wb-store-details .view-map {
+        font-size: 16px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: #262323;
+        text-transform: uppercase;
+        padding-top: 20px;
+        display: inline-block;
+    }
+</style>
