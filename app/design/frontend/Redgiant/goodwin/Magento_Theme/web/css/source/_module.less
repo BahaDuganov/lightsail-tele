@@ -1242,13 +1242,27 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .page-header {
         .top-bar {
-            height: 0;
-            min-height: 0;
+            height: auto;
+            min-height: auto;
             overflow: hidden;
             border: 0;
 
-            .header.links {
-                display: none;
+            .header.links li {
+                list-style: none;
+                a {
+                    color: #262323;
+                    font-weight: normal;
+                }
+            }
+
+            .top-bar-right {
+                .block-minicart {
+                    top: 60px;
+                }
+            }
+
+            .dropdn-link {
+                padding-left: 0;
             }
         }
 
@@ -1257,10 +1271,14 @@
         }
 
         .dropdn.dropdn_search .dropdn-content {
-            top: 100%;
             bottom: auto;
+            top: auto;
             margin-top: 1px;
             padding: 25px 0;
+        }
+
+        .dropdn.dropdn_account .dropdn-content {
+            top: auto;
         }
 
         .block-search {

@@ -2933,6 +2933,9 @@ body.fullpage-layout .bnslider-text-content .bnslider-text-content-flex {
   left: 50%;
   transform: translateX(-50%); }
   @media screen and (max-width: 991px) {
+    .bnslider-wrapper {
+      padding-top: 40px;
+    }
     .bnslider-arrows {
       left: 0;
       width: 100%;
