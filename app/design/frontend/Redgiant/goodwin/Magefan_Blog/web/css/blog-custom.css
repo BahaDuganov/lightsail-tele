@@ -54,6 +54,58 @@
 .terms ul li .tab-content p {
     font-size:16px;
 }
+.small-cirle {
+    border:solid 1px #274375;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+.h-line {
+    width: 1px;
+    height: 80px;
+    background: #000;
+    margin: 0 auto;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 101;
+}
+.col-odd .h-line {
+    margin-top: -10px;
+    margin-bottom:0;
+}
+.col-sm-2.col-odd {
+    padding-top: 194px
+}
+.about-map {
+    margin-top:-205px;
+}
+.text-circle {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+    min-height:96px;
+}
+.block-two .text-circle {
+    min-height:48px;
+}
+.block-two .col-sm-2.col-odd {
+    padding-top: 146px;
+}
+.row.block-two {
+    margin-top: -290px;
+}
+.col-odd .text-circle {
+    margin-top:10px;
+}
+.text-circle.col1, .text-circle.col5 {
+    padding-top: 48px;
+}
+.fix-width {
+    width:1140px;
+    overflow:auto;
+}
+
 .cms-inner h3 {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
@@ -116,4 +168,106 @@ h3.des-title {
     font-size:20px;
     font-weight:bold;
     white-space: nowrap;
+}
+.manufactures .block-img {
+    border: solid 0.3px #e5e5e5;
+    text-align:center;
+    width:100%;
+    padding:5px;
+    min-height:80px;
+    margin-bottom:23%;
+}
+.contact-index-index h2, .contact-index-index .form.contact legend {
+    color:#262323;
+    font-family: "Open Sans", sans-serif;
+    font-size:20px;
+    letter-spacing:0;
+    font-weight:bold;
+}
+.contact-index-index .form.contact .field.note {
+    color:#262323;
+    font-family: "Open Sans", sans-serif;
+    font-size:20px;
+    font-weight: 600;
+}
+.contact-index-index .contact-info-icon {
+    font-size:30px;
+}
+.contact-index-index .contact-info-icon {
+    width:50px;
+}
+.contact-index-index .contact-info-title {
+    line-height:32px;
+}
+.contact-index-index .contact-info-text {
+    margin-left:0;
+    padding-top:7px;
+    text-transform:none;
+}
+.contact-index-index .form.contact .field label {
+    font-size:14px;
+}
+.contact-index-index .form.contact .actions-toolbar .primary {
+    width:100%;
+}
+.contact-index-index .form.contact .actions-toolbar .primary .action.submit{
+    width:100%;
+    height:48px;
+    line-height:48px;
+    font-size:16px;
+    font-weight:600;
+    font-family: "Open Sans", sans-serif;
+    padding:0;
+}
+.contact-index-index .page-title-wrapper {
+    opacity:0;
+}
+@media screen and (max-width: 767px) {
+    .terms ul li .tab-content {
+        padding: 15px 15px 10px 15px;
+    }
+    .cms-inner p {
+        margin-bottom:15px;
+    }
+    .terms ul li {
+        margin-bottom:10px;
+    }
+    .terms ul li a {
+        padding:10px 15px;
+    }
+    .manufactures .block-img {
+        margin-bottom:10px;
+    }
+    .manufactures .col-sm-8 {
+        margin-bottom:10px;
+    }
+    .container.about-us {
+        padding-left:0;
+        padding-right:0;
+    }
+    .about-us .col-sm-6 {
+        margin-bottom:10px;
+    }
+    .about-us .col-sm-2 {
+        float:left;
+        width:50%;
+    }
+    .about-us .fix-width {
+        width:auto;
+    }
+    .row.block-two {
+        margin-top:-100px;
+    }
+    .about-us .block-three .text-circle{
+        min-height:0;
+    }
+    .about-us .block-three .col-odd {
+        padding-top:145px;
+    }
+    .text-circle.col1, .text-circle.col5 {
+        padding-top: 25px;
+    }
+    .block-two .col-sm-2.col-odd.four, .block-two .col-sm-2.col-odd.six {
+        padding-top:171px;
+    }
 }
