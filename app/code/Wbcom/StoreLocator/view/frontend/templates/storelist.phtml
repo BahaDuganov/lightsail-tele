@@ -31,17 +31,17 @@ $countryList = $this->getCountryList();
                 <input type="hidden" id="baseurl" value="<?= $block->getBaseUrl();?>">
                 <div class="store-main-content">
                     <div class="wb-store-enter-field">
-                        <input type="text" id="wbcom-store" name="store-text" placeholder="<?php echo __('Enter Keyword'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['store-text']))) { echo $postData['store-text'];}?>"/>
+                        <input type="hidden" id="wbcom-store" name="store-text" placeholder="<?php echo __('Enter Keyword'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['store-text']))) { echo $postData['store-text'];}?>"/>
                         <select style="display: none;">
                             <option value="US" selected="">United States</option>
                         </select>
                         <input type="hidden" id="wbcom-state" name="state" placeholder="<?php echo __('State'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['state']))) { echo $postData['state'];}?>"/>
                         <input type="hidden" id="wbcom-city" name="city" placeholder="<?php echo __('City'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['city']))) { echo $postData['city'];}?>"/>
-                        <input type="text" id="wbcom-zipcode" name="zipcode" placeholder="<?php echo __('Zipcode'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['zipcode']))) { echo $postData['zipcode'];}?>"/>
-                        <div class="wb-store-range-slider wb-store-range">
+                        <input type="text" id="wbcom-zipcode" name="zipcode" placeholder="<?php echo __('Enter Zip code'); ?>" value="<?php if ((!empty($postData)) && (isset($postData['zipcode']))) { echo $postData['zipcode'];}?>"/>
+                        <div class="wb-store-range-slider wb-store-range" style="display: none;">
                             <div id="slider-range">
                             </div>
-                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" name="range" style="display: none;">
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" name="range">
                             <input type="hidden" name="min-range" id="min-range" value="<?php if (isset($postData['min-range'])){ echo $postData['min-range'];}?>">
                             <input type="hidden" name="max-range" id="max-range" value="<?php if (isset($postData['max-range'])){ echo $postData['max-range'];}?>">
                             <input type="hidden" name="latitude" id="ulatitude" value="<?php if (isset($location['latitude'])){ echo $location['latitude'];}?>">
@@ -60,7 +60,7 @@ $countryList = $this->getCountryList();
         <div class="wb-store-maps">
             <div id="map"></div>
         </div>
-        <div class="wb-store-details wb-listing">
+        <div class="wb-listing">
             <?php if(!empty($storeList)) {?>
                 <?php foreach ($storeList as $key => $data) {
                     $storeWorking = (array) json_decode($data['working_days']);
