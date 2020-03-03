@@ -7433,7 +7433,9 @@ body:not(.zoom-off) .bnr.bnr-hover-scale:hover > img {
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none; }
-    
+    @media screen and (max-width: 1024px) {
+        .page-main .home-locations .locations .locations__container .locations__items .stores-carousel .location .location_wrapper .location_details {
+        padding: 5px; } }
     @media screen and (max-width: 1199px) {
       .contact-index-index .map-container {
         height: 300px; } }
