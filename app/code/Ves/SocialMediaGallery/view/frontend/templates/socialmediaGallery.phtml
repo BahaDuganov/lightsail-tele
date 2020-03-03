@@ -1,0 +1,73 @@
+<?php
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+    $currentStore = $storeManager->getStore();
+    $baseUrl = $currentStore->getBaseUrl();
+    $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+    function fetchData($url){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
+    $result = fetchData("https://api.instagram.com/v1/users/2158028319/media/recent?access_token=2158028319.e8efb08.66384ad5274145a391659086bfb5086c&callback=?&count=100");
+    //echo $result;
+    $result = json_decode($result);
+     // var_dump($result)->getData();
+   //  $result = json_decode($result,true);
+    ?>
+<script type="text/javascript">
+    require([ 'jquery', 'jquery/ui'], function($){
+        $(document).ready(function($) {
+    var $window = $(window);
+    function checkWidth() {
+        var windowsize = $window.width();
+        if (windowsize < 768) {
+            $(".social-media-title").css('display','none');
+        }else{
+            $(".social-media-title").removeAttr("style");
+        }
+    }
+        // Execute on load
+        checkWidth();
+        // Bind event listener
+        $(window).resize(checkWidth);
+        });
+    });
+</script>
+<div id ="social-media-gallary">
+    <div class="row">
+        <?php // if($result['meta']['code'] != 400){ ?>
+        <?php  $i = 0; $j = 0;
+        foreach ($result->data as $post):
+            $i++;$j = $i%2;
+            if($j == 0) $stringP ="right";
+            else $stringP ="left";
+        ?>
+            <div class="col-md-3 col-sm-4 col-xs-6 padding-box-social socials-<?= $stringP ?>">
+                <div class="box-instagram <?= $stringP ?>">
+                     <a class="instagram-unit" target="blank" href="<?= $post->link ?>">
+                    <img class="full_img" src="<?= $post->images->standard_resolution->url ?>"/>
+                    <div class="social-media-title">
+                        <div class="box-text-m"></div>
+                        <span>
+                            <?php if($post->caption != null)
+                                    $subtrCus = $post->caption->text;
+                                    echo substr( $subtrCus,  0, 80).'...';
+                            ?>
+                            <br><?php if($post->likes->count > 0){?>
+                                    <?= $post->likes->count;?> <img src="<?= $mediaUrl."images/icon/like_heart.png"; ?>"/><br>
+                                    <?php } ?>
+                        </span>
+                    </div>
+                </a>
+                </div>
+            </div>
+        <?php endforeach ?>
+          <?php // } ?>
+    </div>
+</div>
