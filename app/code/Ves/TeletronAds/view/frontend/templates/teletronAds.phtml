@@ -1,0 +1,152 @@
+<?php
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+    $currentStore = $storeManager->getStore();
+    $baseUrl = $currentStore->getBaseUrl();
+    $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+	$koreanCat = $_objectManager->create('Magefan\Blog\Model\Category')->load('korean');
+	$korean = $_objectManager->create('Magefan\Blog\Model\ResourceModel\Post\Collection')
+	->addActiveFilter()->addCategoryFilter($koreanCat)->setOrder('creation_time', 'DESC');
+
+	$chineseCat = $_objectManager->create('Magefan\Blog\Model\Category')->load('chinese');
+	$chinese = $_objectManager->create('Magefan\Blog\Model\ResourceModel\Post\Collection')
+	->addActiveFilter()->addCategoryFilter($chineseCat)->setOrder('creation_time', 'DESC');
+
+	$vietnamCat = $_objectManager->create('Magefan\Blog\Model\Category')->load('vietnamese');
+	$vietnam = $_objectManager->create('Magefan\Blog\Model\ResourceModel\Post\Collection')
+	->addActiveFilter()->addCategoryFilter($vietnamCat)->setOrder('creation_time', 'DESC');
+?>
+<div class="post-list-wrapper">
+	<div id="title-category-ads" class="title-category-ads">
+		<div class="row">
+		    <div class="col-xs-4 title korean">
+                <img src="<?= $mediaUrl ?>magefan_blog/korea.png" alt="<?= $koreanCat->getTitle() ?>" />
+		        <div><?= $koreanCat->getTitle() ?></div>
+		    </div>
+		    <div class="col-xs-4 title activeSub vietnamese">
+                <img src="<?= $mediaUrl ?>magefan_blog/vietnam.png" alt="<?= $koreanCat->getTitle() ?>" />
+		        <div><?= $vietnamCat->getTitle() ?></div>
+		    </div>
+		    <div class="col-xs-4 title chinese">
+                <img src="<?= $mediaUrl ?>magefan_blog/chinese.png" alt="<?= $koreanCat->getTitle() ?>" />
+		        <div><?= $chineseCat->getTitle() ?></div>
+		    </div>
+		</div>
+	</div>
+	<div class="row list-ads" id="korean-ads">
+        <div class="row">
+    	<?php $i = 0; $j = 0; foreach($korean as $keyCategory){ 
+    		$i++;$j = $i%2;
+            if($j == 0) $stringP ="right";
+            else $stringP ="left"; ?>
+        <div class="col-md-3 col-sm-3 col-xs-6 box-ads">
+            <div class="box-ads-content">
+                <div class="post-ftimg-hld">
+          			<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>">
+                    	<img src="<?= $mediaUrl.$keyCategory['featured_img']; ?>" alt="<?= $keyCategory['title'];?>">
+                	</a>
+                </div>
+                <div class="box-text">
+                    <p class="title-ads">
+                    	<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['title'];?>"><?= $keyCategory['title'];?></a>
+                    </p>
+                    <div class="box-read-more">
+                        <a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>" class="read-more-ads">Read More</a>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        </div>
+    </div>
+    <div class="row list-ads" id="chinese-ads">
+        <div class="row">
+    	<?php $i = 0; $j = 0; foreach($chinese as $keyCategory){ 
+    		$i++;$j = $i%2;
+            if($j == 0) $stringP ="right";
+            else $stringP ="left"; ?>
+        <div class="col-md-3 col-sm-3 col-xs-6 box-ads">
+            <div class="box-ads-content">
+                <div class="post-ftimg-hld">
+                  	<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>">
+                    	<img src="<?= $mediaUrl.$keyCategory['featured_img']; ?>" alt="<?= $keyCategory['title'];?>">
+                	</a>
+                </div>
+                <div class="box-text">
+                    <p class="title-ads">
+                    	<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>">
+                    	<?= $keyCategory['title'];?></a>
+                    </p>
+                    <div class="box-read-more">
+                        <a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>" class="read-more-ads">Read More</a>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        </div>
+    </div>
+    <div class="row list-ads activeSub" id="vietnam-ads">
+        <div class="row">
+    	<?php $i = 0; $j = 0; foreach($vietnam as $keyCategory){
+    		$i++;$j = $i%2;
+            if($j == 0) $stringP ="right";
+            else $stringP ="left"; ?>
+        <div class="col-md-3 col-sm-3 col-xs-6 box-ads <?= $stringP ?>">
+            <div class="box-ads-content">
+                <div class="post-ftimg-hld">
+                  	<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['featured_img'];?>">
+                    	<img src="<?= $mediaUrl.$keyCategory['featured_img']; ?>" alt="<?= $keyCategory['title'];?>">
+                	</a>
+                </div>
+                <div class="box-text">
+                    <p class="title-ads">
+                    	<a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['title'];?>"><?= $keyCategory['title'];?></a>
+                    </p>
+                    <div class="box-read-more">
+                        <a href="<?= $baseUrl ?>blog/post/<?= $keyCategory['identifier']; ?>" title="<?= $keyCategory['title'];?>" class="read-more-ads">Read More</a>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function ($) {
+        $(document).ready(function ($) {
+          $('#title-category-ads .korean').click(function(){
+          		if(!$(this).hasClass('activeSub')){
+
+	            	$('#title-category-ads .title').removeClass('activeSub');
+	                $(this).addClass('activeSub');
+	                $('#vietnam-ads').removeClass('activeSub');
+	                $('#chinese-ads').removeClass('activeSub');
+                 	$('#korean-ads').addClass('activeSub');
+	            }
+          });
+          	$('#title-category-ads .chinese').click(function(){
+          		if(!$(this).hasClass('activeSub')){
+
+	            	$('#title-category-ads .title').removeClass('activeSub');
+	                $(this).addClass('activeSub');
+	                $('#korean-ads').removeClass('activeSub');
+	                $('#vietnam-ads').removeClass('activeSub');
+                 	$('#chinese-ads').addClass('activeSub');
+	            }
+          	});
+          	$('#title-category-ads .vietnamese').click(function(){
+          		if(!$(this).hasClass('activeSub')){
+
+	            	$('#title-category-ads .title').removeClass('activeSub');
+	                $(this).addClass('activeSub');
+	                $('#korean-ads').removeClass('activeSub');
+	                $('#chinese-ads').removeClass('activeSub');
+                 	$('#vietnam-ads').addClass('activeSub');
+	            }
+          	});
+        });
+    });
+</script>
