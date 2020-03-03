@@ -55,13 +55,14 @@ $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
                     <div class="social-media-title">
                         <div class="box-text-m"></div>
                         <span>
-                            <?php if($post->caption != null)
-                                    $subtrCus = $post->caption->text;
-                                    echo substr( $subtrCus,  0, 80).'...';
-                            ?>
-                            <br><?php if($post->likes->count > 0){?>
-                                    <?= $post->likes->count;?> <img src="<?= $mediaUrl."images/icon/like_heart.png"; ?>"/><br>
+                            <?php if($post->likes->count > 0){?>
+                                    <?php //echo $post->likes->count;?>
+                                    <img src="<?= $mediaUrl."images/icon/like_heart.png"; ?>"/>
                                     <?php } ?>
+                            <?php if($post->caption != null) : ?>
+                           <?php     $subtrCus = $post->caption->text;
+                                echo '<div class="i-text">' . substr( $subtrCus,  0, 80).'...' . '</div>'; ?>
+                           <?php endif; ?>
                         </span>
                     </div>
                 </a>
