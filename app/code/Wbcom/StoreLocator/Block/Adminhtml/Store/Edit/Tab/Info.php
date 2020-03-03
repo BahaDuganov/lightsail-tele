@@ -167,8 +167,7 @@ class Info extends Generic implements TabInterface{
                 'name' => 'contact_no',
                 'label' => __('Number'),
                 'comment' => __('Number'),
-                'required' => true,
-                'class' => 'validate-number'
+                'required' => true
             ]
         );
         $fieldset->addField(

@@ -247,6 +247,9 @@
 .wb-store-details span h3{
     text-transform: uppercase;
 }
+.wb-store-data:nth-child(4n+5){
+    clear: both;
+}
 
 /*Mobile Css*/
 @media only screen and (max-width: 767px) {
@@ -271,9 +274,6 @@
         width: 100%;
         float: none;
         margin: auto;
-    }
-    .wb-store-data:nth-child(4n+5){
-        clear: both;
     }
 
 }
