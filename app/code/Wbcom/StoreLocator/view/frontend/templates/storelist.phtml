@@ -61,6 +61,7 @@ $countryList = $this->getCountryList();
             <div id="map"></div>
         </div>
         <div class="wb-listing">
+            <div class="round-maps">
             <?php if(!empty($storeList)) {?>
                 <?php foreach ($storeList as $key => $data) {
                     $storeWorking = (array) json_decode($data['working_days']);
@@ -90,27 +91,18 @@ $countryList = $this->getCountryList();
                                 <h3><?= $data['store_name'];?></h3>
                             </a>
                             </span>
+                            <span class="wb-address wb-store-info">
+                                <strong><?= 'Address: '?></strong>
+                                <?= $data['address']?>
+                            </span>
+                            <span class="wb-contact wb-store-info">
+                                <?= $data['contact_no'];?>
+                            </span>
                             <span class="wb-status wb-store-info">
                                 <?php if($status != 'close') {?>
                                     <strong><?='Hours:'?></strong><?= ' ('.$openTime .' To '.$closeTime.' )';?>
                                 <?php }?>
                                 <span class="wb-status-state"><?= $status?></span>
-                            </span>
-                            <span class="wb-address wb-store-info">
-                                <strong><?= 'Address: '?></strong>
-                                <?= $data['address']?>
-                            </span>
-                            <span class="wb-description wb-store-info" id="des-view-more-<?= $key?>">
-                                <strong><?= 'Dealing In:'?></strong>
-                                <?= $data['store_description'];?>
-                            </span>
-                            <span class="wb-contact wb-store-info">
-                                <strong><?= 'Contact No.'?></strong>
-                                <?= $data['contact_no'];?>
-                            </span>
-                            <span class="wb-email wb-store-info">
-                                <strong><?= 'Email.'?></strong>
-                                <?= $data['contact_email'];?>
                             </span>
                             <a href="javascript:void(0)" onclick="setStore(<?= $key?>)" value="<?= $data['id']?>"><span class="view-map btn-decor">view map<span class="btn-line"></span></span></a>
                         </div>
@@ -126,6 +118,7 @@ $countryList = $this->getCountryList();
                     ?>
                 </div>
             <?php }?>
+            </div>
         </div>
     </div>
 </div>
@@ -305,105 +298,3 @@ $countryList = $this->getCountryList();
         }
     });
 </script>
-<style>
-    .page-main{
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-    .content-title {
-        text-align: center;
-        padding: 40px 0 30px;
-    }
-    .content-title input{
-        float: none;
-    }
-    .content-title #store-filter-check {
-        font-family: "Open Sans", sans-serif;
-        font-size: 12px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.42;
-        letter-spacing: normal;
-        text-align: left;
-        color: #ffffff;
-        margin: auto;
-    }
-    #zipcode-filter-check {
-        width: 10px;
-        background: transparent;
-        border: none;
-    }
-    .wb-store-search {
-        padding-top: 20px;
-    }
-    .content-title .title h2 {
-        font-size: 28px;
-        font-weight: 800;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.21;
-        letter-spacing: normal;
-        text-align: center;
-        color: #262323;
-    }
-    .content-title span {
-        font-size: 18px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: center;
-        color: #262323;
-    }
-    .content-title #wbcom-zipcode {
-        font-size: 12px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.42;
-        letter-spacing: normal;
-        text-align: left;
-        color: #262323;
-    }
-    .wb-listing {
-        max-width: 1170px;
-        padding: 40px 15px;
-        margin: auto;
-        display: block;
-        position: relative;
-    }
-    .wb-store-data {
-        width: 24%;
-        display: inline-block;
-        flex-wrap: unset;
-        float: left;
-        border-bottom: none;
-    }
-    .wb-store-info-image {
-        width: 100%;
-    }
-    .wb-store-details {
-        width: 90%;
-        margin: auto;
-        padding-top: 20px;
-    }
-    .wb-store-details a {
-        display: block;
-    }
-    .wb-store-details .view-map {
-        font-size: 16px;
-        font-weight: 600;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.38;
-        letter-spacing: 0.4px;
-        text-align: left;
-        color: #262323;
-        text-transform: uppercase;
-        padding-top: 20px;
-        display: inline-block;
-    }
-</style>

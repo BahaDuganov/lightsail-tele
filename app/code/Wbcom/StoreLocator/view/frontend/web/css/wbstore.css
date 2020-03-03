@@ -134,6 +134,119 @@
     margin:0;
 }
 
+/*dev custom*/
+.wbstore-store-index .page-main{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.content-title {
+    text-align: center;
+    padding: 40px 0 30px;
+}
+.content-title input{
+    float: none;
+}
+.content-title #store-filter-check {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    margin: auto;
+}
+#zipcode-filter-check {
+    width: 10px;
+    background: transparent;
+    border: none;
+}
+.wb-store-search {
+    padding-top: 20px;
+}
+.content-title .title h2 {
+    font-size: 28px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: center;
+    color: #262323;
+}
+.content-title span {
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #262323;
+}
+.content-title #wbcom-zipcode {
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262323;
+}
+.wb-listing {
+    max-width: 1170px;
+    padding: 40px 15px;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+.wb-store-data {
+    width: 23.2%;
+    display: inline-block;
+    flex-wrap: unset;
+    float: left;
+    border-bottom: none;
+    margin: 0 10px;
+    padding-right: 0;
+}
+.wb-store-info-image {
+    width: 100%;
+    padding-right: 0;
+}
+.wb-store-details {
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+    background-color: #fff;
+    padding: 15px;
+}
+.wb-store-details a {
+    display: block;
+}
+.wb-store-details .view-map {
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #262323;
+    text-transform: uppercase;
+    padding-top: 20px;
+    display: inline-block;
+}
+.round-maps {
+    float: none;
+    display: inline-block;
+}
+.wb-store-details span h3{
+    text-transform: uppercase;
+}
 
 /*Mobile Css*/
 @media only screen and (max-width: 767px) {
@@ -153,6 +266,14 @@
     }    
     #map {
         height: 350px;
+    }
+    .wb-store-data {
+        width: 100%;
+        float: none;
+        margin: auto;
+    }
+    .wb-store-data:nth-child(4n+5){
+        clear: both;
     }
 
 }
