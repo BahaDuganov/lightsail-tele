@@ -478,6 +478,9 @@
         }
         &:hover {
             .product-item-info {
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.5s ease;
+
                 > .shadow-overlay {
                     visibility: visible;
                     opacity: 1;
@@ -531,12 +534,6 @@
                             opacity: 1;
                             visibility: visible;
                         }
-                    }
-                }
-                &.type7 {
-                    .product-photo-container {
-                        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-                        transition: box-shadow 0.5s ease;
                     }
                 }
             }
