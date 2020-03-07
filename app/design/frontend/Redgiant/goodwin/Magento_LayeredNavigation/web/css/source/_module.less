@@ -196,6 +196,11 @@
 
         .filter-options-content {
             margin: 0 0 @indent__m;
+            position: absolute;
+            z-index: 999;
+            background-color: #ffffff;
+            width: 100%;
+            display: none;
 
             .item {
                 position: relative;
@@ -236,6 +241,9 @@
                         color: @theme_color;
                     }
                 }
+            }
+            &.actives {
+                display: block;
             }
         }
 
