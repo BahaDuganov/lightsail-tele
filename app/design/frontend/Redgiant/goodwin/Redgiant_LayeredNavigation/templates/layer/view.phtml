@@ -39,11 +39,11 @@
                 <?php $wrapOptions = true;
                 endif; ?>
                 <?php /*if($filter->getRequestVar() == 'cat'){ continue; }*/ $_class = 'active'; ?>
-                <div data-role="ln_collapsible" class="filter-options-item <?php echo $_class; ?>"
+                <div class="filter-options-item <?php echo $_class; ?>"
                      attribute="<?php echo $filter->getRequestVar() ?>">
-                    <div data-role="ln_title" class="filter-options-title"><?php /* @escapeNotVerified */
+                    <div class="filter-options-title"><?php /* @escapeNotVerified */
                         echo __($filter->getName()) ?></div>
-                    <div data-role="ln_content" class="filter-options-content"><?php /* @escapeNotVerified */
+                    <div class="filter-options-content"><?php /* @escapeNotVerified */
                         echo $block->getChildBlock('renderer')->setFilter($filter)->render($filter); ?></div>
                 </div>
                 <?php endif; ?>
@@ -86,6 +86,21 @@
                                 $(this).removeClass('active');
                             });
                         }
+
+                        $("#narrow-by-list .filter-options-item").on('click', function(){
+                            if ($(this).hasClass('actives')) {
+                                $(this).removeClass('actives');
+                                $(this).parent().find(".filter-options-content").removeClass('actives');
+                            }else{
+                                $(this).addClass('actives');
+                                $(this).parent().find(".filter-options-content").addClass('actives');
+                            }
+                        });
+                        $("#narrow-by-list .actives").on('click', function(){
+                            $(this).removeClass('actives');
+                            $(this).parent().find(".filter-options-content").removeClass('actives');
+
+                        });
                     });
                 });
             </script>
