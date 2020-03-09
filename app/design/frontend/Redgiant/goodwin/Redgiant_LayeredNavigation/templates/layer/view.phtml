@@ -90,16 +90,11 @@
                         $("#narrow-by-list .filter-options-item").on('click', function(){
                             if ($(this).hasClass('actives')) {
                                 $(this).removeClass('actives');
-                                $(this).parent().find(".filter-options-content").removeClass('actives');
+                                $(this).children(".filter-options-content").removeClass('actives');
                             }else{
                                 $(this).addClass('actives');
-                                $(this).parent().find(".filter-options-content").addClass('actives');
+                                $(this).children(".filter-options-content").addClass('actives');
                             }
-                        });
-                        $("#narrow-by-list .actives").on('click', function(){
-                            $(this).removeClass('actives');
-                            $(this).parent().find(".filter-options-content").removeClass('actives');
-
                         });
                     });
                 });
