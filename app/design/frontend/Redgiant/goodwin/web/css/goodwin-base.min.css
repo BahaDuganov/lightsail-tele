@@ -3139,11 +3139,20 @@ body.fullpage-layout .bnslider-text-content .bnslider-text-content-flex {
   .bnslider-with-tabs .bnslider-text-content .bnslider-text-content-flex .bnslider-vert {
     margin-left: 20px; } }
 
+@media (min-width: 992px) and (max-width: 1280px) {
+    .page-main .home-locations .locations .locations__container .locations__items .stores-carousel .location .location_wrapper .location_details {
+        padding-right: 1.6rem;
+        padding: 1.6rem; } }
+
+
 @media screen and (min-width: 992px) {
   .bnslider-with-tabs {
-    overflow: visible;
-    height: 100vh;
-    min-height: 700px; } }
+        overflow: visible;
+        height: 100vh;
+        min-height: 700px; }
+  .brand-carousel .slick-slide {
+        width: auto !important;
+        padding: 0 37px; } }
 
 @media screen and (max-width: 991px) {
   .bnslider-with-tabs {

@@ -275,7 +275,15 @@
         float: none;
         margin: auto;
     }
-
+    .locations_form .box_header {
+        padding-bottom: 15px;
+    }
+    .page-main .home-locations .locations .locations__container .locations__items .stores-carousel .location {
+        margin-right: 0;
+    }
+    .page-main .home-locations .locations .locations__container {
+        padding-bottom: 0;
+    }
 }
 
 @media only screen and (max-width: 400px) {
