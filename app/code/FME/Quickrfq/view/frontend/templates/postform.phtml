@@ -1,0 +1,323 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="info_ask_expert">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ask_expert')->toHtml();?>
+</div>
+
+<form class="form quickrfq"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="quickrfq_form"
+      enctype="multipart/form-data"
+      method="post"
+      onsubmit="return myFunction2()"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+                                
+                                
+    <fieldset class="fieldset">
+        <div class="team_aline">
+            <div class="field first_name required">
+                <label class="label" for="first_name"><?php echo __('First Name') ?></label>
+                <div class="control">
+                    <input name="first_name" id="first_name" value="" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field last_name required">
+                <label class="label" for="last_name"><span><?php /* @escapeNotVerified */ echo __('Last Name') ?></span></label>
+                <div class="control">
+                    <input name="last_name" id="last_name" value="" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="field what_model required">
+            <label class="label" for="what_model"><span><?php /* @escapeNotVerified */ echo __('Have you tried a massage chair before? If so, what model?') ?></span></label>
+            <div class="control">
+                <input name="what_model" id="what_model" title="<?php /* @escapeNotVerified */ echo __('what model') ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+        
+        <div class="field like_dislike">
+            <label class="label" for="like_dislike"><span><?php /* @escapeNotVerified */ echo __('What did you like or dislike about it?') ?></span></label>
+            <div class="control">
+                <textarea name="like_dislike" id="like_dislike" title="<?php /* @escapeNotVerified */ echo __('hat did you like or dislike about it?') ?>" class="input-text" cols="5" rows="5" data-validate="{required:true}"></textarea>
+            </div>
+        </div>
+        
+        <div class="field tall required">
+            <label class="label" for="tall"><span><?php /* @escapeNotVerified */ echo __('How Tall Are You?') ?></span></label>
+            <div class="control">
+                <input name="tall" id="tall" title="<?php /* @escapeNotVerified */ echo __('How Tall Are You') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+
+        <div class="field weight required">
+            <label class="label" for="weight"><span><?php /* @escapeNotVerified */ echo __('What is your weight?') ?></span></label>
+            <div class="control">
+                <input name="weight" id="weight" title="<?php /* @escapeNotVerified */ echo __('What is your weight') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+
+        <div class="field massage required">
+            <label class="label" for="massage"><span><?php /* @escapeNotVerified */ echo __('What type of massage do you prefer?') ?></span></label>
+            <div class="control">
+                <input name="massage" id="massage" title="<?php /* @escapeNotVerified */ echo __('What type of massage do you prefer') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+
+        <div class="field specific_features required">
+            <label class="label" for="specific_features"><span><?php /* @escapeNotVerified */ echo __('Do you have any price limitations?') ?></span></label>
+            <div class="control">
+                <input name="specific_features" id="specific_features" title="<?php /* @escapeNotVerified */ echo __('Do you have any price limitations?') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+
+        <div class="field price_limitations required">
+            <label class="label" for="price_limitations"><span><?php /* @escapeNotVerified */ echo __('Do you require any specific features? (Heat, 3D Features, Zero Gravity, Stretch, etc)') ?></span></label>
+            <div class="control">
+                <input name="price_limitations" id="price_limitations" title="<?php /* @escapeNotVerified */ echo __('Do you require any specific features? (Heat, 3D Features, Zero Gravity, Stretch, etc)') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+                <br>
+                  <p>If you are searching for a massage chair in a specific price range, let us know and we would be more than happy to accommodate your budget.</p>
+            </div>
+        </div>
+
+        <div class="field anything_know">
+            <label class="label" for="anything_know"><span><?php /* @escapeNotVerified */ echo __('Is there anything else we should know?') ?></span></label>
+            <div class="control">
+                <textarea name="anything_know" id="anything_know" title="<?php /* @escapeNotVerified */ echo __('Is there anything else we should know') ?>" class="input-text" cols="5" rows="5" data-validate="{required:true}"></textarea>
+            </div>
+        </div>
+        
+        <div class="field">
+                
+                <?php if($block->isCaptchaEnable()): ?>
+                       <div class="g-recaptcha"  name="recaptcha" id="recaptcha" data-sitekey="<?php echo $block->getPublicKey(); ?>"></div>
+                    <div ><p style="
+    cursor: auto;
+    /* text-decoration: underline; */
+    color: #9b9b9b;
+    padding-left: 235px;
+    font-family: Roboto,helvetica,arial,sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    margin-top: -35px;
+">by <a style="color: #9b9b9b;" rel="no-follow" target="_Blank" href="https://www.fmeextensions.com/request-for-quote-magento-2.html">Fmeextensions</a></p>  </div>
+                                                  <br>
+                        
+                         
+                <?php endif; ?>
+        </div>
+        
+        
+       
+        
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+<div class="add_links">
+    <div class="title">ADDITIONAL LINKS</div>
+    <div class="content_links">
+        <a href="#" title="xxx">shop massage chairs</a>
+        <a href="#" title="xxx">why buy from us?</a>
+        <a href="#" title="xxx">Massage chair financing</a>
+        <a href="#" title="xxx">customer testimonials</a>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function myFunction2() {
+        var exists = document.getElementById("g-recaptcha-response");
+
+            if(exists == null){
+                    
+            }
+        
+             else{
+
+            var check = document.getElementById("g-recaptcha-response").value;
+           // alert(check);
+                if(check=='' || check == null){
+                    document.getElementById("recaptcha").style.border = "1px solid #ea0e0e";
+                    return false;
+                }
+                else{
+                    document.getElementById("recaptcha").style.border = "none";
+                    return true;
+                }
+            }
+            
+   
+}
+</script>
+
+
+<style type="text/css">
+#recaptcha {
+    display: inline-block;
+    position: relative;
+}
+.quickrfq-index-index .columns{
+    max-width: 872px;
+    width: 100%;
+    margin: 0 auto;
+}
+.info_ask_expert img {
+    padding-bottom: 20px;
+}
+.info_ask_expert .strong-text {
+     font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      text-align: left;
+      color: #262323;
+}
+.title-content {
+    background-color: #274375;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+.title-content  h4 {
+    font-size: 28px;
+    color: #ffffff;
+}
+.title-content p {
+    font-size: 16px;
+}
+#quickrfq_form {
+    padding: 30px 0;
+}
+.team_aline {
+    display: block;
+    overflow: auto;
+    padding-bottom: 15px;
+}
+.team_aline .first_name,
+.team_aline .last_name,
+.team_aline .email {
+    width: 33.33%;
+    display: inline-block;
+    float: left;
+    padding-right: 3%;
+}
+
+.team_aline .email {
+    padding-right: 0;
+}
+#quickrfq_form .fieldset > .field.required > .label:after {
+    color: #b50000 !important;
+}
+#quickrfq_form .first_name .label:after,
+#quickrfq_form .last_name .label:after,
+#quickrfq_form .email .label:after {
+    color: #b50000;
+    content: '*';
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+.specific_features p {
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262323;
+    margin-top: 5px;
+}
+#quickrfq_form .fieldset > .field .label {
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262323;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.add_links .title{
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #262323;
+    padding-bottom: 20px;
+}
+
+.content_links a{
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    background-color: #e3e9f5;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 48.8%;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.content_links a:hover{
+    background-color: #ff8b00;
+    color: #ffffff;
+}
+.content_links a:nth-child(2n){
+    margin-right: 0;
+}
+#quickrfq_form .actions-toolbar {
+    margin-left: 0;
+}
+#quickrfq_form .action.submit.primary {
+    padding: 15px 50px;
+}
+.quickrfq-index-index .page-title {
+    display: none !important;
+}
+#quickrfq_form .fieldset > .field {
+    margin: 0 0 22px;
+}
+</style>
