@@ -20,9 +20,9 @@
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\BackButton</item>
             <item name="delete" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\DeleteButton</item>
-           <item name="reset" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\ResetButton</item> 
+            <item name="reset" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\ResetButton</item>
             <item name="save" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\SaveButton</item>
-          <item name="save_and_continue" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\SaveAndContinueButton</item>
+            <item name="save_and_continue" xsi:type="string">FME\Quickrfq\Block\Adminhtml\Rfq\SaveAndContinueButton</item>
         </item>
     </argument>
     <dataSource name="quickrfq_form_data_source">
@@ -60,7 +60,7 @@
                 </item>
             </argument>
         </field>
-       <field name="status">
+        <field name="status">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">FME\Quickrfq\Model\Config\Source\status</item>
                 <item name="config" xsi:type="array">
@@ -76,83 +76,70 @@
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
-        </field> 
+        </field>
         <field name="create_date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="readonly" xsi:type="boolean">true</item>
                     <item name="label" xsi:type="string" translate="true">Date Quote Requested</item>
                     <item name="formElement" xsi:type="string">date</item>
                     <item name="source" xsi:type="string">quickrfq</item>
                     <item name="sortOrder" xsi:type="number">15</item>
                     <item name="dataScope" xsi:type="string">create_date</item>
-                   
 
-                    
+
+
                 </item>
             </argument>
         </field>
 
-         <field name="update_date">
+        <field name="update_date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="readonly" xsi:type="boolean">true</item>
                     <item name="label" xsi:type="string" translate="true">Date Quote Updated</item>
                     <item name="formElement" xsi:type="string">date</item>
                     <item name="source" xsi:type="string">quickrfq</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">update_date</item>
-                   
 
-                    
+
+
                 </item>
             </argument>
         </field>
 
-        <field name="company">
+        <field name="first_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Company</item>
+                    <item name="label" xsi:type="string" translate="true">First Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">quickrfq</item>
                     <item name="sortOrder" xsi:type="number">25</item>
-                    <item name="dataScope" xsi:type="string">company</item>
-                    
+                    <item name="dataScope" xsi:type="string">first_name</item>
+
                 </item>
             </argument>
         </field>
 
-         <field name="contact_name">
+        <field name="last_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Company Name</item>
+                    <item name="label" xsi:type="string" translate="true">Last Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="dataScope" xsi:type="string">contact_name</item>
+                    <item name="dataScope" xsi:type="string">last_name</item>
                     <item name="sortOrder" xsi:type="number">30</item>
-                   
+
                 </item>
             </argument>
         </field>
 
-        <field name="phone">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Phone</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="dataScope" xsi:type="string">phone</item>
-                    <item name="sortOrder" xsi:type="number">35</item>
-                   
-                </item>
-            </argument>
-        </field>
-         <field name="email">
+        <field name="email">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
@@ -161,85 +148,33 @@
                     <item name="source" xsi:type="string">quickrfq</item>
                     <item name="dataScope" xsi:type="string">email</item>
                     <item name="sortOrder" xsi:type="number">40</item>
-                   
+
                 </item>
             </argument>
         </field>
 
-         <field name="date">
+        <field name="what_model">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Date Quote Needed By client</item>
-                    <item name="formElement" xsi:type="string">date</item>
-                    <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="dataScope" xsi:type="string">date</item>
-                    <item name="sortOrder" xsi:type="number">45</item>
-                   
-                </item>
-            </argument>
-        </field>
-
-        <field name="project_title">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Project Title</item>
+                    <item name="label" xsi:type="string" translate="true">What Model</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="dataScope" xsi:type="string">project_title</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
-                    
+                    <item name="dataScope" xsi:type="string">what_model</item>
+                    <item name="sortOrder" xsi:type="number">35</item>
+
                 </item>
             </argument>
         </field>
 
-        <field name="prd">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="dataType" xsi:type="string">string</item>
-                <item name="source" xsi:type="string">quickrfq</item>
-                <item name="label" xsi:type="string" translate="true">File</item>
-                <item name="visible" xsi:type="boolean">true</item>
-                <item name="formElement" xsi:type="string">fileUploader</item>
-                <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item> 
-               <item name="previewTmpl" xsi:type="string">FME_Quickrfq/image-preview</item> <item name="notice" xsi:type="string">Uploading is Disabled.You can only Preview File If Uploaded From Frontend</item> 
-               <item name="dataScope" xsi:type="string">prd</item>
-                <item name="required" xsi:type="boolean">false</item>
-                <item name="sortOrder" xsi:type="number">52</item>
-                <item name="disabled" xsi:type="boolean">true</item>
-            </item>
-        </argument>
-    </field>
-
-
-      
-      <field name="budget">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">FME\Quickrfq\Model\Config\Source\budget</item>
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Budget Status</item>
-                    <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="sortOrder" xsi:type="number">52</item>
-                    <item name="dataScope" xsi:type="string">budget</item>
-                    <item name="prefer" xsi:type="string">toggle</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                    <item name="default" xsi:type="number">0</item>
-                </item>
-            </argument>
-        </field> 
-        
-        <field name="overview">
+        <field name="like_dislike">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Overview</item>
+                    <item name="label" xsi:type="string" translate="true">What did you like or dislike about it?</item>
                     <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">quickrfq</item>
-                    <item name="dataScope" xsi:type="string">overview</item>
+                    <item name="dataScope" xsi:type="string">like_dislike</item>
                     <item name="sortOrder" xsi:type="number">55</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
@@ -248,6 +183,90 @@
             </argument>
         </field>
 
-        
+        <field name="tall">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">How Tall Are You?</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">tall</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+
+                </item>
+            </argument>
+        </field>
+
+        <field name="weight">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">What is your weight?</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">weight</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+
+                </item>
+            </argument>
+        </field>
+
+        <field name="massage">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">What type of massage do you prefer?</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">massage</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+
+                </item>
+            </argument>
+        </field>
+        <field name="specific_features">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Do you require any specific features?</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">specific_features</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+
+                </item>
+            </argument>
+        </field>
+        <field name="price_limitations">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Do you have any price limitations?</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">price_limitations</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+
+                </item>
+            </argument>
+        </field>
+
+        <field name="anything_know">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Is there anything else we should know?</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">quickrfq</item>
+                    <item name="dataScope" xsi:type="string">anything_know</item>
+                    <item name="sortOrder" xsi:type="number">55</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+
     </fieldset>
 </form>

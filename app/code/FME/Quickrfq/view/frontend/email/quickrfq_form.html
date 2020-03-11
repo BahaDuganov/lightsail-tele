@@ -22,10 +22,8 @@
 <!--@vars
 {"store url=\"\"":"Store Url",
 "skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
-"var data.name":"Sender Name",
-"var data.email":"Sender Email",
-"var data.phone":"Sender Telephone",
-"var data.overview":"Overview"}
+"var data.first_name":"Sender Name",
+"var data.email":"Sender Email"}
 @-->
 <!--@styles
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
@@ -35,63 +33,71 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 
 <table>
     <tr class="email-intro">
-        <td>            
+        <td>
             <p>
-                A new RFQ has been Submitted with the following Details. The Details are as follows.
+                A new Ask An Expert has been Submitted with the following Details. The Details are as follows.
             </p>
         </td>
     </tr>
     <tr class="email-summary">
         <td>
-            <h1>Quick RFQ</h1>
+            <h1>Ask An Expert</h1>
         </td>
     </tr>
     <tr class="email-information">
-        <td>            
-            <table class="message-info">                
+        <td>
+            <table class="message-info">
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Name:</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.contact_name}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">Name:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.first_name}} {{var data.last_name}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">E-mail: </td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.email}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">E-mail: </td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.email}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Company Name:  </td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">  {{var data.company}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">Have you tried a massage chair before? If so, what model?:  </td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">  {{var data.what_model}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Telephone: </td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.phone}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">What did you like or dislike about it?: </td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.like_dislike}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Project Title:</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.project_title}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">How Tall Are You?:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.tall}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Quote Needed By:</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.date}}</td>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">What is your weight?:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.weight}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Project Budget Status:  </td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.budget}}</td>                                        
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">What type of massage do you prefer?:  </td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.massage}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;vertical-align:top;width:30%;font-weight:bold;">Overview:</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.overview}}</td>                                        
+                    <td align="center" style="text-align:left;vertical-align:top;width:30%;font-weight:bold;">Do you have any price limitations?:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.specific_features}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;">&nbsp;</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp;</td>
+                    <td align="center" style="text-align:left;vertical-align:top;width:30%;font-weight:bold;">Do you require any specific features?:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.price_limitations}}</td>
                 </tr>
                 <tr>
-                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Regards,</td>
-                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp; </td>
+                    <td align="center" style="text-align:left;vertical-align:top;width:30%;font-weight:bold;">Is there anything else we should know?:</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.anything_know}}</td>
                 </tr>
-            </table>            
-            
-            
+                <tr>
+                    <td align="center" style="text-align:left;width:30%;">&nbsp;</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="center" style="text-align:left;width:30%;font-weight:bold;">Regards,</td>
+                    <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp; </td>
+                </tr>
+            </table>
+
+
         </td>
     </tr>
 </table>

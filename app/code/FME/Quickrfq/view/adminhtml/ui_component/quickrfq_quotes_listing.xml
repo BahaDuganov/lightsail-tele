@@ -251,7 +251,7 @@
                 </item>
             </argument>
         </column>
-        <column name="contact_name">
+        <column name="first_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -261,12 +261,12 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Contact Name</item>
+                    <item name="label" xsi:type="string" translate="true">First Name</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
         </column>
-        <column name="company">
+        <column name="last_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -276,7 +276,7 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Company</item>
+                    <item name="label" xsi:type="string" translate="true">Last Name</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
@@ -295,13 +295,13 @@
                     <item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
-        </column>       
-        <column name="project_title">
+        </column>
+        <column name="what_model">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="string">text</item>                        
-                    <item name="label" xsi:type="string" translate="true">Project Title</item>
+                    <item name="editor" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">What Model</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                 </item>
             </argument>
@@ -327,17 +327,18 @@
                     <item name="label" xsi:type="string" translate="true">Created</item>
                 </item>
             </argument>
-        </column>               
+        </column>
         <actionsColumn name="actions" class="FME\Quickrfq\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">107</item>
                     <item name="indexField" xsi:type="string">quickrfq_id</item>
+                    <item name="sortOrder" xsi:type="number">150</item>
                 </item>
             </argument>
         </actionsColumn>
-        
+
     </columns>
     <container name="sticky">
         <argument name="data" xsi:type="array">

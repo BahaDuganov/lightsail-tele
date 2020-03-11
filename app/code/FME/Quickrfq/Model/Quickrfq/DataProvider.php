@@ -73,9 +73,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$block->getId()] = $block->getData();
             $temp = $block->getData();
                 $img = [];
-                $img[0]['name'] = $temp['prd'];
-                $img[0]['url'] = $baseurl.$temp['prd'];
-               $temp['prd'] = $img;
+//                $img[0]['name'] = $temp['prd'];
+//                $img[0]['url'] = $baseurl.$temp['prd'];
+//               $temp['prd'] = $img;
         }
         
 

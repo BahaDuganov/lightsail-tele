@@ -46,36 +46,36 @@ class Post extends \FME\Quickrfq\Controller\Index
                 $error = true;
             }
         }
-        if (!\Zend_Validate::is(trim($post['first_name']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (!\Zend_Validate::is(trim($post['last_name']), 'NotEmpty')) {
-            $error = true;
-        }
+//        if (!\Zend_Validate::is(trim($post['first_name']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (!\Zend_Validate::is(trim($post['last_name']), 'NotEmpty')) {
+//            $error = true;
+//        }
         if (!\Zend_Validate::is(trim($post['email']), 'EmailAddress')) {
             $error = true;
         }
-        if (!\Zend_Validate::is(trim($post['what_model']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['tall']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['weight']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['massage']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['specific_features']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['price_limitations']), 'NotEmpty')) {
-            $error = true;
-        }
-        if (\Zend_Validate::is(trim($post['anything_know']), 'NotEmpty')) {
-            $error = true;
-        }
+//        if (!\Zend_Validate::is(trim($post['what_model']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['tall']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['weight']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['massage']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['specific_features']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['price_limitations']), 'NotEmpty')) {
+//            $error = true;
+//        }
+//        if (\Zend_Validate::is(trim($post['anything_know']), 'NotEmpty')) {
+//            $error = true;
+//        }
         if ($error) {
             throw new \Exception();
         }

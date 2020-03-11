@@ -1,0 +1,155 @@
+.quickrfq-index-index  #recaptcha {
+    display: inline-block;
+    position: relative;
+}
+.quickrfq-index-index .columns{
+    max-width: 872px;
+    width: 100%;
+    margin: 0 auto;
+}
+.info_ask_expert img {
+    padding-bottom: 20px;
+}
+.info_ask_expert .strong-text {
+     font-size: 14px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      text-align: left;
+      color: #262323;
+}
+.quickrfq-index-index .title-content {
+    background-color: #274375;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+.quickrfq-index-index .title-content  h4 {
+    font-size: 28px;
+    color: #ffffff;
+}
+.quickrfq-index-index .title-content p {
+    font-size: 16px;
+}
+#quickrfq_form {
+    padding: 30px 0;
+}
+.quickrfq-index-index .team_aline {
+    display: block;
+    overflow: auto;
+    padding-bottom: 15px;
+}
+.quickrfq-index-index .team_aline .first_name,
+.quickrfq-index-index .team_aline .last_name,
+.quickrfq-index-index .team_aline .email {
+    width: 33.33%;
+    display: inline-block;
+    float: left;
+    padding-right: 3%;
+}
+
+.quickrfq-index-index .team_aline .email {
+    padding-right: 0;
+}
+#quickrfq_form .fieldset > .field.required > .label:after {
+    color: #b50000 !important;
+}
+#quickrfq_form .first_name .label:after,
+#quickrfq_form .last_name .label:after,
+#quickrfq_form .email .label:after {
+    color: #b50000;
+    content: '*';
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+.quickrfq-index-index .specific_features p {
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262323;
+    margin-top: 5px;
+}
+#quickrfq_form .fieldset > .field .label {
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262323;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.quickrfq-index-index .add_links .title{
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #262323;
+    padding-bottom: 20px;
+}
+
+.quickrfq-index-index .content_links a{
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    background-color: #e3e9f5;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 48.8%;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.quickrfq-index-index .content_links a:hover{
+    background-color: #ff8b00;
+    color: #ffffff;
+}
+.quickrfq-index-index .content_links a:nth-child(2n){
+    margin-right: 0;
+}
+#quickrfq_form .actions-toolbar {
+    margin-left: 0;
+}
+#quickrfq_form .action.submit.primary {
+    padding: 15px 50px;
+}
+.quickrfq-index-index .page-title {
+    display: none !important;
+}
+#quickrfq_form .fieldset > .field {
+    margin: 0 0 22px;
+}
+@media screen and (max-width: 767px) {
+    .quickrfq-index-index .title-content h4 {
+        line-height: unset;
+    }
+    .quickrfq-index-index .content_links a {
+        width: 100%;
+        margin-right: 0;
+    }
+}
