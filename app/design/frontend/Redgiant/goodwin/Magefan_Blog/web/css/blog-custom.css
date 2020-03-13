@@ -335,6 +335,10 @@ h3.des-title {
     margin-left: 20px;
 }
 
+#title-category-ads .title div {
+    font-weight: bold;
+}
+
 @media only screen and (min-width: 768px) {
     #title-category-ads .title:nth-child(1), #title-category-ads .title:nth-child(2) {
         width: 32.8%;
