@@ -20,6 +20,8 @@ class LatestList extends \Redgiant\Filterproducts\Block\Home\FilterlistBlock {
             $category_id = $this->_helper->getRootCategoryId();
         }
 
+        $todayDate  = date('Y-m-d', time());
+
         $category = $objectManager->create('Magento\Catalog\Model\Category')->load($category_id);
         if(isset($category) && $category) {
             $collection->addMinimalPrice()
@@ -33,7 +35,9 @@ class LatestList extends \Redgiant\Filterproducts\Block\Home\FilterlistBlock {
                 ->addUrlRewrite()
                 //->addAttributeToFilter('is_saleable', 1, 'left')
                 ->addCategoryFilter($category)
-                ->addAttributeToSort('created_at','desc');
+//                ->addAttributeToSort('created_at','desc');
+                ->addAttributeToFilter('news_from_date', array('date' => true, 'lteq' => $todayDate))
+                ->addAttributeToFilter('news_to_date', array('date' => true, 'gteq' => $todayDate));
         } else {
             $collection->addMinimalPrice()
                 ->addFinalPrice()
@@ -45,7 +49,9 @@ class LatestList extends \Redgiant\Filterproducts\Block\Home\FilterlistBlock {
                 ->addAttributeToSelect('*')
                 ->addUrlRewrite()
                 //->addAttributeToFilter('is_saleable', 1, 'left')
-                ->addAttributeToSort('created_at','desc');
+//                ->addAttributeToSort('created_at','desc');
+                ->addAttributeToFilter('news_from_date', array('date' => true, 'lteq' => $todayDate))
+                ->addAttributeToFilter('news_to_date', array('date' => true, 'gteq' => $todayDate));
         }
         
         $collection->getSelect()
