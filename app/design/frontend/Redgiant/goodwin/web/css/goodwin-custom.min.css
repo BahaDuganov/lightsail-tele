@@ -1,0 +1,129 @@
+.cms-home .page-main {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.cms-home .page-header {
+    border-bottom: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.cms-home .bnslider--darktext .bnslider-text-content .bnslider-text-content-flex .btn-wrap > .btn-decor {
+    font-size: 28px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.36;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #262323;
+    font-family: "Open Sans", sans-serif;
+}
+.cms-home .slider-home .bnslider.bnslider--lg svg{
+    width: 100%;
+    height: 100%;
+}
+@media only screen and (min-width: 1400px) and (max-width: 1920px) {
+    .slider-home .bnslider.bnslider--lg{
+        height: auto !important;
+        min-height: auto !important;
+        max-height: initial;
+        padding-top: 40px;
+    }
+    .slider-home .bnslider-vert.sl_one {
+        margin: 0 14.5% !important;
+        top: 25%;
+    }
+    .slider-home .bnslider-vert.sl_three {
+        margin: 0 17% !important;
+        top: 20%;
+    }
+    .slider-home .bnslider-vert.sl_two {
+        margin: 0 12% 0 14.5% !important;
+        top: 12%;
+    }
+    .slider-home .bnslider-vert.sl_four {
+        margin: 0 12% 0 14.5% !important;
+        top: 20%;
+    }
+    .slider-home .bnslider-vert.sl_five {
+        margin: 0 12% 0 14.5% !important;
+        top: 32%;
+    }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .slider-home .bnslider.bnslider--lg{
+        height: auto !important;
+        min-height: auto !important;
+        max-height: initial;
+        padding-top: 40px;
+    }
+    .slider-home .bnslider-vert.sl_one {
+        margin: 0 14.5% !important;
+        top: 25%;
+    }
+    .slider-home .bnslider-vert.sl_three {
+        margin: 0 17% !important;
+        top: 20%;
+    }
+    .slider-home .bnslider-vert.sl_two {
+        margin: 0 12% 0 14.5% !important;
+        top: 12%;
+    }
+    .slider-home .bnslider-vert.sl_four {
+        margin: 0 12% 0 14.5% !important;
+        top: 20%;
+    }
+    .slider-home .bnslider-vert.sl_five {
+        margin: 0 12% 0 14.5% !important;
+        top: 32%;
+    }
+    .page-main .home-locations .locations .locations__container .locations__items .stores-carousel .location .location_wrapper .location_details {
+        padding-right: 20px !important;
+    }
+}
+@media only screen and (max-width: 767px){
+    .slider-home .bnslider.bnslider--lg {
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 90px;
+    }
+    .bnslider--darktext .bnslider-text-content .bnslider-text-content-flex .btn-wrap > .btn-decor {
+        font-size: 14px;
+    }
+    .slider-home .bnslider-vert.sl_one {
+        margin: 0 13% !important;
+        top: 25%;
+    }
+    .slider-home .bnslider-vert.sl_three {
+        margin: 0 13.5% !important;
+        top: 24%;
+    }
+    .slider-home .bnslider-vert.sl_two {
+        margin: 0 12% 0 13% !important;
+        top: 13%;
+    }
+    .slider-home .bnslider-vert.sl_four {
+        margin: 0 12% 0 13% !important;
+        top: 15%;
+    }
+    .slider-home .bnslider-vert.sl_five {
+        margin: 0 12% 0 13% !important;
+        top: 34%;
+    }
+    .banner-boxs .cat-mattresses,
+    .banner-boxs .cat-appliances,
+    .banner-boxs .make-japan {
+        padding: 0% 14% !important;
+    }
+    .home-locations .box_header {
+        padding-bottom: 20px;
+    }
+    .page-main .home-locations .locations .locations__container {
+        padding-bottom: 0;
+    }
+
+}

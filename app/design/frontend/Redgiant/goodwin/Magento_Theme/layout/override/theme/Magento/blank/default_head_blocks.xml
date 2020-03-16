@@ -16,5 +16,6 @@
         <css src="css/styles-l.css" media="screen and (min-width: 992px)"/>
         <css src="css/print.css" media="print"/>
         <css src="css/goodwin-base.min.css" />
+        <css src="css/goodwin-custom.min.css" />
     </head>
 </page>

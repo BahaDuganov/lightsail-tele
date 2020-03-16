@@ -5093,13 +5093,10 @@ body:not(.zoom-off) .bnr.bnr-hover-scale:hover > img {
     width: auto !important;
     transform: translateX(-50%) !important; }
   .bnr-full.bnr--style-1 .bnr-caption .bnr-text5 {
-    font-size: 1.05em !important;
     font-weight: 700; }
-  .bnr-full.bnr--style-1 .bnr-caption .bnr-text2 {
+  .bnr-full.bnr--style-1 .bnr-caption .bnr-text2 {.bnr-full.bnr--style-1 .bnr-caption .bnr-text5
     font-size: .535em;
     font-weight: 600; }
-  .bnr17.bnr--style-1-1 .bnr-caption .bnr-text3 {
-    font-size: .8em; }
   .bnr27.bnr--style-1-2 .bnr-caption .bnr-text1 {
     font-size: .28em; }
   .bnr27.bnr--style-1-2 .bnr-caption .bnr-text2 {
