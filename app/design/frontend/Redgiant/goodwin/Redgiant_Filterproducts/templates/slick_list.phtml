@@ -333,25 +333,6 @@ if(!$per_page)
                         <?php
                             $_productNameStripped = $block->stripTags($_product->getName(), null, true);
                         ?>
-                        <?php
-                            if($_grid_style != 'type7'):
-                                $_categoryIds = $_product->getCategoryIds();
-                                if(count($_categoryIds) > 0 && $_categoryIds[0] != $_goodwinhelper->getRootCategoryId() ) {
-                                    echo '<div class="product-cats">';
-                                    $i = 0;
-                                    foreach($_categoryIds as $_categoryId) {
-                                        if($_categoryId != $_goodwinhelper->getRootCategoryId()) {
-                                            $category = $objectManager->create('Magento\Catalog\Model\Category')->load($_categoryId);
-                                            if($i > 0)
-                                                echo ", ";
-                                            echo '<a href="'.$category->getUrl().'">'.$category->getName().'</a>';
-                                            $i ++;
-                                        }
-                                    }
-                                    echo '</div>';
-                                }
-                            endif;
-                        ?>
                         <strong class="product name product-item-name">
                             <a class="product-item-link"
                             href="<?php echo $_product->getProductUrl() ?>">
