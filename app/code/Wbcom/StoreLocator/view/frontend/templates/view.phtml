@@ -51,7 +51,7 @@ $countryList = $this->getCountryList();
 		                     		<div>
 						            	<article class="location">
 											<div class="location_wrapper">
-												<a href="" class="">
+												<a href="/wbstore/store/index" class="">
 												<div class="location__map ir ir--map">
 													<?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
 						                                <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
@@ -63,11 +63,7 @@ $countryList = $this->getCountryList();
 													<a href="" class="">
 														<h5 class="location_title"><?= $data['store_name'];?></h5></a>
 														<address class="location_address">
-															<span class="location_address location_address-street">5253 SE 82nd Ave, Suite 101 Portland</span>
-															<span class="location_address location_address-city">Oregon</span>,
-													        <span class="location_address">CA</span>
-													        <span class="location_address location_address-zip">97266</span>
-													        <span class="hide">USA</span>
+															<span class="location_address location_address-street"><?= $data['address']?></span>
 													    </address>
 													    <a href="tel:<?= $data['contact_no']?>" class="location_phone"><?= $data['contact_no']?></a>
 													<div class="location__hours">
