@@ -1312,6 +1312,58 @@
             display: none;
         }
     }
+
+    .slider-home .bnslider.bnslider--lg {
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 75px !important;
+    }
+
+    .page-header.type4 {
+        .top-bar-left {
+            display: block !important;
+        }
+
+        .top-bar-right {
+            .dropdn_wishlist,
+            .minicart-holder .dropdn_search,
+            .minicart-holder .dropdn_account {
+                display: none;
+            }
+
+            .action.showcart:before,
+            .action.showcart.active:before,
+            .action.showcart:hover:before,
+            .action.showcart.active:hover:before {
+                color: #ccc;
+            }
+
+            .minicart-wrapper {
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 55%;
+                padding-right: 0;
+                margin-left: 0 !important;
+
+                .action.showcart {
+                    float: right;
+                    z-index: 9999;
+                    margin-bottom: 16px;
+                }
+
+                .action.close {
+                    top: auto;
+                }
+            }
+
+            .block-minicart {
+                display: block;
+                float: left;
+                position: unset;
+            }
+        }
+    }
 }
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
 
