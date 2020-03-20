@@ -47,22 +47,5 @@ define([
                 processReviews(config.productReviewUrl);
             });
         }
-
-        $(function () {
-            $('.product-info-main .reviews-actions a').click(function (event) {
-                var anchor;
-
-                event.preventDefault();
-                anchor = $(this).attr('href').replace(/^.*?(#|$)/, '');
-                $('.product.data.items [data-role="content"]').each(function (index) { //eslint-disable-line
-                    if (this.id == 'reviews') { //eslint-disable-line eqeqeq
-                        $('.product.data.items').tabs('activate', index);
-                        $('html, body').animate({
-                            scrollTop: $('#' + anchor).offset().top - 50
-                        }, 300);
-                    }
-                });
-            });
-        });
     };
 });
