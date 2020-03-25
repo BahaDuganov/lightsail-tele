@@ -41,6 +41,12 @@
     min-height: auto !important;
     max-height: initial;
 }
+.show-pc {
+    display: block;
+}
+.show-desktop {
+    display: none;
+}
 
 @media only screen and (min-width: 1400px) {
     .slider-home .bnslider.bnslider--lg{
@@ -99,6 +105,12 @@
     }
     .page-main .home-locations .locations .locations__container .locations__items .stores-carousel .location .location_wrapper .location_details {
         padding-right: 20px !important;
+    }
+    .show-desktop {
+        display: block;
+    }
+    .show-pc {
+        display: none;
     }
 }
 @media only screen and (max-width: 767px){

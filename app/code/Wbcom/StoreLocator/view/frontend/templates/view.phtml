@@ -52,13 +52,21 @@ $countryList = $this->getCountryList();
 						            	<article class="location">
 											<div class="location_wrapper">
 												<a href="/wbstore/store/index" class="">
-												<div class="location__map ir ir--map">
-													<?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
-						                                <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
-						                            <?php } else {?>
-						                                <?= $placeHolder;?>
-						                            <?php }?>
-												</div></a>
+                                                    <div class="location__map ir ir--map show-pc">
+                                                        <?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
+                                                            <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
+                                                        <?php } else {?>
+                                                            <?= $placeHolder;?>
+                                                        <?php }?>
+                                                    </div>
+                                                    <div class="location__map ir ir--map show-desktop">
+                                                        <?php if((isset($data['imagelap'])) && (!empty($data['imagelap']))) { ?>
+                                                            <img src="<?= $mediaPath.$data['imagelap']?>" class="wb-image">
+                                                        <?php } else {?>
+                                                            <?= $placeHolder;?>
+                                                        <?php }?>
+                                                    </div>
+                                                </a>
 												<div class="location_details">
 													<a href="/wbstore/store/index">
 														<h5 class="location_title"><?= $data['store_name'];?></h5></a>

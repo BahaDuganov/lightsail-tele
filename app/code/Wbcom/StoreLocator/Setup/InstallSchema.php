@@ -164,6 +164,15 @@ class InstallSchema implements InstallSchemaInterface
                     'Store Image'
                 )
                 ->addColumn(
+                    'imagelap',
+                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    255,
+                    [
+                        'nullable'  => false,
+                    ],
+                    'Store Image Lap'
+                )
+                ->addColumn(
                     'address',
                     \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     255,

@@ -67,6 +67,28 @@ class Save extends \Magento\Backend\App\Action
                 $imageName = $postData['image']['value'];
             }
         }
+
+        $imageNameLap = '';
+        if ($files['imagelap']['name']) {
+            try {
+                $uploader = $this->_fileUploaderFactory->create(['fileId' => 'imagelap']);
+                $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+                $uploader->setAllowRenameFiles(false);
+                $uploader->setFilesDispersion(false);
+                $mediaUrl=$this->_filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)->getAbsolutePath('/images1');
+                $result = $uploader->save($mediaUrl);
+            } catch (\Exception $e) {
+                $this->_messageManager->addError($e->getMessage());
+                $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+                $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+                return $resultRedirect;
+            }
+            $imageNameLap = 'images1/'.$files['imagelap']['name'];
+        }else{
+            if ((isset($postData['imagelap'])) && (array_key_exists('value', $postData['imagelap']))){
+                $imageNameLap = $postData['imagelap']['value'];
+            }
+        }
 		
         $model = $this->storeFactory->create();
         if(isset($postData['id'])) {
@@ -89,6 +111,13 @@ class Save extends \Magento\Backend\App\Action
                     $model->setImage('');
                 }else{
                     $model->setImage($imageName);
+                }
+            }
+            if ((isset($postData['imagelap'])) || (!empty($imageNameLap))){
+                if ((isset($postData['imagelap'])) && (array_key_exists('delete', $postData['imagelap']))){
+                    $model->setImagelap('');
+                }else{
+                    $model->setImagelap($imageNameLap);
                 }
             }
             $model->setAddress($postData['address']);

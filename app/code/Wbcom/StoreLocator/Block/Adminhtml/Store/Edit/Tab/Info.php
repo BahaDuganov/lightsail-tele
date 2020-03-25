@@ -118,9 +118,19 @@ class Info extends Generic implements TabInterface{
             'image',
             'image',
             [
-                'title' => __('Store Image'),
-                'label' => __('Store Image'),
+                'title' => __('Store Image 500x250'),
+                'label' => __('Store Image 500x250'),
                 'name' => 'image',
+                'note' => 'Allow image type: jpg, jpeg, gif, png',
+            ]
+        );
+        $fieldset->addField(
+            'imagelap',
+            'image',
+            [
+                'title' => __('Store Image 236x118'),
+                'label' => __('Store Image 236x118'),
+                'name' => 'imagelap',
                 'note' => 'Allow image type: jpg, jpeg, gif, png',
             ]
         );
