@@ -25,7 +25,7 @@ $countryList = $this->getCountryList();
 							<button type="submit" class="locations-find" style="display: none;"></button>
 						</form>
 						<div class="text-center">
-							<a href="/wbstore/store/index" class="btn btn-locations"><span class="btn__label">All Locations</span></a>
+							<a href="/wbstore/store/index" class="btn btn-locations" title="locations"><span class="btn__label">All Locations</span></a>
 						</div>
 					</div>
 				</div>
@@ -51,34 +51,34 @@ $countryList = $this->getCountryList();
 		                     		<div>
 						            	<article class="location">
 											<div class="location_wrapper">
-												<a href="/wbstore/store/index" class="">
+												<a href="/wbstore/store/index" title="<?= $data['store_name'];?>">
                                                     <div class="location__map ir ir--map show-pc">
                                                         <?php if((isset($data['image'])) && (!empty($data['image']))) { ?>
-                                                            <img src="<?= $mediaPath.$data['image']?>" class="wb-image">
+                                                            <img src="<?= $mediaPath.$data['image']?>" class="wb-image" alt="<?= $data['store_name'];?>">
                                                         <?php } else {?>
                                                             <?= $placeHolder;?>
                                                         <?php }?>
                                                     </div>
                                                     <div class="location__map ir ir--map show-desktop">
                                                         <?php if((isset($data['imagelap'])) && (!empty($data['imagelap']))) { ?>
-                                                            <img src="<?= $mediaPath.$data['imagelap']?>" class="wb-image">
+                                                            <img src="<?= $mediaPath.$data['imagelap']?>" class="wb-image" alt="<?= $data['store_name'];?>">
                                                         <?php } else {?>
                                                             <?= $placeHolder;?>
                                                         <?php }?>
                                                     </div>
                                                 </a>
 												<div class="location_details">
-													<a href="/wbstore/store/index">
+													<a href="/wbstore/store/index" title="location">
 														<h5 class="location_title"><?= $data['store_name'];?></h5></a>
 														<address class="location_address">
 															<span class="location_address location_address-street"><?= $data['address']?></span>
 													    </address>
-													    <a href="tel:<?= $data['contact_no']?>" class="location_phone"><?= $data['contact_no']?></a>
+													    <a href="tel:<?= $data['contact_no']?>" class="location_phone" title="phone"><?= $data['contact_no']?></a>
 													<div class="location__hours">
 														<p><strong>Mon-Fri</strong> 10am - 9pm</p><p><strong class="location__hours-saturday">Sat</strong> 10am - 6pm</p><p><strong class="location__hours-sunday">Sun</strong> 11am - 6pm</p>
 													</div>
 													<div class="location__link-wrap">
-														<a href="/wbstore/store/index" class="location__directions location__directions--details"><span class="btn-decor btn-decor--xs bnr-btn">view map<span class="btn-line"></span></span></a>
+														<a href="/wbstore/store/index" class="location__directions location__directions--details" title="view map"><span class="btn-decor btn-decor--xs bnr-btn">view map<span class="btn-line"></span></span></a>
 													</div>
 												</div>
 											</div>
