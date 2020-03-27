@@ -14,8 +14,8 @@
 
         $pin_marker = $_helper->getBaseUrl() . 'wysiwyg/goodwin/googlemap/map-icon.png';
 ?>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?<?php if($_apikey): ?>key=<?php echo $_apikey; ?><?php else: ?>v=3.17<?php endif; ?>"></script>
-<script type="text/javascript">
+<script src="//maps.googleapis.com/maps/api/js?<?php if($_apikey): ?>key=<?php echo $_apikey; ?><?php else: ?>v=3.17<?php endif; ?>"></script>
+<script>
     function initialize() {
         var pos = new google.maps.LatLng(<?php echo $_center_lat; ?>, <?php echo $_center_lng; ?>);
         var mapOptions = {

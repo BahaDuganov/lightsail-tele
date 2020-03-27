@@ -146,7 +146,7 @@ class Usps extends \Plumrocket\ShippingTracking\Block\Adminhtml\System\Config\Co
 
                 $html = $this->_getIHtml();
                 $html = str_replace(["\r\n", "\n\r", "\n", "\r"], ['', '', '', ''], $html);
-                return '<script type="text/javascript">
+                return '<script>
                   //<![CDATA[
                     var iframe = document.createElement("iframe");
                     iframe.id = "i_main_frame";

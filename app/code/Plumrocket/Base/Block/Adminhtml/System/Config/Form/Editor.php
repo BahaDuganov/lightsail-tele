@@ -62,7 +62,7 @@ class Editor extends \Magento\Config\Block\System\Config\Form\Field
      */
     protected function _getJs()
     {
-        return "<script type='text/javascript'>
+        return "<script>
                     require(['Magento_Variable/variables']);
                 </script>";
     }

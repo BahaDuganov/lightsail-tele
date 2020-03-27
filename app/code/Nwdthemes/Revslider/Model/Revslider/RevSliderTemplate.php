@@ -1702,7 +1702,7 @@ class RevSliderTemplate {
 				if($is_package_parent){
 					$uids = $this->get_package_uids($m_slider['uid']);
 					?>
-					<script type="text/javascript">
+					<script>
 					slider_package_uids['<?php echo $m_slider['uid']; ?>'] = [];
 					slider_package_names['<?php echo $m_slider['uid']; ?>'] = {};
 					<?php

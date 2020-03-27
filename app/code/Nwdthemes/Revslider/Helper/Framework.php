@@ -1562,7 +1562,7 @@ class Framework extends \Magento\Framework\App\Helper\AbstractHelper {
         $localizeScripts = $this->getLocalizeScripts();
         if ($localizeScripts) {
             $html .= '<!-- REVOLUTION LOCALIZE SCRIPTS -->' . "\n";
-            $html .= '<script type="text/javascript">' . "\n";
+            $html .= '<script>' . "\n";
             foreach ($localizeScripts as $localizeScript) {
                 $html .= 'define(\'' . $localizeScript['var'] . '\', [], function() {' . "\n";
                 $html .=      $localizeScript['var'] . ' = ' . json_encode($localizeScript['lang']) . ';' . "\n";

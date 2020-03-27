@@ -525,7 +525,7 @@ class RevSliderAdmin extends \Nwdthemes\Revslider\Model\Revslider\Framework\RevS
 		$nonce = $this->_framework->wp_create_nonce("revslider_actions");
 		?>
 		<div class="updated below-h2 rs-update-notice-wrap" id="message"><a href="javascript:void(0);" style="float: right;padding-top: 9px;" id="rs-dismiss-notice"><?php echo __( '(never show this message again)&nbsp;&nbsp;<b>X</b>'); ?></a><p><?php echo __( 'Hi! Would you like to activate your version of Revolution Slider to receive live updates & get premium support? This is optional and not needed if the slider came bundled with a theme. '); ?></p></div>
-		<script type="text/javascript">
+		<script>
 			require(['jquery'], function(jQuery) {
 				jQuery('#rs-dismiss-notice').click(function () {
 					var objData = {
@@ -623,7 +623,7 @@ class RevSliderAdmin extends \Nwdthemes\Revslider\Model\Revslider\Framework\RevS
 					}
                 }
 				?>
-				<script type="text/javascript">
+				<script>
                     require(['jquery'], function(jQuery) {
                         jQuery('.rs-notices-button').click(function () {
 

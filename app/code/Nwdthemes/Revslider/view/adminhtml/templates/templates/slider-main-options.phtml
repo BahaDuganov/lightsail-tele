@@ -651,7 +651,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 							echo '	<span class="rs-preset-label">' . __('Save Current Settings as Preset') . '</span>';
 							echo '</span>';
 
-							echo '<script type="text/javascript">';
+							echo '<script>';
 							//$pjs = RevSliderFunctions::jsonEncodeForClientSide($pjs);
 							$pjs = RevSliderFunctions::jsonEncodeForClientSide($presets);
 							echo 'define(\'revslider_presets\', [\'jquery\'], function(jQuery) {';
@@ -663,7 +663,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 							<span class="tp-clearfix"></span>
 						</div>
 					 </div>
-					 <script type="text/javascript">
+					 <script>
 						require(['jquery', 'revslider_presets', 'loading', 'admin', 'settings', 'rev_lang', 'wpUtil', 'perfectScrollbar'],
                             function(jQuery, revslider_presets, showWaitAMinute, UniteAdminRev, RevSliderSettings, rev_lang) {
 
@@ -1693,7 +1693,7 @@ if (isset($linksEditSlides)) {
 					</div>
                 </div>
 
-                <script type="text/javascript">
+                <script>
                     rev_cm_custom_css = null;
                     rev_cm_custom_js = null;
 
@@ -1733,7 +1733,7 @@ if (isset($linksEditSlides)) {
 
 
 		<div class="settings_panel_right">
-			<script type="text/javascript">
+			<script>
 				define('drawToolBarPreview', ['jquery', 'themepunchTools'], function(jQuery, punchgs) {
 
 					return function() {
@@ -2641,7 +2641,7 @@ if (isset($linksEditSlides)) {
 
 							</div>
 
-							<script type="text/javascript">
+							<script>
 								require(['jquery', 'drawToolBarPreview'], function(jQuery, drawToolBarPreview) {
 									jQuery(document).ready(function() {
 										/**
@@ -4480,7 +4480,7 @@ if (isset($linksEditSlides)) {
 
                                 <div class="inside" style="display:none;">
                                     <?php echo $addon_values['markup']; ?>
-                                    <script type="text/javascript">
+                                    <script>
                                         <?php echo $addon_values['javascript']; ?>
                                     </script>
                                 </div>
@@ -4515,7 +4515,7 @@ if (isset($linksEditSlides)) {
                                 </div>
                             </div>
                         </div>
-                        <script type="text/javascript">
+                        <script>
                             require(['jquery'], function(jQuery) {
                                 jQuery('#use_access_permissions')
                                     .on('change', function () {
@@ -4829,7 +4829,7 @@ if (isset($linksEditSlides)) {
 		</div>
 
 		<div class="clear"></div>
-		<script type="text/javascript">
+		<script>
 			require(
 			    ['jquery', 'settings', 'drawToolBarPreview', 'admin', 'themepunchTools', 'tpColorPicker'],
                 function(jQuery, RevSliderSettings, drawToolBarPreview, UniteAdminRev, punchgs) {

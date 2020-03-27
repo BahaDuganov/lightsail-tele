@@ -188,7 +188,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
 		</ul>
 
 		<div style="clear:both"></div>
-		<script type="text/javascript">
+		<script>
 			require(['jquery'], function(jQuery) {
 				jQuery('document').ready(function() {
 					jQuery('.rs-slide-settings-tabs li').click(function() {
@@ -220,7 +220,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
 
                     <div class="tp-clearfix"></div>
 
-                    <script type="text/javascript">
+                    <script>
                         require(['jquery'], function(jQuery) {
 							jQuery('document').ready(function() {
 								jQuery('.rs-layer-main-image-tabs li').click(function() {
@@ -1003,7 +1003,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
                         <?php $transition_duration = (array) RevSliderFunctions::getVal($slideParams, 'transition_duration',$def_transition_duration); ?>
                         <?php $transition_ease_in = (array) RevSliderFunctions::getVal($slideParams, 'transition_ease_in','default'); ?>
                         <?php $transition_ease_out = (array) RevSliderFunctions::getVal($slideParams, 'transition_ease_out','default'); ?>
-                        <script type="text/javascript">
+                        <script>
                             var choosen_slide_transition = [];
                             <?php
                             $tr_count = count($slide_transition);
@@ -1355,7 +1355,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
                         
                     </ul>
                     <p style="margin-top:25px"><i><?php echo __("The Custom Settings are always depending on the current selected Navigation Elements in Slider Settings, and will only be active on the current Slide."); ?></i></p>
-                    <script type="text/javascript">
+                    <script>
 						require(['jquery'], function(jQuery) {
 							jQuery(document).ready(function() {
 								if (jQuery('.custom-nav-types.nav-type-arrows').length==0)
@@ -1417,7 +1417,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
                             ?>
                             <div id="rs-addon-settings-trigger-<?php echo $framework->esc_attr($rs_addon_handle); ?>-settings" class="rs-addon-settings-wrapper-settings" style="display: none;">
                                 <?php echo $rs_addon['markup']; ?>
-                                <script type="text/javascript">
+                                <script>
                                     <?php echo $rs_addon['javascript']; ?>
                                 </script>
                             </div>
@@ -1425,7 +1425,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
                         }
 					}
 					?>
-                    <script type="text/javascript">
+                    <script>
                         require(['jquery'], function(jQuery) {
 							jQuery('.rs-addon-settings-trigger').click(function(){
 								var show_addon = jQuery(this).attr('id');
@@ -1592,7 +1592,7 @@ $slide_general_addon = $framework->apply_filters('revslider_slide_settings_addon
 
 	</div>
 </div>
-<script type="text/javascript">
+<script>
 	var rs_plugin_url = '<?php echo Framework::$RS_PLUGIN_URL; ?>';
 	
 	require(['jquery', 'tpColorPicker'], function(jQuery) {

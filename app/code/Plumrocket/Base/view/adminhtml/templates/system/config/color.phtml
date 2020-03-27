@@ -16,7 +16,7 @@
  */
 ?>
 <span id="pr-jscolor" data-dir="<?php echo $block->getViewFileUrl('Plumrocket_Base/js') . '/'?>"></span>
-<script type="text/javascript">
+<script>
     var prColorPathId = "<?php echo $this->getPathId(); ?>";
     require(["jquery", "mage/mage"], function($){
         $('#' + prColorPathId).mage('jscolor');

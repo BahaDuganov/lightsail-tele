@@ -230,7 +230,7 @@ use \Nwdthemes\Revslider\Model\Revslider\Framework\RevSliderFunctions;
     <!--a class="button-primary revgreen" id="rs-save-navigation-style" href="javascript:void(0);"><i class="rs-icon-save-light"></i><?php echo __('Save All Changes'); ?></a-->
 
 
-	<script type="text/javascript">
+	<script>
 		require(['jquery', 'rsCodeMirror', 'admin', 'themepunchTools', 'rev_lang', 'wpUtil', 'tpColorPicker', 'perfectScrollbar'], function(jQuery, CodeMirror, UniteAdminRev, punchgs, rev_lang) {
 
 			var rs_navigations = jQuery.parseJSON(<?php echo RevSliderFunctions::jsonEncodeForClientSide($navigs); ?>) || new Array();

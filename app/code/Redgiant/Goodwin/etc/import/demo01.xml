@@ -84,7 +84,7 @@
             <quicknav>1</quicknav>
             <content_cms_block>goodwin_custom_block_for_productpage</content_cms_block>
             <custom_social><![CDATA[<div class="addthis_inline_share_toolbox_w0tc"><label style="margin-right: 5px;font-size: 16px;display:none;">Share:</label></div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6907796e30f69"></script>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6907796e30f69"></script>
 
 <style type="text/css">.addthis_inline_share_toolbox_w0tc > div.at-resp-share-element{display: inline-block !important;vertical-align: middle;}
 .prd-safecheckout { margin-top: 20px; }

@@ -13,7 +13,7 @@ foreach($inlineStyles as $_styles) foreach ($_styles as $_style) echo $_style;
     <div class="waitaminute-message"><i class="eg-icon-emo-coffee"></i><br><?php echo __("Please Wait..."); ?></div>
 </div>
 <?php echo $localizeScriptsHtml; ?>
-<script type="text/javascript">
+<script>
 	var ajaxurl = "<?php echo RevSliderBase::$url_ajax; ?>";
 	var g_revNonce = "<?php echo $nonce; ?>";
 	var g_uniteDirPlugin = "revslider";
@@ -233,7 +233,7 @@ foreach($inlineStyles as $_styles) foreach ($_styles as $_style) echo $_style;
 	</div>
 </div>
 
-<script type="text/javascript">
+<script>
     <?php
 	$validated = $framework->get_option('revslider-valid', 'false');
 	?>

@@ -170,7 +170,7 @@ class Serial extends \Magento\Config\Block\System\Config\Form\Field
     private function  _js($serialKeyId, $handle)
     {
         return "
-            <script type='text/javascript'>
+            <script>
                 require([
                     'jquery',
                     'mage/translate',

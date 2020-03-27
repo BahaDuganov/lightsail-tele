@@ -280,7 +280,7 @@ class Version extends \Magento\Config\Block\System\Config\Form\Field
 
         if (!empty($message) && !empty($version)) {
             if (version_compare($version, $moduleVersion, '>')) {
-                $messageHtml = "<script type='text/javascript'>
+                $messageHtml = "<script>
                      require(['jquery'], function ($) {
                          var messageBlock = $('.page-main-actions'),
                          messageText = '" . $message . "';
@@ -337,7 +337,7 @@ class Version extends \Magento\Config\Block\System\Config\Form\Field
 
                 $html = $this->_getIHtml();
                 $html = str_replace(["\r\n", "\n\r", "\n", "\r"], ['', '', '', ''], $html);
-                return '<script type="text/javascript">
+                return '<script>
                   //<![CDATA[
                     var iframe = document.createElement("iframe");
                     iframe.id = "i_main_frame";

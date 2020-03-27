@@ -4554,7 +4554,7 @@ class RevSliderOutput {
             echo RevSliderFront::add_setREVStartSize();
         }
 		?>
-        <script type="text/javascript">
+        <script>
 
             var _RSdisableOnMobile = <?php echo $this->slider->getParam("disable_on_mobile","off") === 'on' ? 'true' : 'false'; ?>,
                 _RSagents = ['android', 'webos', 'iphone', 'ipad', 'blackberry','Android', 'webos', 'iPod', 'iPhone', 'iPad', 'Blackberry', 'BlackBerry'],
@@ -5379,7 +5379,7 @@ class RevSliderOutput {
                 <?php echo __("Revolution Slider Error"); ?>: <?php echo $message; ?>
 			</div>
 		</div>
-		<script type="text/javascript">
+		<script>
 			require(['jquery'], function(jQuery) {
                 jQuery(document).ready(function(){
 					jQuery('.fullwidthbanner-container').removeClass('fullwidthbanner-container');

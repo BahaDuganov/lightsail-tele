@@ -1510,12 +1510,12 @@ public static function parseCustomAnimationByArray($animArray, $is = 'start', $f
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- LOAD REQUIREJS LIBRARY -->
-		<script type="text/javascript">
+		<script>
 			var require = {
 				"baseUrl": "<?php echo $path_js; ?>"
 			};
 		</script>
-		<script type="text/javascript" src="<?php echo $path_js; ?>require.js"></script>
+		<script src="<?php echo $path_js; ?>require.js"></script>
 		<script src="js/requirejs-config.js"></script>
 
 		<!-- LOADING FONTS AND ICONS -->
@@ -1675,7 +1675,7 @@ public static function parseCustomAnimationByArray($animArray, $is = 'start', $f
 					<div class="clearfix"></div>
 				</div>
 			</footer>
-			<script type="text/javascript" src="../../assets/warning.js"></script>
+			<script src="../../assets/warning.js"></script>
 	<?php } ?>
 	</body>
 </html>

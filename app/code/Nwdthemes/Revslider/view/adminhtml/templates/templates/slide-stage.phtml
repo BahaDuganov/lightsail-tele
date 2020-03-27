@@ -1722,14 +1722,14 @@ $add_static = $slide->isStaticSlide() ? 'true' : 'false';
                         ?>
                         <div id="rs-addon-trigger-<?php echo $framework->esc_attr($rs_addon_handle); ?>-settings" class="rs-addon-settings-wrapper" style="display: none;">
                             <?php echo $rs_addon['markup']; ?>
-                            <script type="text/javascript">
+                            <script>
                                 <?php echo $rs_addon['javascript']; ?>
                             </script>
                         </div>
                         <?php
                     }
                     ?>
-                    <script type="text/javascript">
+                    <script>
                         require(['jquery'], function(jQuery) {
                             jQuery('.rs-addon-trigger').click(function(){
                                 var show_addon = jQuery(this).attr('id');
@@ -2128,7 +2128,7 @@ $add_static = $slide->isStaticSlide() ? 'true' : 'false';
                         </div>
                     </div>
                 </div>
-                <script type="text/javascript">
+                <script>
                     require(['jquery'], function(jQuery) {
                         jQuery('#rs-set-style-on-devices-button').click(function(){
                             jQuery('#rs-set-style-on-devices-dialog').toggle();
@@ -2381,7 +2381,7 @@ $add_static = $slide->isStaticSlide() ? 'true' : 'false';
 				<option value="tablet"><?php echo __('Tablet'); ?></option>
 				<option value="mobile"><?php echo __('Mobile'); ?></option>
 			</select>
-			<script type="text/javascript">
+			<script>
 
 				require(['jquery', 'themepunchTools'], function(jQuery, punchgs) {
 
