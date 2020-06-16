@@ -93,18 +93,15 @@ $countryList = $this->getCountryList();
                             </a>
                             </span>
                             <span class="wb-address wb-store-info">
-                                <strong><?= 'Address: '?></strong>
                                 <?= $data['address']?>
                             </span>
-                            <span class="wb-contact wb-store-info">
-                                <?= $data['contact_no'];?>
+                            <span class="wb-address wb-store-info">
+                                <?= $data['city']?>,<?= $data['state']?> <?= $data['zipcode']?>
                             </span>
-                            <span class="wb-status wb-store-info">
-                                <?php if($status != 'close') {?>
-                                    <strong><?='Hours:'?></strong><?= ' ('.$openTime .' To '.$closeTime.' )';?>
-                                <?php }?>
-                                <span class="wb-status-state"><?= $status?></span>
-                            </span>
+                            <a href="tel:<?= $data['contact_no']?>" class="location_phone" title="phone"><?= $data['contact_no']?></a>
+                            <div class="location__hours">
+                                <p><strong>Mon - Sunday</strong> 10am - 7pm</p>
+                            </div>
                             <a href="javascript:void(0)" onclick="setStore(<?= $key?>)" value="<?= $data['id']?>"><span class="view-map btn-decor">view map<span class="btn-line"></span></span></a>
                         </div>
                     </div>
