@@ -73,9 +73,12 @@ $countryList = $this->getCountryList();
 														<address class="location_address">
 															<span class="location_address location_address-street"><?= $data['address']?></span>
 													    </address>
+                                                        <address class="location_address">
+                                                            <span class="location_address location_address-street"><?= $data['city']?>,<?= $data['state']?> <?= $data['zipcode']?></span>
+                                                        </address>
 													    <a href="tel:<?= $data['contact_no']?>" class="location_phone" title="phone"><?= $data['contact_no']?></a>
 													<div class="location__hours">
-														<p><strong>Mon-Fri</strong> 10am - 9pm</p><p><strong class="location__hours-saturday">Sat</strong> 10am - 6pm</p><p><strong class="location__hours-sunday">Sun</strong> 11am - 6pm</p>
+                                                        <p><strong>Mon - Sunday</strong> 10am - 7pm</p>
 													</div>
 													<div class="location__link-wrap">
 														<a href="/wbstore/store/index" class="location__directions location__directions--details" title="view map"><span class="btn-decor btn-decor--xs bnr-btn">view map<span class="btn-line"></span></span></a>

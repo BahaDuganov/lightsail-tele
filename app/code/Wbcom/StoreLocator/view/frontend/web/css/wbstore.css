@@ -35,11 +35,6 @@
 }
 .wb-store-data {
     padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 5px;
 }
 .store-name{
     margin: 0px;
@@ -198,19 +193,18 @@
 }
 .wb-listing {
     max-width: 1170px;
-    padding: 40px 15px;
+    padding: 40px 0;
     margin: auto;
     display: block;
     position: relative;
 }
 .wb-store-data {
-    width: 23.2%;
+    width: 33.33%;
     display: inline-block;
     flex-wrap: unset;
     float: left;
     border-bottom: none;
-    margin: 0 10px;
-    padding-right: 0;
+    padding: 0 10px;
 }
 .wb-store-info-image {
     width: 100%;
@@ -246,7 +240,7 @@
 .wb-store-details span h3{
     text-transform: uppercase;
 }
-.wb-store-data:nth-child(4n+5){
+.wb-store-data:nth-child(3n+4){
     clear: both;
 }
 .store-main-content {
@@ -295,6 +289,22 @@
     position: absolute;
     vertical-align: middle;
     cursor: pointer;
+}
+.wbstore-store-index .location_phone{
+    font-weight: bold;
+    color: #274375;
+}
+.wbstore-store-index .location__hours{
+    margin: 10px 0 20px;
+}
+.wbstore-store-index .location__hours strong {
+    color: #274375;
+}
+.wb-store-details span h3 {
+    font-size: 15px;
+}
+span.wb-store-name.wb-store-info {
+    height: 48px;
 }
 
 /*Mobile Css*/
