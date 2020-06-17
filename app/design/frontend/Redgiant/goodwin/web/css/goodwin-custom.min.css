@@ -64,6 +64,12 @@
 .page-header .custom-text b {
     vertical-align: middle;
 }
+.modal-popup._show .modal-inner-wrap {
+    top: 5%;
+}
+.modal-popup._inner-scroll .modal-inner-wrap {
+    max-height: 70%;
+}
 
 @media only screen and (min-width: 1400px) {
     .slider-home .bnslider.bnslider--lg{
