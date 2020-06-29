@@ -276,11 +276,9 @@ h3.des-title {
 .teletronads-index-index .post-ftimg-hld {
     height: 170px;
     overflow: hidden;
+    text-align: center;
 }
-. teletronads-index-index.post-ftimg-hld img {
-    height: auto;
-    max-height: none;
-}
+
 .box-ads .box-text .title-ads a {
     color: #000;
     font-weight: 600;

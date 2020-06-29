@@ -26,11 +26,6 @@
 
         <div class="post-content">
             <div class="post-description clearfix">
-                <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
-                <div class="post-ftimg-hld">
-                    <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
-                </div>
-                <?php } ?>
                 <div class="post-text-hld">
                     <?php echo $block->getContent() ?>
                     <div class="clear"></div>
